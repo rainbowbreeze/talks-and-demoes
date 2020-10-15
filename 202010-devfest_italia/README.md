@@ -50,8 +50,9 @@ Uno sguardo al resto dell'a UI
 
 Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, avviare una conversazione con il bot da Telegram, in modo da poter ottenere un chat_id, tramite il comando:
 ```
-curl -s -X POST https://api.telegram.org/botYOUR_API_KEY/getUpdates | jq
+curl -s -X POST https://api.telegram.org/botYOUR_API_TOKEN/getUpdates | jq
 ```
+Oppure visitando https://api.telegram.org/botYOUR_API_TOKEN/getUpdates  
 Aggingere al configurations.yaml il codice per una nuova piattaforma di notifica
 ```
 # Example configuration.yaml entry
@@ -62,7 +63,12 @@ telegram_bot:
       - 123456789 # example id of a user
       - -987654321  # example id of a group, starts with a -
 ```
-
+Per testare se tutto funziona, 
+https://www.home-assistant.io/integrations/telegram/
+https://www.home-assistant.io/integrations/telegram_bot
+https://www.home-assistant.io/integrations/telegram_broadcast
+  
+https://hass.altissia.duckdns.org/config/automation/dashboard
 <br />
 <br />
 
