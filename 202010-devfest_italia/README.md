@@ -2,15 +2,15 @@
 
 **Titolo talk**: Smart speaker, ancora più smart, con Home Assistant
 
+<br />
+<br />
 
 ## Home Assistant, le basi
 - Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo
 - Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) e un altro [video introduttivo](https://www.youtube.com/watch?v=sVqyDtEjudk) di due streamer molto attivi sul tema
 - Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
 - Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant
-  
-<br />
-<br />
+
 
 ### Installazione di HA
 [Guida semplice](https://www.home-assistant.io/getting-started/) e [guida con tutte le opzioni](https://www.home-assistant.io/docs/installation/)
@@ -42,7 +42,8 @@ Lo store interno
 - Installare [HACS](https://hacs.xyz) - Home Assistant Community Store. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/)
 Uno sguardo al resto dell'a UI
 
-
+<br />
+<br />
 
 ## Creiamo una prima automazione
 - [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono tanti tipi di trigger
