@@ -45,9 +45,30 @@ Uno sguardo al resto dell'a UI
 <br />
 <br />
 
+## Estendiamo HA
+[Telegram broadcast platform](https://www.home-assistant.io/integrations/telegram_broadcast), per mandare messaggi da HA a Telegram. Esiste anche [un'integrazione](https://www.home-assistant.io/integrations/telegram/) per dialogare con Telegram, rispondere ai messaggi, ecc.
+
+Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, avviare una conversazione con il bot da Telegram, in modo da poter ottenere un chat_id, tramite il comando:
+```
+curl -s -X POST https://api.telegram.org/botYOUR_API_KEY/getUpdates | jq
+```
+Aggingere al configurations.yaml il codice per una nuova piattaforma di notifica
+```
+# Example configuration.yaml entry
+telegram_bot:
+  - platform: broadcast
+    api_key: YOUR_API_KEY
+    allowed_chat_ids:
+      - 123456789 # example id of a user
+      - -987654321  # example id of a group, starts with a -
+```
+
+<br />
+<br />
+
 ## Creiamo una prima automazione
 Ogni automazione è formata da alcuni elementi predefiniti. Alcuni sono obbligatori, altri facoltativi.
-- [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono tanti tipi di trigger
+- [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono diversi tipi di trigger
   - Event trigger: 
   - Home Assistant trigger: 
   - Time trigger: 
