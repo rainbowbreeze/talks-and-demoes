@@ -1,11 +1,13 @@
 # DevFest Italia 2020
 
-Titolo talk: Smart speaker, ancora più smart, con Home Assistant
+**Titolo talk**: Smart speaker, ancora più smart, con Home Assistant
 
 
-## Home Assistant, le base
+## Home Assistant, le basi
 - Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo.  
-Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema.
+- Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema.
+- Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
+- Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant
 
 
 ### Installazione di HA
@@ -26,6 +28,13 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
 Cosa fare dopo aver installato HA
 - [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store
 
+
+
+## Home Assistant, prima configurazione
+Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
+Lo store interno
+- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia
+- Abilitare funzionalità avanzate nel profilo utente
 
 
 
@@ -66,7 +75,6 @@ Parlare dello store interno ad Home Assistant OS
 - Proxmox: https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417
 - Alcuni problemi che hanno avuto in passato con i metodi di installazione: https://community.home-assistant.io/t/installation-methods-community-guides-wiki/199545
 
-Abilitare funzionalità avanzate nel profilo utente
 
 
 VScode on home assistant
