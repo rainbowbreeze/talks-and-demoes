@@ -9,7 +9,8 @@
 - Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
 - Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant
   
-  
+<br />
+<br />
 ### Installazione di HA
 [Guida semplice](https://www.home-assistant.io/getting-started/) e [guida con tutte le opzioni](https://www.home-assistant.io/docs/installation/)
 Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-core-quale-installazione-fa-al-caso-mio/), dove quello che cambia è contesto e contorno di Home Assistant Core. Ma il software principale è sempre quello:
@@ -28,7 +29,6 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
 
 <br />
 <br />
-  
 ## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
 Lo store interno
