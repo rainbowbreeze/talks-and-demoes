@@ -46,6 +46,7 @@ Uno sguardo al resto dell'a UI
 <br />
 
 ## Creiamo una prima automazione
+Ogni automazione è formata da alcuni elementi predefiniti. Alcuni sono obbligatori, altri facoltativi.
 - [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono tanti tipi di trigger
   - Event trigger: 
   - Home Assistant trigger: 
@@ -54,7 +55,8 @@ Uno sguardo al resto dell'a UI
   - Webhook trigger: vengono lanciati quando una richiesta web arriva al webhook endpoint
   - Geolocation trigger: 
   - Device trigger: 
-- [Condition]():
+- [Condition](https://www.home-assistant.io/docs/automation/condition/): Possono essere usate per fermare l'esecuzione di un'automazione quando scatta un trigger. [Lista completa delle condizioni](https://www.home-assistant.io/docs/scripts/conditions/)
+- [Action](https://www.home-assistant.io/docs/automation/action/): definisce cosa fa l'automazione
 
 [Segreti](https://www.home-assistant.io/docs/configuration/secrets/)
 - Scatenare l'evento a mano: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
