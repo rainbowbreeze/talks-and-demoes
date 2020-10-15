@@ -5,7 +5,7 @@
 
 ## Home Assistant, le basi
 - Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo
-- Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema
+- Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) e un altro [video introduttivo](https://www.youtube.com/watch?v=sVqyDtEjudk) di due streamer molto attivi sul tema
 - Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
 - Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant
 
@@ -25,21 +25,34 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
 - [Home Assistant Core](https://www.home-assistant.io/docs/installation/raspberry-pi/): per i puristi e per chi vuole il massimo controllo dell'environment
   - Python pip non vi spaventa?
   - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
-Cosa fare dopo aver installato HA
-- [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store.
 
 
 
 ## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
 Lo store interno
-- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia
+- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA con dei app esterne (integrate in HA o esterne)
 - Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù
+- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia
+- Log Viewer
+- [Altri add-on](https://indomus.it/formazione/gli-imprescindibili-gli-add-on-essenziali-da-installare-su-hassio/)
+- Installare [HACS](https://hacs.xyz) - Home Assistant Community Store. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/)
+Uno sguardo al resto dell'a UI
 
 
 
 ## Creiamo una prima automazione
-- 
+- [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono tanti tipi di trigger
+  - Event trigger: 
+  - Home Assistant trigger: 
+  - Time trigger: 
+  - State trigger: 
+  - Webhook trigger: vengono lanciati quando una richiesta web arriva al webhook endpoint
+  - Geolocation trigger: 
+  - Device trigger: 
+- [Condition]():
+
+[Segreti](https://www.home-assistant.io/docs/configuration/secrets/)
 - Scatenare l'evento a mano: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 
 
@@ -68,17 +81,6 @@ Options
 - GA for everything
 - HA with device apps and interface with device apps
 - HA communicating directly with the devices (generally flashing a new firmware on the device)
-
-Preparazione RASPI
-- https://github.com/FooDeas/raspberrypi-ua-netinst
-Ma anche un container funziona, tipo NAS, NUC, etc
-
-
-Installazione e metodi di installazione
-Parlare dello store interno ad Home Assistant OS
-- Proxmox: https://community.home-assistant.io/t/installing-home-assistant-using-proxmox/201835
-- Proxmox: https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417
-- Alcuni problemi che hanno avuto in passato con i metodi di installazione: https://community.home-assistant.io/t/installation-methods-community-guides-wiki/199545
 
 
 
@@ -125,3 +127,20 @@ https://indomus.it/formazione/i-package-di-home-assistant-cosa-sono-e-come-si-in
 
 Tuya
 - HA integration with their service: https://www.home-assistant.io/integrations/tuya/
+
+
+
+# OLD LINKS
+Preparazione RASPI
+- https://github.com/FooDeas/raspberrypi-ua-netinst
+Ma anche un container funziona, tipo NAS, NUC, etc
+
+
+Installazione e metodi di installazione
+Parlare dello store interno ad Home Assistant OS
+- Proxmox: https://community.home-assistant.io/t/installing-home-assistant-using-proxmox/201835
+- Proxmox: https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417
+- Alcuni problemi che hanno avuto in passato con i metodi di installazione: https://community.home-assistant.io/t/installation-methods-community-guides-wiki/199545
+
+
+Which Smart Energy Monitor Is Right For You? ShellyEM vs Sense: https://www.youtube.com/watch?v=5RyDxZLA8b8
