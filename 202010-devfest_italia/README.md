@@ -4,8 +4,8 @@
 
 
 ## Home Assistant, le basi
-- Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo.  
-- Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema.
+- Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo
+- Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema
 - Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
 - Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant
 
@@ -26,16 +26,21 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
   - Python pip non vi spaventa?
   - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
 Cosa fare dopo aver installato HA
-- [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store
+- [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store.
 
 
 
-## Home Assistant, prima configurazione
+## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
 Lo store interno
 - Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia
-- Abilitare funzionalità avanzate nel profilo utente
+- Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù
 
+
+
+## Creiamo una prima automazione
+- 
+- Scatenare l'evento a mano: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 
 
 ## TODO and old notes
