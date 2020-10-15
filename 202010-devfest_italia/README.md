@@ -26,7 +26,8 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
   - Python pip non vi spaventa?
   - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
 
-  
+<br />
+<br />
   
 ## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
