@@ -4,31 +4,32 @@ Titolo talk: Smart speaker, ancora più smart, con Home Assistant
 
 
 ## Home Assistant, le base
-- Cos'è [Home Assistant](https://www.home-assistant.io/)
+- Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo.  
+Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) di uno streamer molto attivo sul tema.
+
 
 ### Installazione di HA
 [Guida semplice](https://www.home-assistant.io/getting-started/) e [guida con tutte le opzioni](https://www.home-assistant.io/docs/installation/)
-Tre opzioni, dove quello che cambia è il contesto, e contorno, di Home Assistant:
+Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-core-quale-installazione-fa-al-caso-mio/), dove quello che cambia è contesto e contorno di Home Assistant Core. Ma il software principale è sempre quello:
 - [Home Assistant OS](https://www.home-assistant.io/hassio/installation/): all-in-one: flash, reboot e ti connetti.
   - Necessario un hardware dedicato (fisico o virtualizzato), ma anche un Raspberry Pi Zero W va bene
   - Un po' meno performante, ma non si nota molto
   - Non c'è molta flessibilità sulla gestione dell'OS (che è comunque Linux)
   - Se non dovete fare cose strane, è davvero la strada più veloce, almeno all'inizio
+  - Una volta si chiamava HASSIO, ecco perchè tante risorse usano ancora quel nome
 - [Home Assistant Container](https://www.home-assistant.io/docs/installation/docker/): usate già Docker? Allora questa è la strada da prendere
   - Voi pensate all'OS, al resto ci pensa l'immagine Docker
   - Un po' di giri da fare se volete usare cose esterne a HA, ma complementari: Grafana, RedNode, Eclipse Mosquitto, media folder, DuckDSN, ecc
 - [Home Assistant Core](https://www.home-assistant.io/docs/installation/raspberry-pi/): per i puristi e per chi vuole il massimo controllo dell'environment
   - Python pip non vi spaventa?
   - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
-  - [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store
+Cosa fare dopo aver installato HA
+- [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store
 
 
 
 
 ## TODO and old notes
-
-## Installazione Hassio OS
-Link con le scelte
 
 
 ## Prima configurazione di HASSIO
@@ -60,21 +61,13 @@ Ma anche un container funziona, tipo NAS, NUC, etc
 
 
 Installazione e metodi di installazione
-- https://www.home-assistant.io/docs/installation/
--Home Assistant Container (Core + Docker): https://www.home-assistant.io/docs/installation/docker/
-- Home Assistant OS: https://www.home-assistant.io/hassio/installation/
-- Home Assistant Core: guida inDomus
-- https://indomus.it/focus/home-assistant-hassio-o-home-assistant-core-quale-installazione-fa-al-caso-mio/
 Parlare dello store interno ad Home Assistant OS
 - Proxmox: https://community.home-assistant.io/t/installing-home-assistant-using-proxmox/201835
 - Proxmox: https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417
 - Alcuni problemi che hanno avuto in passato con i metodi di installazione: https://community.home-assistant.io/t/installation-methods-community-guides-wiki/199545
-- https://www.home-assistant.io/hassio/installation/
 
 Abilitare funzionalità avanzate nel profilo utente
 
-Intro to home assistant
-- https://www.youtube.com/watch?v=pVxoSXeC2Jw
 
 VScode on home assistant
 
