@@ -7,8 +7,20 @@ Titolo talk: Smart speaker, ancora più smart, con Home Assistant
 - Cos'è [Home Assistant](https://www.home-assistant.io/)
 
 ### Installazione di HA
-[Guida](https://www.home-assistant.io/getting-started/)
-- Tre opzioni: Home Assistant C
+[Guida semplice](https://www.home-assistant.io/getting-started/) e [guida con tutte le opzioni](https://www.home-assistant.io/docs/installation/)
+Tre opzioni, dove quello che cambia è il contesto, e contorno, di Home Assistant:
+- [Home Assistant OS](https://www.home-assistant.io/hassio/installation/): all-in-one: flash, reboot e ti connetti.
+  - Necessario un hardware dedicato (fisico o virtualizzato), ma anche un Raspberry Pi Zero W va bene
+  - Un po' meno performante, ma non si nota molto
+  - Non c'è molta flessibilità sulla gestione dell'OS (che è comunque Linux)
+  - Se non dovete fare cose strane, è davvero la strada più veloce, almeno all'inizio
+- [Home Assistant Container](https://www.home-assistant.io/docs/installation/docker/): usate già Docker? Allora questa è la strada da prendere
+  - Voi pensate all'OS, al resto ci pensa l'immagine Docker
+  - Un po' di giri da fare se volete usare cose esterne a HA, ma complementari: Grafana, RedNode, Eclipse Mosquitto, media folder, DuckDSN, ecc
+- [Home Assistant Core](https://www.home-assistant.io/docs/installation/raspberry-pi/): per i puristi e per chi vuole il massimo controllo dell'environment
+  - Python pip non vi spaventa?
+  - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
+  - [Guida su come installare HACS](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/) - Home Assistant Community Store
 
 
 
