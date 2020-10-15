@@ -46,24 +46,37 @@ Uno sguardo al resto dell'a UI
 <br />
 
 ## Estendiamo HA
-[Telegram broadcast platform](https://www.home-assistant.io/integrations/telegram_broadcast), per mandare messaggi da HA a Telegram. Esiste anche [un'integrazione](https://www.home-assistant.io/integrations/telegram/) per dialogare con Telegram, rispondere ai messaggi, ecc.
+HA supporta nativamente Telegram, e grazie alla [Telegram platform](https://www.home-assistant.io/integrations/telegram) si possono sia inviare che ricevere messaggi. Se occorre solo inviare messaggi, si può usare la [piattaforma di broadcast](https://www.home-assistant.io/integrations/telegram_broadcast), che non richiede di avere HA raggiungibile da internet. Se invece si vogliono anche ricevere messaggi, allora occorre usare la [piattaforma di polling](https://www.home-assistant.io/integrations/telegram_bot) e configurare i webhook per Telegram.
 
 Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, avviare una conversazione con il bot da Telegram, in modo da poter ottenere un chat_id, tramite il comando:
 ```
 curl -s -X POST https://api.telegram.org/botYOUR_API_TOKEN/getUpdates | jq
 ```
 Oppure visitando https://api.telegram.org/botYOUR_API_TOKEN/getUpdates  
-Aggingere al configurations.yaml il codice per una nuova piattaforma di notifica
+<br />
+Aggingere al configurations.yaml il codice per una nuova piattaforma di notifica, basata su Telegram
 ```
-# Example configuration.yaml entry
+# Uso broadcast come piattaforma, e non polling, dato che non devo ricevere messaggi
 telegram_bot:
   - platform: broadcast
     api_key: YOUR_API_KEY
     allowed_chat_ids:
       - 123456789 # example id of a user
       - -987654321  # example id of a group, starts with a -
+
+# Definisco le notifiche e le collego a delle specifiche chat_id
+notify:
+  - platform: telegram
+    name: telegram_devfest
+    chat_id: !secret telegram_chatid_jarvis
 ```
-Per testare se tutto funziona, 
+Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> Service" e cercare il servizio "notify.telegram_devfest". Aggiungere nel campo nel campo Service Data la stringa
+```
+message: "Prova"
+```
+E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto e video, 
+
+
 https://www.home-assistant.io/integrations/telegram/
 https://www.home-assistant.io/integrations/telegram_bot
 https://www.home-assistant.io/integrations/telegram_broadcast
