@@ -112,7 +112,7 @@ trigger:
   platform: time
   at: "07:55:00"
 action:
-  service: notify.telegram_jarvis
+  service: notify.telegram_devfest
   data:
     message: "E' ora di svegliarsi!!!!"
 ```
@@ -127,7 +127,8 @@ automation: !include automations.yaml
 # Qui invece tutti i file contenenti le automazioni definite manualmente
 automation split: !include_dir_merge_list automations
 ```
-Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte.
+Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte. Un video che spiega una configurazione reale abbastanza complessa: [Understanding YAML as it's used in Home Assistant Config files ](https://www.youtube.com/watch?v=FfjSA2o_0KA).
+
 
 <br />
 <br />
@@ -202,7 +203,8 @@ media_content_id: '
           }'
 media_content_type: cast
 ```
-Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli.
+Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli.  
+Mentre si casta qualcosa ad un device, si può anche vedere il dettaglio dello stream. "Developer Tools", "States", scegliere nelle entity il device Google Cast da analizzare, e nello stato vengono riportate tutte le info, compreso il *media_content_id*.
 
 <br />
 <br />
@@ -220,10 +222,11 @@ data:
 ```
 L'URI da usare è *media-source://media_source/<media_dir>/<path>*, e per i media locali *media_dir * é *local*, mentre *path* è il percorso del file a partire dalla cartella media radice
   
+  
 ### Aggiungere media alla libreria locale
 Di default, Home Assistant OS considera locali tutti i media nella cartella */media*. Per [aggiungere nuovi media locali](https://www.home-assistant.io/more-info/local-media/add-media), si può usare Samba.  
 Andare su "Supervisor", "Add-on store", "Samba share", "Install". In "Configuration" dell'add-on, specificare username e password (devfest - devfest), e poi "Start".  
-Si possono configurare anche [altre cartelle](https://www.home-assistant.io/more-info/local-media/setup-media) dove prendere i media, ad esempio una risorsa condivisa di un NAS
+Si possono configurare anche [altre cartelle](https://www.home-assistant.io/more-info/local-media/setup-media) dove prendere i media, ad esempio una risorsa condivisa di un NAS, montata sul file system del computer con Home Assistant OS
 ```
 # Example configuration.yaml
 homeassistant:
@@ -231,6 +234,8 @@ homeassistant:
     media: /media
     recording: /mnt/recordings
 ```
+Nel precedente link, ci sono anche gli esempi per configurare le cartelle media di HA con altri metodi di installazione.
+
 
 ### Riprodurre i media locali su Google Cast
 Ecco l'esempio di una sveglia per bambini, che scatta dal luned' al venerdì alle 7:50, e riproduce alcune canzoni che a loro piacciono.  
@@ -265,9 +270,14 @@ Creare il file automations/sveglie_bambini.yaml
   # Aspetto un attimo nel caso occorra fare qualcosa
   - delay: 00:00:05
   
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.home_bambini
+      volume_level: 0.3
+
   - service: media_player.play_media
     data:
-      entity_id: media_player.camera_bambini
+      entity_id: media_player.home_bambini
       media_content_id:  media-source://media_source/local/Gormiti the Legend Is Back-icXktSp8v4o.mp3
       media_content_type: audio/mp3
   
@@ -282,9 +292,16 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
 <br />
 <br />
 
-
-
-
+## Conclusioni
+Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre media locali e online. HA può fare molto di più, ed essere a sua volta interfacciato a Google Assistant, ed esporre a quest'ultimo tutti i device configurati, in modo da avere un'integraziove vocale completa, e generalmente più flessibile (ma meno user friendly) di quella offerta nativamente da Google Assistant.
+- [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
+- [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
+<br />
+Consiglio di seguire quattro risorse principali:
+- [Franck Nijhof](https://www.youtube.com/channel/UCZ2Ku6wrhdYDHCaBzLaA3bw): fa dei video lunghissimi, ma è parte del team di HA e ha creato molto add-on, quindi sa il fatto suo  
+- [DrZzs](https://www.youtube.com/channel/UC7G4tLa4Kt6A9e3hJ-HO8ng): anche lui fa un sacco di progetti DIY basati su HA
+- [inDomus](https://indomus.it/): la community italiana di domotica personale, con tantissimi articoli, spunti interessanti e forum di discussione
+- [Forum ufficiale di HA](https://community.home-assistant.io/): e mica ce lo possiamo far mancare! Però da dipendenza, io ve l'ho detto!
 
 
 
@@ -297,73 +314,9 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
 - [Spotify](https://www.home-assistant.io/integrations/spotify)
 
 
-# Facciamo stream di una radio su ChromeCast
-https://www.home-assistant.io/more-info/local-media/setup-media
-
-
-### Aggiungiamo della musica in locale
-[Service Media Control](https://www.home-assistant.io/integrations/media_player/)
-
-
-## Chi seguire
-DrZzs & Franck Nijhof. T
-[Understanding YAML as it's used in Home Assistant Config files ](https://www.youtube.com/watch?v=FfjSA2o_0KA)
-
 
 ### UI
 https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/
-
-### Media
-
-Play music
-- https://community.home-assistant.io/t/media-player-play-media/117036/5
-- https://community.home-assistant.io/t/media-playback-solved/23069/5
-- https://community.home-assistant.io/t/play-audio-local-mp3-file-to-a-media-player/35883/11
-
-
-alias: Google audio på p4 köket
-trigger:
-  platform: state
-  entity_id: input_boolean.radiomalmo_p4
-  state: 'on'
-action:
-  - service: switch.turn_on
-    entity_id: switch.google_audio_kket
-  - delay: 00:00:03
-  - service: media_player.play_media
-    entity_id: media_player.kk
-    data:
-      media_content_id: "http://http-live.sr.se/p4malmo-mp3-192"
-      media_content_type: "audio/mp3"
- https://community.home-assistant.io/t/send-local-content-url-to-chromecast-audio/1121/16
- 
- 
-volume_level: 0.31999993324279785
-is_volume_muted: false
-media_content_id: http://192.168.101.101:8123/media/local/William Tell Overture Finale-YIbYCOiETx0.mp3?authSig=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ZmY4NjlmMjQ3MTc0ZjIxODRjMjAzOTZmMTM5MjdjOCIsInBhdGgiOiIvbWVkaWEvbG9jYWwvV2lsbGlhbSBUZWxsIE92ZXJ0dXJlIEZpbmFsZS1ZSWJZQ09pRVR4MC5tcDMiLCJpYXQiOjE2MDI4NDE0MTQsImV4cCI6MTYwMjg0MTcxNH0.3uDOswJ_TLp5cAm6wsCycvn_MTICuy1Gim3e66qK-_g
-media_duration: 125.568
-media_position: 0.868
-media_position_updated_at: 2020-10-16T09:43:37.701695+00:00
-app_id: CC1AD845
-app_name: Default Media Receiver
-entity_picture_local: null
-friendly_name: Scrivania Alfredo
-supported_features: 152463
-
-volume_level: 0.31999993324279785
-is_volume_muted: false
-media_content_id: http://icecast.unitedradio.it/Virgin.mp3
-media_content_type: movie
-media_position: 0
-media_position_updated_at: 2020-10-16T09:45:11.378096+00:00
-media_title: Virgin Radio FM
-app_id: 86C1130D
-app_name: Podcast Republic
-entity_picture_local: /api/media_player_proxy/media_player.scrivania_alfredo?token=932c4bf2a716ad1dba15d2536e7c50de0d9298f57d03b5d56afdaae10be41013&cache=9834a418edbf7ae9
-friendly_name: Scrivania Alfredo
-entity_picture: //cdn-radiotime-logos.tunein.com/s69185q.png
-supported_features: 152463
-
 
 
 ## Prima configurazione di HASSIO
@@ -372,12 +325,6 @@ Create una persona
 
 
 https://indomus.it/guide/integrare-google-home-come-media-player-su-home-assistant/#riproduzione
-
-Options
-- GA for everything
-- HA with device apps and interface with device apps
-- HA communicating directly with the devices (generally flashing a new firmware on the device)
-
 
 
 VScode on home assistant
