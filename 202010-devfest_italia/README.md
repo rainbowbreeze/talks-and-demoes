@@ -119,6 +119,15 @@ action:
 Ci sono molti modi di definire [trigger temporali](https://indomus.it/formazione/automazioni-su-base-temporale-in-varie-modalita-su-home-assistant/): orari, periodicamente (ogni 15 minuti, al 15esimo minuto di ogni ora, ecc), 
 <br />
 Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simulare quando HA si sta spegnendo: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
+<br />
+Per avere un file configuration.yaml più leggibile, è anche opportuno [dividere le configurazioni](https://www.home-assistant.io/docs/configuration/splitting_configuration/) in diversi file e directory. Per avere le automazioni configurabili sia da UI, sia direttamente da file di testo, occorre modificare il *configuration.yaml* come segue:
+```
+# Qui ci vanno a finire le automazioni definite da UI
+automation: !include automations.yaml
+# Qui invece tutti i file contenenti le automazioni definite manualmente
+automation split: !include_dir_merge_list automation
+```
+Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte.
 
 <br />
 <br />
@@ -166,7 +175,7 @@ media_content_type: movie
 ```
 Si può controllare cosa sta riproducento un device andando su "Developer Tools", "States", e scegliendo l'entity corrispodente al Google Cast che si vuole analizzare.
 
-<br />
+<br />  
 Si può anche far partire uno stream di Youtube
 ```
 'cast_youtube_to_my_chromecast':
@@ -209,7 +218,8 @@ data:
   media_content_type: video/mp4
   media_content_id: media-source://media_source/local/videos/favourites/Epic Sax Guy 10 Hours.mp4
 ```
-
+L'URI da usare è *media-source://media_source/<media_dir>/<path>*, e per i media locali *media_dir * é *local*, mentre *path* è il percorso del file a partire dalla cartella media radice
+  
 ### Aggiungere media alla libreria locale
 Di default, Home Assistant OS considera locali tutti i media nella cartella */media*. Per [aggiungere nuovi media locali](https://www.home-assistant.io/more-info/local-media/add-media), si può usare Samba.  
 Andare su "Supervisor", "Add-on store", "Samba share", "Install". In "Configuration" dell'add-on, specificare username e password (devfest - devfest), e poi "Start".  
@@ -225,6 +235,10 @@ homeassistant:
 ### Riprodurre i media locali su Google Cast
 Ecco l'esempio di una sveglia per bambini, che scatta dal luned' al venerdì alle 7:50, e riproduce alcune canzoni che a loro piacciono.
 ```
+
+entity_id: media_player.scrivania_alfredo
+media_content_id: media-source://media_source/local/Gormiti the Legend Is Back-icXktSp8v4o.mp3
+media_content_type: audio/mp3
 ```
 
 
