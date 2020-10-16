@@ -148,7 +148,7 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
       entity_id: media_player.googlehomeXXX
       data:
         message: "Bentornati a casa!"
-```
+```  
 <br />
 Per testare un [media_player](https://www.home-assistant.io/integrations/media_player), si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
 Service: media_player.play_media
