@@ -126,13 +126,27 @@ Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simu
 ## Aggiungere Chromecast
 
 HA ha un servizio di autodiscovery integrato. Basta quindi andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
-Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc. Inoltre, andando nell'icona dei settings, si può testare il Text-to-Speech.  
+Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc. Inoltre, andando nell'icona dei settings, si può testare il Text-to-Speech. Lo stesso si può fare da UI Lovelace.  
 <br />
-Per [cambiare la lingua in italiano](, occore modificare la configurazione dell'integrazione [Google Translate](https://www.home-assistant.io/integrations/google_translate/), specificando la lingua che si vuole usare, tra tutte quelle disponibili:
+Per [cambiare la lingua in italiano](https://indomus.it/guide/far-parlare-google-home-come-sistema-di-notifica-domotica-su-home-assistant/), occore modificare la configurazione dell'integrazione [Google Translate](https://www.home-assistant.io/integrations/google_translate/), specificando la lingua che si vuole usare, tra tutte quelle disponibili:
 ```
 tts:
   - platform: google_translate
     language: 'it'
+```
+Nuova prova: "Developer Tools", "Services", "tts.google_translate_say", e come Service Data
+```
+entity_id: media_player.scrivania_alfredo
+message: "Adesso parlo italiano!"
+```
+Se uso "all" come entity_id, chiamo tutti i Google Cast configurati  
+<br />
+Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa parte nella sezione "action":
+```
+    - service: tts.google_say
+      entity_id: media_player.googlehomeXXX
+      data:
+        message: "Bentornati a casa!"
 ```
 
 <br />
@@ -183,9 +197,6 @@ Create una persona
 
 
 
-## Includere Google Assistant device
-Provare una integrazione con una notificare su Assistant
-Cambiare lingua del TTS
 https://indomus.it/guide/integrare-google-home-come-media-player-su-home-assistant/#riproduzione
 
 Options
