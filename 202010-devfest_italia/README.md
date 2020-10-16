@@ -120,19 +120,19 @@ Ci sono molti modi di definire [trigger temporali](https://indomus.it/formazione
 <br />
 Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simulare quando HA si sta spegnendo: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 <br />
-Per avere un file configuration.yaml più leggibile, è anche opportuno [dividere le configurazioni](https://www.home-assistant.io/docs/configuration/splitting_configuration/) in diversi file e directory. Per avere le automazioni configurabili sia da UI, sia direttamente da file di testo, occorre modificare il *configuration.yaml* come segue:
+Per avere un file configuration.yaml più leggibile, è anche opportuno [dividere le configurazioni](https://www.home-assistant.io/docs/configuration/splitting_configuration/) in diversi file e directory. Un caso particolare è [avere le automazioni configurabili sia da UI, sia direttamente da file di testo](https://gist.github.com/way2busy/c0ef0f22d374af6b7cbb2a2976ac97d0). Occorre modificare il *configuration.yaml* come segue:
 ```
 # Qui ci vanno a finire le automazioni definite da UI
 automation: !include automations.yaml
 # Qui invece tutti i file contenenti le automazioni definite manualmente
-automation split: !include_dir_merge_list automation
+automation split: !include_dir_merge_list automations
 ```
 Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte.
 
 <br />
 <br />
 
-## Aggiungere Chromecast e farlo parlare
+## Aggiungere un device Google Cast e farlo parlare
 
 HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
 Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc.  
@@ -154,8 +154,8 @@ Se uso "all" come entity_id, chiamo tutti i Google Cast configurati.
 Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa parte nella sezione "action":
 ```
     - service: tts.google_say
-      entity_id: media_player.googlehomeXXX
       data:
+        entity_id: media_player.googlehomeXXX
         message: "Bentornati a casa!"
 ```  
 **TODO** Il testo può anche provenire da un template, o da un termostato di qualche genere
@@ -250,17 +250,40 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
 
 ## END HERE
 
+
 ## Creaimo la nostra sveglia personalizzata
 ```
-alias: "Telegram notification to Wake me up in the morning"
-description: "Send a telegram notification to wake me up in the morning"
-trigger:
-  platform: time
-  at: "07:55:00"
-action:
-  service: notify.telegram_jarvis
-  data:
-    message: "E' ora di svegliarsi!!!!"
+- alias: "Sveglia settimanale per i bambini"
+  description: "Mette della musica in camera dei bimbi per svegliarli durante la settimana"
+
+  trigger:
+  - platform: time
+    at: "07:40:00"
+
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  
+  action:
+  - service: notify.telegram_devfest
+    data:
+      message: "Buongiorno bimbi, è ora di svegliarsi!!!!"
+
+  - service: tts.google_say
+    data:
+      entity_id: media_player.scrivania_alfredo
+      message: "Inizio a svegliare i bambini"
+
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.sabrina
+      media_content_id:  media-source://media_source/local/Gormiti the Legend Is Back-icXktSp8v4o.mp3
+      media_content_type: audio/mp3      
 ```
 
 ## Altri media
@@ -275,8 +298,10 @@ https://www.home-assistant.io/more-info/local-media/setup-media
 [Service Media Control](https://www.home-assistant.io/integrations/media_player/)
 
 
+## Chi seguire
+DrZzs & Franck Nijhof. T
+[Understanding YAML as it's used in Home Assistant Config files ](https://www.youtube.com/watch?v=FfjSA2o_0KA)
 
-## TODO and old notes
 
 ### UI
 https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/
