@@ -85,7 +85,7 @@ Poi, nei file di configurazione, riferirsi al valore usato con
 ```
 telegram_bot:
   - platform: broadcast
-    **api_key: !secret telegram_api_key**
+    api_key: !secret telegram_api_key
 ```
 
 <br />
