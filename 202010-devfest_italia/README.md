@@ -159,9 +159,9 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
         entity_id: media_player.googlehomeXXX
         message: "Bentornati a casa!"
 ```  
-**TODO** Il testo può anche provenire da un template, o da un termostato di qualche genere
-Esempio sensore RASPI
-**TODO** Manual configuration and docker advice: https://www.home-assistant.io/integrations/cast/
+**TODO** Il testo può anche provenire da un template, o da un termostato di qualche genere  
+Esempio sensore RASPI  
+**TODO** Manual configuration and docker advice: https://www.home-assistant.io/integrations/cast/  
 
 <br />
 <br />
