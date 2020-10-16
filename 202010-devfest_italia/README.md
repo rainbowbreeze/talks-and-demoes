@@ -156,7 +156,7 @@ Esempio sensore RASPI
 <br />
 <br />
 
-## Google Cast e media
+## Google Cast e media online
 [Google Cast](https://www.home-assistant.io/integrations/cast/) può anche riprodurre dei media, in quanto viene associato ad ogni device configurato anche un'entity [media_player](https://www.home-assistant.io/integrations/media_player). Per testarla, si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
 Service: media_player.play_media, e in "Service Data"
 ```
@@ -193,16 +193,65 @@ media_content_id: '
           }'
 media_content_type: cast
 ```
-Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli
+Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli.
 
 <br />
 <br />
 
-## Media
-[Media]() e [Media Browser](https://www.home-assistant.io/blog/2020/09/17/release-115/#media-browser) sono stati migliorati moltissimo a Settembre, permettendo molte nuove 
-[Aggiungere nuovi media](https://www.home-assistant.io/more-info/local-media/add-media)
-"Supervisor", "Add-on store", "Samba share", "Install"  
-In "Configuration", specificare username e password (devfest - devfest), e poi "Start"
+## Google Cast e media locali
+La [relaease 0.115 di Settembre](https://www.home-assistant.io/blog/2020/09/17/release-115/#media-browser) ha introdotto molte funzionalità utili riguardo ai media: grazie alla nuova integrazione [media_source](https://www.home-assistant.io/integrations/media_source/), è possibile riprodurre i media messi a disposizione da altre integrazioni (come Spotify o media locali) sia nella IU, sia nei media_player che la supportano, come Google Cast. *(BTW, anche i video provenienti da telecamere di sicurezza sono considerati media)*.  
+Per riprodurre un media locale, usare la chiamata modificare il *media_content_id* come nell'esempio: 
+```
+service:
+  media_player.play_media
+data:
+  entity_id: media_player.living_room_tv
+  media_content_type: video/mp4
+  media_content_id: media-source://media_source/local/videos/favourites/Epic Sax Guy 10 Hours.mp4
+```
+
+### Aggiungere media alla libreria locale
+Di default, Home Assistant OS considera locali tutti i media nella cartella */media*. Per [aggiungere nuovi media locali](https://www.home-assistant.io/more-info/local-media/add-media), si può usare Samba.  
+Andare su "Supervisor", "Add-on store", "Samba share", "Install". In "Configuration" dell'add-on, specificare username e password (devfest - devfest), e poi "Start".  
+Si possono configurare anche [altre cartelle](https://www.home-assistant.io/more-info/local-media/setup-media) dove prendere i media, ad esempio una risorsa condivisa di un NAS
+```
+# Example configuration.yaml
+homeassistant:
+  media_dirs:
+    media: /media
+    recording: /mnt/recordings
+```
+
+### Riprodurre i media locali su Google Cast
+Ecco l'esempio di una sveglia per bambini, che scatta dal luned' al venerdì alle 7:50, e riproduce alcune canzoni che a loro piacciono.
+```
+```
+
+
+Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproducendo quella.
+
+<br />
+<br />
+
+
+## END HERE
+
+## Creaimo la nostra sveglia personalizzata
+```
+alias: "Telegram notification to Wake me up in the morning"
+description: "Send a telegram notification to wake me up in the morning"
+trigger:
+  platform: time
+  at: "07:55:00"
+action:
+  service: notify.telegram_jarvis
+  data:
+    message: "E' ora di svegliarsi!!!!"
+```
+
+## Altri media
+- [Spotify](https://www.home-assistant.io/integrations/spotify)
+
 
 # Facciamo stream di una radio su ChromeCast
 https://www.home-assistant.io/more-info/local-media/setup-media
