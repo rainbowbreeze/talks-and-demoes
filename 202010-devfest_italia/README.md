@@ -173,9 +173,9 @@ entity_id: media_player.scrivania_alfredo
 media_content_id: http://icecast.unitedradio.it/Virgin.mp3
 media_content_type: movie
 ```
-Si può controllare cosa sta riproducento un device andando su "Developer Tools", "States", e scegliendo l'entity corrispodente al Google Cast che si vuole analizzare.
-
+Si può controllare cosa sta riproducento un device andando su "Developer Tools", "States", e scegliendo l'entity corrispodente al Google Cast che si vuole analizzare.  
 <br />  
+
 Si può anche far partire uno stream di Youtube
 ```
 'cast_youtube_to_my_chromecast':
