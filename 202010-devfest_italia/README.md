@@ -34,14 +34,17 @@ Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-co
 
 ## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
-Lo store interno
-- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA con dei app esterne (integrate in HA o esterne)
-- Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù
-- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia
-- Log Viewer
+- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
+- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia.
+- Un controllo ai log di sistema.
+- La UI e [Lovelace](https://www.home-assistant.io/lovelace/): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
+  - Le Card: modelli pre-impostati che permettono di visualizzare, le più disparate informazioni relative a specifiche entità o gruppi di, nonché fornire all’utente degli strumenti per agire attivamente sulla domotica (eg. comandare qualcosa).
+  - Pannelli: sono pagine contenenti Card. Per esempio, un pannello per il controllo del clima, uno per la videosorveglianza, uno con dei comandi personalizzati per uno tablet sul muro, ecc.
+  - Disponibile una [demo](https://demo.home-assistant.io/) con alcuni elementi.
+  - Oltre che in maniera visuale, si può anche configurare [tramite file yaml](https://www.home-assistant.io/lovelace/dashboards-and-views/)
+- Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù.
 - [Altri add-on](https://indomus.it/formazione/gli-imprescindibili-gli-add-on-essenziali-da-installare-su-hassio/)
-- Installare [HACS](https://hacs.xyz) - Home Assistant Community Store. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/)
-Uno sguardo al resto dell'a UI
+- Consiglio anche di installare [HACS](https://hacs.xyz) - Home Assistant Community Store, per avere ancora più integrazioni e componenti per Lovelace. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/).
 
 <br />
 <br />
@@ -316,10 +319,6 @@ Consiglio di seguire quattro risorse principali:
 
 
 
-### UI
-https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/
-
-
 ## Prima configurazione di HASSIO
 Create una persona
 
@@ -348,12 +347,6 @@ Now, it works!
 https://indomus.it/formazione/automazioni-su-base-temporale-in-varie-modalita-su-home-assistant/
 
 
-add another component: google chromecast
-extend the notification to tell assistant to HA is dying
-
-add media in the media directory
-https://www.home-assistant.io/integrations/media_source/
-play something every morning
 
 
 Bonus topics
