@@ -106,6 +106,22 @@ Ogni automazione è formata da alcuni elementi predefiniti. Alcuni sono obbligat
 
 - Scatenare l'evento a mano: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 
+```
+alias: "Telegram notification to Wake me up in the morning"
+description: "Send a telegram notification to wake me up in the morning"
+trigger:
+  platform: time
+  at: "07:55:00"
+action:
+  service: notify.telegram_jarvis
+  data:
+    message: "E' ora di svegliarsi!!!!"
+```
+Play music
+- https://community.home-assistant.io/t/media-player-play-media/117036/5
+- https://community.home-assistant.io/t/media-playback-solved/23069/5
+- https://community.home-assistant.io/t/play-audio-local-mp3-file-to-a-media-player/35883/11
+
 
 ## TODO and old notes
 
@@ -115,18 +131,11 @@ Installare addon importanti
 Create una persona
 
 
-## Abilitare Telegram
-Secrets
-
-## Creare una prima automazione
-Quando scattano le xx:xx, allora telegram manda un messaggio
-Quando riparte HASSIO, allora telegram me lo dice
-
 
 ## Includere Google Assistant device
 Provare una integrazione con una notificare su Assistant
 Cambiare lingua del TTS
-
+https://indomus.it/guide/integrare-google-home-come-media-player-su-home-assistant/#riproduzione
 
 Options
 - GA for everything
