@@ -140,7 +140,7 @@ Nuova prova: "Developer Tools", "Services", "tts.google_translate_say", e come S
 entity_id: media_player.scrivania_alfredo
 message: "Adesso parlo italiano!"
 ```
-Se uso "all" come entity_id, chiamo tutti i Google Cast configurati  
+Se uso "all" come entity_id, chiamo tutti i Google Cast configurati.  
 <br />
 Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa parte nella sezione "action":
 ```
@@ -149,8 +149,8 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
       data:
         message: "Bentornati a casa!"
 ```
-<br />
-Per testare un [media_player](https://www.home-assistant.io/integrations/media_player/), si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
+Ciao da me
+Per testare un [media_player](https://www.home-assistant.io/integrations/media_player), si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
 Service: media_player.play_media
 ```
 entity_id: media_player.scrivania_alfredo
