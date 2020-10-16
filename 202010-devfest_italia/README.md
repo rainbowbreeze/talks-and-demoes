@@ -74,14 +74,10 @@ Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> 
 ```
 message: "Prova"
 ```
-E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto e video, 
+E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto, video, ecc.
+<br />
+Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico gruppo](https://indomus.it/guide/notifiche-della-domotica-home-assistant-tramite-telegram/), in modo da comunicare a tutti con un solo comando.
 
-
-https://www.home-assistant.io/integrations/telegram/
-https://www.home-assistant.io/integrations/telegram_bot
-https://www.home-assistant.io/integrations/telegram_broadcast
-  
-https://hass.altissia.duckdns.org/config/automation/dashboard
 <br />
 <br />
 
