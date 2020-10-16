@@ -153,7 +153,7 @@ Se uso "all" come entity_id, chiamo tutti i Google Cast configurati.
 <br />
 Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa parte nella sezione "action":
 ```
-    - service: tts.google_say
+    - service: tts.google_tranlate_say
       data:
         entity_id: media_player.googlehomeXXX
         message: "Bentornati a casa!"
@@ -233,25 +233,8 @@ homeassistant:
 ```
 
 ### Riprodurre i media locali su Google Cast
-Ecco l'esempio di una sveglia per bambini, che scatta dal luned' al venerdì alle 7:50, e riproduce alcune canzoni che a loro piacciono.
-```
-
-entity_id: media_player.scrivania_alfredo
-media_content_id: media-source://media_source/local/Gormiti the Legend Is Back-icXktSp8v4o.mp3
-media_content_type: audio/mp3
-```
-
-
-Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproducendo quella.
-
-<br />
-<br />
-
-
-## END HERE
-
-
-## Creaimo la nostra sveglia personalizzata
+Ecco l'esempio di una sveglia per bambini, che scatta dal luned' al venerdì alle 7:50, e riproduce alcune canzoni che a loro piacciono.  
+Creare il file automations/sveglie_bambini.yaml
 ```
 - alias: "Sveglia settimanale per i bambini"
   description: "Mette della musica in camera dei bimbi per svegliarli durante la settimana"
@@ -272,19 +255,43 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
   action:
   - service: notify.telegram_devfest
     data:
-      message: "Buongiorno bimbi, è ora di svegliarsi!!!!"
+      message: "Inizio a svegliare i bambini"
 
-  - service: tts.google_say
+  - service: tts.tts.google_tranlate_say
     data:
       entity_id: media_player.scrivania_alfredo
       message: "Inizio a svegliare i bambini"
-
+      
+  # Aspetto un attimo nel caso occorra fare qualcosa
+  - delay: 00:00:05
+  
   - service: media_player.play_media
     data:
-      entity_id: media_player.sabrina
+      entity_id: media_player.camera_bambini
       media_content_id:  media-source://media_source/local/Gormiti the Legend Is Back-icXktSp8v4o.mp3
-      media_content_type: audio/mp3      
+      media_content_type: audio/mp3
+  
+  # E, visto che ci siamo, dopo un po' accendiamo anche le luci
+  # - delay: 00:01:00
+  # - service: light.turn_on
+  #   data:
+  #     entity_id: light.camera_bambini
 ```
+Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproducendo quella.
+
+<br />
+<br />
+
+
+
+
+
+
+
+## END HERE
+
+
+
 
 ## Altri media
 - [Spotify](https://www.home-assistant.io/integrations/spotify)
