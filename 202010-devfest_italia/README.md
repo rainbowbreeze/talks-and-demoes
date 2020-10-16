@@ -297,6 +297,7 @@ Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre m
 - [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
 - [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
 <br />
+
 Consiglio di seguire quattro risorse principali:
 - [Franck Nijhof](https://www.youtube.com/channel/UCZ2Ku6wrhdYDHCaBzLaA3bw): fa dei video lunghissimi, ma è parte del team di HA e ha creato molto add-on, quindi sa il fatto suo  
 - [DrZzs](https://www.youtube.com/channel/UC7G4tLa4Kt6A9e3hJ-HO8ng): anche lui fa un sacco di progetti DIY basati su HA
