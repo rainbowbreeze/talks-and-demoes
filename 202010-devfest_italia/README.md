@@ -74,9 +74,19 @@ Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> 
 ```
 message: "Prova"
 ```
-E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto, video, ecc.
+E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto, video, ecc.  
+Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico gruppo](https://indomus.it/guide/notifiche-della-domotica-home-assistant-tramite-telegram/), in modo da comunicare a tutti con un solo comando.  
 <br />
-Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico gruppo](https://indomus.it/guide/notifiche-della-domotica-home-assistant-tramite-telegram/), in modo da comunicare a tutti con un solo comando.
+Per non mettere dati sensibili nei file di configurazione, si può usare la direttiva [*!secret*](https://www.home-assistant.io/docs/configuration/secrets/). Basta create in file chiamato *secrets.yaml* e mettere li i valori sensibili, come ad esempio
+```
+telegram_api_key: YOUR_API_KEY
+```
+Poi, nei file di configurazione, riferirsi al valore usato con
+```
+telegram_bot:
+  - platform: broadcast
+    **api_key: !secret telegram_api_key**
+```
 
 <br />
 <br />
@@ -94,7 +104,6 @@ Ogni automazione è formata da alcuni elementi predefiniti. Alcuni sono obbligat
 - [Condition](https://www.home-assistant.io/docs/automation/condition/): Possono essere usate per fermare l'esecuzione di un'automazione quando scatta un trigger. [Lista completa delle condizioni](https://www.home-assistant.io/docs/scripts/conditions/)
 - [Action](https://www.home-assistant.io/docs/automation/action/): definisce cosa fa l'automazione
 
-[Segreti](https://www.home-assistant.io/docs/configuration/secrets/)
 - Scatenare l'evento a mano: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 
 
