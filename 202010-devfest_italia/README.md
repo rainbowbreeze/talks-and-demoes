@@ -49,7 +49,7 @@ Al primo login, scegliere l'utente amministratore (che non deve necessariamente 
 <br />
 <br />
 
-## Estendiamo HA
+## Insegnamo ad HA ad usare Telegram
 HA supporta nativamente Telegram, e grazie alla [Telegram platform](https://www.home-assistant.io/integrations/telegram) si possono sia inviare che ricevere messaggi. Se occorre solo inviare messaggi, si può usare la [piattaforma di broadcast](https://www.home-assistant.io/integrations/telegram_broadcast), che non richiede di avere HA raggiungibile da internet. Se invece si vogliono anche ricevere messaggi, allora occorre usare la [piattaforma di polling](https://www.home-assistant.io/integrations/telegram_bot) e configurare i webhook per Telegram.
 
 Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, avviare una conversazione con il bot da Telegram, in modo da poter ottenere un chat_id, tramite il comando:
@@ -58,7 +58,7 @@ curl -s -X POST https://api.telegram.org/botYOUR_API_TOKEN/getUpdates | jq
 ```
 Oppure visitando https://api.telegram.org/botYOUR_API_TOKEN/getUpdates  
 <br />
-Aggingere al configurations.yaml il codice per una nuova piattaforma di notifica, basata su Telegram
+Aggingere al *configurations.yaml* il codice per una nuova piattaforma di notifica, basata su Telegram
 ```
 # Uso broadcast come piattaforma, e non polling, dato che non devo ricevere messaggi
 telegram_bot:
