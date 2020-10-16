@@ -123,7 +123,7 @@ Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simu
 <br />
 <br />
 
-## Aggiungere Chromecast
+## Aggiungere Chromecast e farlo parlare
 
 HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
 Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc.  
@@ -149,19 +149,51 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
       data:
         message: "Bentornati a casa!"
 ```  
+**TODO** Il testo può anche provenire da un template, o da un termostato di qualche genere
+Esempio sensore RASPI
+**TODO** Manual configuration and docker advice: https://www.home-assistant.io/integrations/cast/
+
 <br />
-Per testare un [media_player](https://www.home-assistant.io/integrations/media_player), si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
-Service: media_player.play_media
+<br />
+
+## Google Cast e media
+[Google Cast](https://www.home-assistant.io/integrations/cast/) può anche riprodurre dei media, in quanto viene associato ad ogni device configurato anche un'entity [media_player](https://www.home-assistant.io/integrations/media_player). Per testarla, si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
+Service: media_player.play_media, e in "Service Data"
 ```
 entity_id: media_player.scrivania_alfredo
 media_content_id: http://icecast.unitedradio.it/Virgin.mp3
 media_content_type: movie
 ```
-```
-entity_id: media_player.scrivania_alfredo
-is_volume_muted: true
-```
+Si può controllare cosa sta riproducento un device andando su "Developer Tools", "States", e scegliendo l'entity corrispodente al Google Cast che si vuole analizzare.
 
+<br />
+Si può anche far partire uno stream di Youtube
+```
+'cast_youtube_to_my_chromecast':
+  alias: Cast YouTube to My Chromecast
+  sequence:
+    - data:
+        entity_id: media_player.my_chromecast
+        media_content_type: cast
+        media_content_id: '
+          {
+            "app_name": "youtube",
+            "media_id": "z-Wdaw0VRak"
+          }'
+      service: media_player.play_media
+```
+O anche un'intera playlist, partendo da un certo media_id
+```
+entity_id: media_player.my_chromecast
+media_content_id: '
+          {
+            "app_name": "youtube",
+            "media_id": "WU7SGn0MeP0",
+            "playlist_id": "PLYrLYvWLIHKJuzotd6SIh8UFcxL42aREf"
+          }'
+media_content_type: cast
+```
+Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli
 
 <br />
 <br />
