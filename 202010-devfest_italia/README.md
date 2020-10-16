@@ -125,8 +125,9 @@ Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simu
 
 ## Aggiungere Chromecast
 
-HA ha un servizio di autodiscovery integrato. Basta quindi andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
-Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc. Inoltre, andando nell'icona dei settings, si può testare il Text-to-Speech. Lo stesso si può fare da UI Lovelace.  
+HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
+Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc.  
+Inoltre, andando nell'icona dei settings, si può testare il Text-to-Speech. Lo stesso si può fare da UI Lovelace.  
 <br />
 Per [cambiare la lingua in italiano](https://indomus.it/guide/far-parlare-google-home-come-sistema-di-notifica-domotica-su-home-assistant/), occore modificare la configurazione dell'integrazione [Google Translate](https://www.home-assistant.io/integrations/google_translate/), specificando la lingua che si vuole usare, tra tutte quelle disponibili:
 ```
@@ -148,12 +149,30 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
       data:
         message: "Bentornati a casa!"
 ```
+<br />
+Per testare un [media_player](https://www.home-assistant.io/integrations/media_player/), si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
+Service: media_player.play_media
+```
+entity_id: media_player.scrivania_alfredo
+media_content_id: http://icecast.unitedradio.it/Virgin.mp3
+media_content_type: movie
+```
+```
+entity_id: media_player.scrivania_alfredo
+is_volume_muted: true
+```
+
 
 <br />
 <br />
 
 ## Media
-# Facciamo stream di una radio su ChromeCase
+[Media]() e [Media Browser](https://www.home-assistant.io/blog/2020/09/17/release-115/#media-browser) sono stati migliorati moltissimo a Settembre, permettendo molte nuove 
+[Aggiungere nuovi media](https://www.home-assistant.io/more-info/local-media/add-media)
+"Supervisor", "Add-on store", "Samba share", "Install"  
+In "Configuration", specificare username e password (devfest - devfest), e poi "Start"
+
+# Facciamo stream di una radio su ChromeCast
 https://www.home-assistant.io/more-info/local-media/setup-media
 
 
@@ -163,6 +182,9 @@ https://www.home-assistant.io/more-info/local-media/setup-media
 
 
 ## TODO and old notes
+
+### UI
+https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/
 
 ### Media
 
@@ -189,6 +211,31 @@ action:
  https://community.home-assistant.io/t/send-local-content-url-to-chromecast-audio/1121/16
  
  
+volume_level: 0.31999993324279785
+is_volume_muted: false
+media_content_id: http://192.168.101.101:8123/media/local/William Tell Overture Finale-YIbYCOiETx0.mp3?authSig=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5ZmY4NjlmMjQ3MTc0ZjIxODRjMjAzOTZmMTM5MjdjOCIsInBhdGgiOiIvbWVkaWEvbG9jYWwvV2lsbGlhbSBUZWxsIE92ZXJ0dXJlIEZpbmFsZS1ZSWJZQ09pRVR4MC5tcDMiLCJpYXQiOjE2MDI4NDE0MTQsImV4cCI6MTYwMjg0MTcxNH0.3uDOswJ_TLp5cAm6wsCycvn_MTICuy1Gim3e66qK-_g
+media_duration: 125.568
+media_position: 0.868
+media_position_updated_at: 2020-10-16T09:43:37.701695+00:00
+app_id: CC1AD845
+app_name: Default Media Receiver
+entity_picture_local: null
+friendly_name: Scrivania Alfredo
+supported_features: 152463
+
+volume_level: 0.31999993324279785
+is_volume_muted: false
+media_content_id: http://icecast.unitedradio.it/Virgin.mp3
+media_content_type: movie
+media_position: 0
+media_position_updated_at: 2020-10-16T09:45:11.378096+00:00
+media_title: Virgin Radio FM
+app_id: 86C1130D
+app_name: Podcast Republic
+entity_picture_local: /api/media_player_proxy/media_player.scrivania_alfredo?token=932c4bf2a716ad1dba15d2536e7c50de0d9298f57d03b5d56afdaae10be41013&cache=9834a418edbf7ae9
+friendly_name: Scrivania Alfredo
+entity_picture: //cdn-radiotime-logos.tunein.com/s69185q.png
+supported_features: 152463
 
 
 
@@ -248,12 +295,20 @@ Tuya
 - HA integration with their service: https://www.home-assistant.io/integrations/tuya/
 
 
+Switch virtuali in Lovelace: [Definire switch virtuali per comandare sequenze (script) Home Assistant](https://indomus.it/guide/definire-switch-virtuali-per-comandare-sequenze-script-home-assistant/) - (collegato alla gestione [degli script](https://indomus.it/formazione/gli-script-di-home-assistant-cosa-sono-e-come-si-usano/))
+
+Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
+
+Si può anche randomizzare il messaggio tra una lista scelta, usando un data_template:
+```
+message: {{ ["Bentornati a casa!","Guarda chi si vede!","Ciao","Casa dolce casa."] | random}}
+```
+
 
 # OLD LINKS
 Preparazione RASPI
 - https://github.com/FooDeas/raspberrypi-ua-netinst
 Ma anche un container funziona, tipo NAS, NUC, etc
-
 
 Installazione e metodi di installazione
 Parlare dello store interno ad Home Assistant OS
