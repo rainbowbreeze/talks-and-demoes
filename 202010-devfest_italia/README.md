@@ -72,7 +72,7 @@ telegram_bot:
 notify:
   - platform: telegram
     name: telegram_devfest
-    chat_id: !secret telegram_chatid_jarvis
+    chat_id: 12345678
 ```
 Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> Service" e cercare il servizio "notify.telegram_devfest". Aggiungere nel campo nel campo Service Data la stringa
 ```
@@ -84,12 +84,15 @@ Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico 
 Per non mettere dati sensibili nei file di configurazione, si può usare la direttiva [*!secret*](https://www.home-assistant.io/docs/configuration/secrets/). Basta create in file chiamato *secrets.yaml* e mettere li i valori sensibili, come ad esempio
 ```
 telegram_api_key: YOUR_API_KEY
+telegram_chatid_devfest: YOUR_CHAT_ID
 ```
 Poi, nei file di configurazione, riferirsi al valore usato con
 ```
 telegram_bot:
   - platform: broadcast
     api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chatid_devfest
 ```
 
 <br />
