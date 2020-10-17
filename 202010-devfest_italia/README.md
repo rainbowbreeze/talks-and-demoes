@@ -317,6 +317,11 @@ Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre m
 
 Le prossime cose che suggerisco di fare
 - [Usare Visual Studio](https://indomus.it/progetti/modificare-i-file-di-configurazione-home-assistant-core-su-raspbian-con-visual-studio-code-vscode/) per editare i file di configurazione
+- [Raspian unattented install](https://github.com/FooDeas/raspberrypi-ua-netinst)
+- [Proxmox](https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417)
+- Switch virtuali in Lovelace: [Definire switch virtuali per comandare sequenze (script) Home Assistant](https://indomus.it/guide/definire-switch-virtuali-per-comandare-sequenze-script-home-assistant/) - (collegato alla gestione [degli script](https://indomus.it/formazione/gli-script-di-home-assistant-cosa-sono-e-come-si-usano/))
+- Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
+
 <br />
 
 Consiglio di seguire quattro risorse principali:
@@ -325,82 +330,4 @@ Consiglio di seguire quattro risorse principali:
 - [inDomus](https://indomus.it/): la community italiana di domotica personale, con tantissimi articoli, spunti interessanti e forum di discussione
 - [Forum ufficiale di HA](https://community.home-assistant.io/): e mica ce lo possiamo far mancare! Però da dipendenza, io ve l'ho detto!
 
-
-
-## END HERE
-
-
-
-
-## Altri media
-- [Spotify](https://www.home-assistant.io/integrations/spotify)
-
-
-
-## Prima configurazione di HASSIO
-Create una persona
-
-
-
-https://indomus.it/guide/integrare-google-home-come-media-player-su-home-assistant/#riproduzione
-
-
-VScode on home assistant
-
-- https://code.visualstudio.com/docs/remote/ssh for the SSH support
-- In alternativa: https://indomus.it/progetti/modificare-i-file-di-configurazione-home-assistant-core-su-raspbian-con-visual-studio-code-vscode/
-- create a config file for housebutler (key is in the usual ~/.ssh/id_rsa
-- Install home assistant extension
-- follow https://github.com/keesschollaart81/vscode-home-assistant/wiki/Configure-connection-to-HA
-- https://marketplace.visualstudio.com/items?itemName=keesschollaart.vscode-home-assistant
-
-create long life access token on assistant (under the user profile)
-
-set this a remote [SSH: butler] level (not user, neither workspace)
-url: 
-Long lived access token:
-
-Now, it works!
-
-https://indomus.it/formazione/automazioni-su-base-temporale-in-varie-modalita-su-home-assistant/
-
-
-
-
-Bonus topics
-- - visual studio e SSH
-- sensore temperatura raspi: https://indomus.it/progetti/gestire-dinamicamente-una-ventola-tradizionale-su-raspberry-pi-via-home-assistant/
-- https://www.home-assistant.io/integrations/google_assistant/
-- button on the UI: https://community.home-assistant.io/t/easiest-way-to-trigger-an-automation-with-one-tap-from-lovelace/108564
-- NFC tags
-
-- edit configuration
-https://indomus.it/formazione/i-package-di-home-assistant-cosa-sono-e-come-si-installano/
-
-Tuya
-- HA integration with their service: https://www.home-assistant.io/integrations/tuya/
-
-
-Switch virtuali in Lovelace: [Definire switch virtuali per comandare sequenze (script) Home Assistant](https://indomus.it/guide/definire-switch-virtuali-per-comandare-sequenze-script-home-assistant/) - (collegato alla gestione [degli script](https://indomus.it/formazione/gli-script-di-home-assistant-cosa-sono-e-come-si-usano/))
-
-Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
-
-Si può anche randomizzare il messaggio tra una lista scelta, usando un data_template:
-```
-message: {{ ["Bentornati a casa!","Guarda chi si vede!","Ciao","Casa dolce casa."] | random}}
-```
-
-
-# OLD LINKS
-Preparazione RASPI
-- https://github.com/FooDeas/raspberrypi-ua-netinst
-Ma anche un container funziona, tipo NAS, NUC, etc
-
-Installazione e metodi di installazione
-Parlare dello store interno ad Home Assistant OS
-- Proxmox: https://community.home-assistant.io/t/installing-home-assistant-using-proxmox/201835
-- Proxmox: https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417
-- Alcuni problemi che hanno avuto in passato con i metodi di installazione: https://community.home-assistant.io/t/installation-methods-community-guides-wiki/199545
-
-
-Which Smart Energy Monitor Is Right For You? ShellyEM vs Sense: https://www.youtube.com/watch?v=5RyDxZLA8b8
+Ci sentiamo su [Twitter - @rainbowbreeze](https://twitter.com/rainbowbreeze)!
