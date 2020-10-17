@@ -2,6 +2,9 @@
 
 **Titolo talk**: Smart speaker, ancora più smart, con Home Assistant
 
+<br />
+<br />
+
 ## Capiamo chi siamo
 Sondaggio per capire come siamo messi su questi temi: su [Sli.do](https://sli.do/udzhvype), codice **#72928**
 
@@ -305,10 +308,15 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
 
 Cosa ne pensate del talk? Fatemi sapere su [Sli.do](https://sli.do/udzhvype), codice **#72928**
 
+<br />
 
 Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre media locali e online. HA può fare molto di più, ed essere a sua volta interfacciato a Google Assistant, ed esporre a quest'ultimo tutti i device configurati, in modo da avere un'integraziove vocale completa, e generalmente più flessibile (ma meno user friendly) di quella offerta nativamente da Google Assistant.
 - [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
 - [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
+<br />
+
+Le prossime cose che suggerisco di fare
+- [Usare Visual Studio](https://indomus.it/progetti/modificare-i-file-di-configurazione-home-assistant-core-su-raspbian-con-visual-studio-code-vscode/) per editare i file di configurazione
 <br />
 
 Consiglio di seguire quattro risorse principali:
