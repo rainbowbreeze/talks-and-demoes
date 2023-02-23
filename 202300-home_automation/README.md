@@ -3,12 +3,16 @@
 **Titolo talk**: Primi passi nel mondo dell'home automation con Home Assistant
 
 
+<br />
+<br />
 
 
 ## Capiamo chi siamo
 Sondaggio per capire come siamo messi su questi temi
 
 
+<br />
+<br />
 
 
 ## Home Assistant, le basi
@@ -54,6 +58,8 @@ Balena Etched o Raspberry PI Imager
 Per configurare i parametri di avvio, come Wifi
 Qualche guida
 - [How to Install Home Assistant OS on Raspberry Pi 4 over the Network](https://peyanski.com/home-assistant-os-on-raspberry-pi-4-over-the-network/)
+
+
 <br />
 <br />
 
@@ -73,6 +79,8 @@ Al primo login, scegliere l'utente amministratore (che non deve necessariamente 
 - Consiglio anche di installare [HACS](https://hacs.xyz) - Home Assistant Community Store, per avere ancora più integrazioni e componenti per Lovelace. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/).
 
 
+<br />
+<br />
 
 
 ## Insegnamo ad HA ad usare Telegram
@@ -124,10 +132,9 @@ telegram_bot:
       - !secret telegram_chatid_devfest
 ```
 
+
 <br />
 <br />
-
-
 
 
 ## Creiamo una prima automazione
@@ -166,8 +173,6 @@ Come dividere i file del *configuration.yaml* è spesso una questione personale,
 <br />
 
 
-
-
 ## Aggiungere un device Google Cast e farlo parlare
 
 HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
@@ -198,10 +203,9 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
 Esempio sensore RASPI  
 **TODO** Manual configuration and docker advice: https://www.home-assistant.io/integrations/cast/  
 
+
 <br />
 <br />
-
-
 
 
 ## Google Cast e media online
@@ -244,10 +248,9 @@ media_content_type: cast
 Nel [codice dell'integrazione](https://github.com/home-assistant/core/tree/dev/homeassistant/components/cast) tutti i dettagli.  
 Mentre si casta qualcosa ad un device, si può anche vedere il dettaglio dello stream. "Developer Tools", "States", scegliere nelle entity il device Google Cast da analizzare, e nello stato vengono riportate tutte le info, compreso il *media_content_id*.
 
+
 <br />
 <br />
-
-
 
 
 ## Google Cast e media locali
@@ -331,10 +334,11 @@ Creare il file automations/sveglie_bambini.yaml
 Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproducendo quella.
 
 
+<br />
+<br />
 
 
 ## Conclusioni
-
 Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre media locali e online. HA può fare molto di più, ed essere a sua volta interfacciato a Google Assistant, ed esporre a quest'ultimo tutti i device configurati, in modo da avere un'integraziove vocale completa, e generalmente più flessibile (ma meno user friendly) di quella offerta nativamente da Google Assistant.
 - [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
 - [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
