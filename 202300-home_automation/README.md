@@ -2,14 +2,14 @@
 
 **Titolo talk**: Primi passi nel mondo dell'home automation con Home Assistant
 
-<br />
-<br />
+
+
 
 ## Capiamo chi siamo
 Sondaggio per capire come siamo messi su questi temi
 
-<br />
-<br />
+
+
 
 ## Home Assistant, le basi
 - Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo
@@ -72,8 +72,8 @@ Al primo login, scegliere l'utente amministratore (che non deve necessariamente 
 - [Altri add-on](https://indomus.it/formazione/gli-imprescindibili-gli-add-on-essenziali-da-installare-su-hassio/) utili da installare.
 - Consiglio anche di installare [HACS](https://hacs.xyz) - Home Assistant Community Store, per avere ancora più integrazioni e componenti per Lovelace. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/).
 
-<br />
-<br />
+
+
 
 ## Insegnamo ad HA ad usare Telegram
 HA supporta nativamente Telegram, e grazie alla [Telegram platform](https://www.home-assistant.io/integrations/telegram) si possono sia inviare che ricevere messaggi. Se occorre solo inviare messaggi, si può usare la [piattaforma di broadcast](https://www.home-assistant.io/integrations/telegram_broadcast), che non richiede di avere HA raggiungibile da internet. Se invece si vogliono anche ricevere messaggi, allora occorre usare la [piattaforma di polling](https://www.home-assistant.io/integrations/telegram_bot) e configurare i webhook per Telegram.
@@ -127,6 +127,9 @@ telegram_bot:
 <br />
 <br />
 
+
+
+
 ## Creiamo una prima automazione
 Ogni automazione è formata da alcuni elementi predefiniti. Alcuni sono obbligatori, altri facoltativi.
 - [Trigger](https://www.home-assistant.io/docs/automation/trigger/): E' il punto iniziale di ogni automazione. Quando un trigger parte, l'automazione inizia. Ci sono diversi tipi di trigger
@@ -162,6 +165,9 @@ Come dividere i file del *configuration.yaml* è spesso una questione personale,
 <br />
 <br />
 
+
+
+
 ## Aggiungere un device Google Cast e farlo parlare
 
 HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
@@ -194,6 +200,9 @@ Esempio sensore RASPI
 
 <br />
 <br />
+
+
+
 
 ## Google Cast e media online
 [Google Cast](https://www.home-assistant.io/integrations/cast/) può anche riprodurre dei media, in quanto viene associato ad ogni device configurato anche un'entity [media_player](https://www.home-assistant.io/integrations/media_player). Per testarla, si può usare "Developer Tools", "Services", "media_player.XXX", e selezionare l'entity del Google Cast che si vuole controllare. Per esempio, per ascoltare VirginRadio FM:  
@@ -237,6 +246,9 @@ Mentre si casta qualcosa ad un device, si può anche vedere il dettaglio dello s
 
 <br />
 <br />
+
+
+
 
 ## Google Cast e media locali
 La [relaease 0.115 di Settembre](https://www.home-assistant.io/blog/2020/09/17/release-115/#media-browser) ha introdotto molte funzionalità utili riguardo ai media: grazie alla nuova integrazione [media_source](https://www.home-assistant.io/integrations/media_source/), è possibile riprodurre i media messi a disposizione da altre integrazioni (come Spotify o media locali) sia nella IU, sia nei media_player che la supportano, come Google Cast. *(BTW, anche i video provenienti da telecamere di sicurezza sono considerati media)*.  
@@ -318,8 +330,8 @@ Creare il file automations/sveglie_bambini.yaml
 ```
 Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproducendo quella.
 
-<br />
-<br />
+
+
 
 ## Conclusioni
 
