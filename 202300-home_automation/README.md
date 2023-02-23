@@ -15,35 +15,55 @@ Sondaggio per capire come siamo messi su questi temi
 - Cos'è [Home Assistant](https://www.home-assistant.io/): un software open source per l'home automation. "Control e privacy first". Si [integra](https://www.home-assistant.io/integrations/) con più di 1700 prodotti e servizi (sia ufficialmente, sia non ufficialmente), dalle luci Philips Hue, fino a servizi di gestione del meteo
 - Un [video introduttivo](https://www.youtube.com/watch?v=pVxoSXeC2Jw) e un altro [video introduttivo](https://www.youtube.com/watch?v=sVqyDtEjudk) di due streamer molto attivi sul tema
 - Ha un cliente web ufficiale, app Android e iOS. Ed espone delle API per integrazioni esterne
-- Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 5 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant. E poi c'è un community molto attiva di contributor
+- Il team di sviluppo principale, [Nabu Casa](https://www.nabucasa.com/), è formato da 23 persone e il loro business principale è offrire un'estensione Cloud a Home Assistant. E poi c'è un community molto attiva di contributor
+- E' il secondo progetto su GitHub per popolarità
 - Non è l'unica opzione per l'home automation. Ci sono anche [OpenHab, Domoticz, Hubitat, HomeSeer](https://www.youtube.com/watch?v=A4jrE_MtRWc) e probabilmente altri soluzione specifiche per specifiche situazioni
 
 
 ### Installazione di HA
-[Guida semplice](https://www.home-assistant.io/getting-started/) e [guida con tutte le opzioni](https://www.home-assistant.io/docs/installation/)
-Tre [opzioni](https://indomus.it/focus/home-assistant-hassio-o-home-assistant-core-quale-installazione-fa-al-caso-mio/), dove quello che cambia è contesto e contorno di Home Assistant Core. Ma il software principale è sempre quello:
-- [Home Assistant OS](https://www.home-assistant.io/hassio/installation/): all-in-one: flash, reboot e ti connetti.
+La [guida ufficiale](https://www.home-assistant.io/installation) riporta 2 opzioni di installazione principali
+- Home Assistant OS: all-in-one: flash, reboot e ti connetti.
   - Necessario un hardware dedicato (fisico o virtualizzato), ma anche un Raspberry Pi Zero W va bene
   - Un po' meno performante, ma non si nota molto
   - Non c'è molta flessibilità sulla gestione dell'OS (che è comunque Linux)
   - Se non dovete fare cose strane, è davvero la strada più veloce, almeno all'inizio
   - Una volta si chiamava HASSIO, ecco perchè tante risorse usano ancora quel nome
-- [Home Assistant Container](https://www.home-assistant.io/docs/installation/docker/): usate già Docker? Allora questa è la strada da prendere
+- Home Assistant Container: usate già Docker? Allora questa è la strada da prendere
   - Voi pensate all'OS, al resto ci pensa l'immagine Docker
   - Un po' di giri da fare se volete usare cose esterne a HA, ma complementari: Grafana, RedNode, Eclipse Mosquitto, media folder, DuckDSN, ecc
-- [Home Assistant Core](https://www.home-assistant.io/docs/installation/raspberry-pi/): per i puristi e per chi vuole il massimo controllo dell'environment
+
+Ci sono poi una varietà di altre opzioni disponibili:
+- Home Assistant Supervised
+- Home Assistant Core: per i puristi e per chi vuole il massimo controllo dell'environment
   - Python pip non vi spaventa?
   - [Guida per l'installazione passo passo](https://indomus.it/guide/come-installare-e-configurare-home-assistant-su-un-raspberry-pi-gia-in-uso/)
 
+NabuCasa vende poi anche dell'hardware dedicato per HA, [Home Assistant Blue](https://www.home-assistant.io/blue), pronto all'uso fin dal primo avvio, e [Yellow](https://www.home-assistant.io/yellow), moddabile e configurabile.
 <br />
 <br />
+
+
+### Installazione di Home Assistant Operating System su VirtualBox
+Windows o Mac, basta avere virtualbox
+<br />
+<br />
+
+
+### Installazione di Home Assistant Operating System su Raspberry
+Balena Etched o Raspberry PI Imager
+Per configurare i parametri di avvio, come Wifi
+Qualche guida
+- [How to Install Home Assistant OS on Raspberry Pi 4 over the Network](https://peyanski.com/home-assistant-os-on-raspberry-pi-4-over-the-network/)
+<br />
+<br />
+
 
 ## Prima configurazione e onboarding
 Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
 - [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
 - Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia.
 - Un controllo ai log di sistema.
-- La UI e [Lovelace](https://www.home-assistant.io/lovelace/): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
+- La UI e [le dashboard](https://www.home-assistant.io/dashboards/)(una volta chiamata Lovelace): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
   - Card: modelli pre-impostati che permettono di visualizzare, le più disparate informazioni relative a specifiche entità o gruppi di, nonché fornire all’utente degli strumenti per agire attivamente sulla domotica (eg. comandare qualcosa).
   - Pannelli: sono pagine contenenti Card. Per esempio, un pannello per il controllo del clima, uno per la videosorveglianza, uno con la mappa della propria casa e le luci, uno con dei comandi personalizzati per uno tablet sul muro, ecc.
   - Oltre che in maniera visuale, si può anche configurare [tramite file yaml](https://www.home-assistant.io/lovelace/dashboards-and-views/)
@@ -63,7 +83,7 @@ Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, a
 curl -s -X POST https://api.telegram.org/botYOUR_API_TOKEN/getUpdates | jq
 ```
 Oppure visitando https://api.telegram.org/botYOUR_API_TOKEN/getUpdates  
-<br />
+
 Aggingere al *configurations.yaml* il codice per una nuova piattaforma di notifica, basata su Telegram
 ```
 # Uso broadcast come piattaforma, e non polling, dato che non devo ricevere messaggi
@@ -77,15 +97,18 @@ telegram_bot:
 # Definisco le notifiche e le collego a delle specifiche chat_id
 notify:
   - platform: telegram
-    name: telegram_devfest
+    name: telegram_evento
     chat_id: 12345678
 ```
-Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> Service" e cercare il servizio "notify.telegram_devfest". Aggiungere nel campo nel campo Service Data la stringa
+
+Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> Service" e cercare il servizio "notify.telegram_evento". Aggiungere nel campo nel campo Service Data la stringa
 ```
-message: "Ciao DevFest Italia!"
+message: "Ciao Ctrl+Alt Museum"
 ```
+
 E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto, video, ecc.  
 Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico gruppo](https://indomus.it/guide/notifiche-della-domotica-home-assistant-tramite-telegram/), in modo da comunicare a tutti con un solo comando.  
+(andiamo a dare uno sguardo )
 <br />
 Per non mettere dati sensibili nei file di configurazione, si può usare la direttiva [*!secret*](https://www.home-assistant.io/docs/configuration/secrets/). Basta create in file chiamato *secrets.yaml* e mettere li i valori sensibili, come ad esempio
 ```
@@ -132,13 +155,7 @@ Ci sono molti modi di definire [trigger temporali](https://indomus.it/formazione
 <br />
 Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simulare quando HA si sta spegnendo: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
 <br />
-Per avere un file configuration.yaml più leggibile, è anche opportuno [dividere le configurazioni](https://www.home-assistant.io/docs/configuration/splitting_configuration/) in diversi file e directory. Un caso particolare è [avere le automazioni configurabili sia da UI, sia direttamente da file di testo](https://gist.github.com/way2busy/c0ef0f22d374af6b7cbb2a2976ac97d0). Occorre modificare il *configuration.yaml* come segue:
-```
-# Qui ci vanno a finire le automazioni definite da UI
-automation: !include automations.yaml
-# Qui invece tutti i file contenenti le automazioni definite manualmente
-automation split: !include_dir_merge_list automations
-```
+
 Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte. Un video che spiega una configurazione reale abbastanza complessa: [Understanding YAML as it's used in Home Assistant Config files ](https://www.youtube.com/watch?v=FfjSA2o_0KA).
 
 
@@ -306,10 +323,6 @@ Si sarebbe potuta fare la stessa cosa creando una playlist su Youtube e riproduc
 
 ## Conclusioni
 
-Cosa ne pensate del talk? Fatemi sapere su [Sli.do](https://sli.do/udzhvype), codice **#72928**
-
-<br />
-
 Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre media locali e online. HA può fare molto di più, ed essere a sua volta interfacciato a Google Assistant, ed esporre a quest'ultimo tutti i device configurati, in modo da avere un'integraziove vocale completa, e generalmente più flessibile (ma meno user friendly) di quella offerta nativamente da Google Assistant.
 - [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
 - [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
@@ -317,17 +330,21 @@ Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre m
 
 Le prossime cose che suggerisco di fare
 - [Usare Visual Studio](https://indomus.it/progetti/modificare-i-file-di-configurazione-home-assistant-core-su-raspbian-con-visual-studio-code-vscode/) per editare i file di configurazione
-- [Raspian unattented install](https://github.com/FooDeas/raspberrypi-ua-netinst)
 - [Proxmox](https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417)
-- Switch virtuali in Lovelace: [Definire switch virtuali per comandare sequenze (script) Home Assistant](https://indomus.it/guide/definire-switch-virtuali-per-comandare-sequenze-script-home-assistant/) - (collegato alla gestione [degli script](https://indomus.it/formazione/gli-script-di-home-assistant-cosa-sono-e-come-si-usano/))
 - Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
 
 <br />
 
-Consiglio di seguire quattro risorse principali:
-- [Franck Nijhof](https://www.youtube.com/channel/UCZ2Ku6wrhdYDHCaBzLaA3bw): fa dei video lunghissimi, ma è parte del team di HA e ha creato molto add-on, quindi sa il fatto suo  
-- [DrZzs](https://www.youtube.com/channel/UC7G4tLa4Kt6A9e3hJ-HO8ng): anche lui fa un sacco di progetti DIY basati su HA
+Consiglio di seguire la [Home Assistant Creator Network](https://partner.home-assistant.io/creators/), in particolare
+- https://www.youtube.com/c/smarthomejunkie
+- https://www.youtube.com/c/EverythingSmartHome
+- https://www.youtube.com/kpeyanski
+- https://www.youtube.com/c/SlackerLabs
+- https://www.youtube.com/c/MarkWattTech
+
+E poi di seguire queste altre risorse
 - [inDomus](https://indomus.it/): la community italiana di domotica personale, con tantissimi articoli, spunti interessanti e forum di discussione
 - [Forum ufficiale di HA](https://community.home-assistant.io/): e mica ce lo possiamo far mancare! Però da dipendenza, io ve l'ho detto!
+
 
 Ci sentiamo su [Twitter - @rainbowbreeze](https://twitter.com/rainbowbreeze)!
