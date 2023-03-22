@@ -88,15 +88,18 @@ Un giro per l'interfaccia
   - Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù.
 
 
-## Deveper Tools
+<br />
+<br />
+
+
+## Developer Tools
+Overview dei vari pezzi
+
 Configurazione di HA
 
-
 ### Sensori
-https://www.home-assistant.io/integrations/sensor/
-- The Sensor entity was introduced in Home Assistant 0.7, and it's used by 99.8% of the active installations. It scores internal on our quality scale.
-
-Esempio con tramonto del sole
+  - https://www.home-assistant.io/integrations/sensor/
+  - Esempio con tramonto del sole
 
 
 ### Servizi
@@ -113,7 +116,7 @@ Prima notifica persistente
 
 
 ## Dashboard
-La UI e [le dashboard](https://www.home-assistant.io/dashboards/)(una volta chiamata Lovelace): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
+La UI e [le dashboard](https://www.home-assistant.io/dashboards/) (una volta chiamata Lovelace): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
   - Card: modelli pre-impostati che permettono di visualizzare, le più disparate informazioni relative a specifiche entità o gruppi di, nonché fornire all’utente degli strumenti per agire attivamente sulla domotica (eg. comandare qualcosa).
   - Pannelli: sono pagine contenenti Card. Per esempio, un pannello per il controllo del clima, uno per la videosorveglianza, uno con la mappa della propria casa e le luci, uno con dei comandi personalizzati per uno tablet sul muro, ecc.
   - Oltre che in maniera visuale, si può anche configurare [tramite file yaml](https://www.home-assistant.io/lovelace/dashboards-and-views/)
@@ -129,7 +132,7 @@ La UI e [le dashboard](https://www.home-assistant.io/dashboards/)(una volta chia
 
 
 ## Add-ons
-- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
+[Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
 
 Installare alcuni add-on
 - [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia.
@@ -148,7 +151,14 @@ https://www.home-assistant.io/integrations/
 - Diversi dagli add-on
 
 Servizio Meteo
-Twitch: https://community.home-assistant.io/t/twitch-integration/356381/10
+- https://www.home-assistant.io/integrations/open_meteo/
+  - https://open-meteo.com/
+- https://www.home-assistant.io/integrations/openweathermap/
+
+
+Twitch
+- https://www.home-assistant.io/integrations/twitch/
+- https://community.home-assistant.io/t/twitch-integration/356381/10
 
 
 <br />
@@ -335,21 +345,7 @@ Come dividere i file del *configuration.yaml* è spesso una questione personale,
 <br />
 
 
-## Conclusioni
-Abbiamo visto come usare dispositivi che supportano Google Cast per riprodurre media locali e online. HA può fare molto di più, ed essere a sua volta interfacciato a Google Assistant, ed esporre a quest'ultimo tutti i device configurati, in modo da avere un'integraziove vocale completa, e generalmente più flessibile (ma meno user friendly) di quella offerta nativamente da Google Assistant.
-- [Integrare Google Nest con Home Assistant (via cloud a pagamento)](https://indomus.it/guide/integrare-google-home-assistant-con-home-assistant-via-cloud-a-pagamento/)
-- [Integrare gratuitamente Google Nest con Home Assistant (via GPC)](https://indomus.it/guide/integrare-gratuitamente-google-home-assistant-con-home-assistant-via-gcp/)  
-<br />
-
-Le prossime cose che suggerisco di fare
-- [Usare Visual Studio](https://indomus.it/progetti/modificare-i-file-di-configurazione-home-assistant-core-su-raspbian-con-visual-studio-code-vscode/) per editare i file di configurazione
-- [Proxmox](https://www.vincenzocaputo.com/home_assistant/home-assistant-addio-docker-benvenuto-proxmox-417)
-- Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
-
-<br />
-
-
-## Risorse per continuare
+## Conclusioni e risorse per continuare
 
 Consiglio di seguire la [Home Assistant Creator Network](https://partner.home-assistant.io/creators/), in particolare
 - https://www.youtube.com/c/smarthomejunkie
