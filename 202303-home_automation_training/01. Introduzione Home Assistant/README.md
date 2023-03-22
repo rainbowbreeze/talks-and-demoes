@@ -156,11 +156,6 @@ Servizio Meteo
 - https://www.home-assistant.io/integrations/openweathermap/
 
 
-Twitch
-- https://www.home-assistant.io/integrations/twitch/
-- https://community.home-assistant.io/t/twitch-integration/356381/10
-
-
 <br />
 <br />
 
