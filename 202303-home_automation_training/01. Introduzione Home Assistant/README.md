@@ -48,7 +48,16 @@ NabuCasa vende poi anche dell'hardware dedicato per HA, [Home Assistant Blue](ht
 
 
 ### Installazione di Home Assistant Operating System su VirtualBox
-Windows o Mac, basta avere virtualbox
+Windows o Mac, basta avere VirtualBox
+
+Per VirtualBox
+- Scaricare vdi
+- Creare una VM come descritto nella guida
+- Collegarla il file vdi scaricato
+- Almeno su Mac, sembra OK mettere la scheda di rete wifi in bridge
+- Far partire la VM
+- Collegarsi all'indirizzo ip mostrato dalla VM, e aspettare un po' (5-10 minuti) che il sistema parta
+
 <br />
 <br />
 
@@ -65,18 +74,142 @@ Qualche guida
 
 
 ## Prima configurazione e onboarding
-Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI)
-- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
-- Installare [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia.
-- Un controllo ai log di sistema.
-- La UI e [le dashboard](https://www.home-assistant.io/dashboards/)(una volta chiamata Lovelace): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
+Al primo login, scegliere l'utente amministratore (che non deve necessariamente essere l'unico utente, specialmente per la configurazione della UI), e configurare i parametri della propria casa.
+
+Un giro per l'interfaccia
+- Overview
+- Energy
+- Map
+- Logbook
+- History
+- Media
+- Settings
+  - Un controllo ai log di sistema.
+  - Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù.
+
+
+## Deveper Tools
+Configurazione di HA
+
+
+### Sensori
+https://www.home-assistant.io/integrations/sensor/
+- The Sensor entity was introduced in Home Assistant 0.7, and it's used by 99.8% of the active installations. It scores internal on our quality scale.
+
+Esempio con tramonto del sole
+
+
+### Servizi
+https://www.home-assistant.io/docs/scripts/service-calls/
+
+Prima notifica persistente
+- https://www.home-assistant.io/integrations/persistent_notification/
+- Choose the Services tab from the Developer Tools sidebar item, then select the persistent_notification.create service from the “Service” dropdown. Enter something like the sample below into the Service Data field and press the CALL SERVICE button.
+- Ad un certa ora, un certo messaggio
+
+
+<br />
+<br />
+
+
+## Dashboard
+La UI e [le dashboard](https://www.home-assistant.io/dashboards/)(una volta chiamata Lovelace): l'interfaccia di HA che permette sia di interrogare il sistema domotico, sia di comandarlo. Può essere personalizzata a piacere, adattarsi a diverse risoluzioni, è specifica di ogni utente di HA. Da non confondere con la UI che serve per configurare HA. E' [composta](https://indomus.it/formazione/lovelace-ui-cose-e-come-funziona-il-frontend-home-assistant/) di vari elementi:
   - Card: modelli pre-impostati che permettono di visualizzare, le più disparate informazioni relative a specifiche entità o gruppi di, nonché fornire all’utente degli strumenti per agire attivamente sulla domotica (eg. comandare qualcosa).
   - Pannelli: sono pagine contenenti Card. Per esempio, un pannello per il controllo del clima, uno per la videosorveglianza, uno con la mappa della propria casa e le luci, uno con dei comandi personalizzati per uno tablet sul muro, ecc.
   - Oltre che in maniera visuale, si può anche configurare [tramite file yaml](https://www.home-assistant.io/lovelace/dashboards-and-views/)
   - Disponibile una [demo](https://demo.home-assistant.io/) con alcuni elementi.
-- Abilitare l'[Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) nel profilo utente per avere più componenti nello store, e più opzioni nei menù.
+
+
+<br />
+<br />
+
+
+<br />
+<br />
+
+
+## Add-ons
+- [Gli add-ons](https://www.home-assistant.io/addons/): un modo per estendere le funzionalità di HA, sia con integrazioni e nuove funzionalità di HA stesso, sia con software esterno che va ad arricchire le opportunità dell'home automation. Home Assistant OS ha già configurato uno store interno di add-on.
+
+Installare alcuni add-on
+- [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) per poter modificare i file di configurazione direttamente dall'interfaccia.
+- Samba share
+- Studio Code Server (x86)
 - [Altri add-on](https://indomus.it/formazione/gli-imprescindibili-gli-add-on-essenziali-da-installare-su-hassio/) utili da installare.
-- Consiglio anche di installare [HACS](https://hacs.xyz) - Home Assistant Community Store, per avere ancora più integrazioni e componenti per Lovelace. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/).
+
+
+<br />
+<br />
+
+
+## Integrations
+https://www.home-assistant.io/integrations/
+- Un giro per le integrazioni presenti
+- Diversi dagli add-on
+
+Servizio Meteo
+Twitch: https://community.home-assistant.io/t/twitch-integration/356381/10
+
+
+<br />
+<br />
+
+
+## HACS (Home Assistant Community Store)
+https://hacs.xyz/
+
+Consiglio di installare [HACS](https://hacs.xyz) - Home Assistant Community Store, per avere ancora più integrazioni e componenti per Lovelace. [Guida ufficiale](https://hacs.xyz/docs/installation/manual) e [guida italiana](https://indomus.it/guide/installare-hacs-home-assistant-community-store-sul-proprio-hub/).
+
+
+<br />
+<br />
+
+
+## Applicazione
+https://companion.home-assistant.io/
+
+
+<br />
+<br />
+
+
+## Prima automazione
+https://www.home-assistant.io/getting-started/automation/
+
+Cosa sono le automation
+- Trigger
+- Conditions
+- Actions
+
+```
+alias: System - Notify HASS status
+description: Notify start and stop of HomeAssistant service
+trigger:
+  - event: start
+    platform: homeassistant
+    id: hass_start
+  - platform: homeassistant
+    event: shutdown
+    id: hass_stop
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: hass_start
+        sequence:
+          - service: notify.telegram_all_alerts
+            data:
+              message: 🎉 HomeAssistant is starting up again
+      - conditions:
+          - condition: trigger
+            id: hass_stop
+        sequence:
+          - service: notify.telegram_all_alerts
+            data:
+              message: ⚠️ HomeAssistant is shutting down
+mode: single
+```
 
 
 <br />
@@ -86,12 +219,17 @@ Al primo login, scegliere l'utente amministratore (che non deve necessariamente 
 ## Insegnamo ad HA ad usare Telegram
 HA supporta nativamente Telegram, e grazie alla [Telegram platform](https://www.home-assistant.io/integrations/telegram) si possono sia inviare che ricevere messaggi. Se occorre solo inviare messaggi, si può usare la [piattaforma di broadcast](https://www.home-assistant.io/integrations/telegram_broadcast), che non richiede di avere HA raggiungibile da internet. Se invece si vogliono anche ricevere messaggi, allora occorre usare la [piattaforma di polling](https://www.home-assistant.io/integrations/telegram_bot) e configurare i webhook per Telegram.
 
+https://www.home-assistant.io/integrations/telegram_broadcast/
+
+### Create un bot su Telegram
 Creare [un nuovo bot](https://core.telegram.org/bots#6-botfather) in Telegram, avviare una conversazione con il bot da Telegram, in modo da poter ottenere un chat_id, tramite il comando:
 ```
 curl -s -X POST https://api.telegram.org/botYOUR_API_TOKEN/getUpdates | jq
 ```
 Oppure visitando https://api.telegram.org/botYOUR_API_TOKEN/getUpdates  
 
+
+### Configurare Telegram Broadcast su Assistant
 Aggingere al *configurations.yaml* il codice per una nuova piattaforma di notifica, basata su Telegram
 ```
 # Uso broadcast come piattaforma, e non polling, dato che non devo ricevere messaggi
@@ -113,6 +251,32 @@ Per testare se tutto funziona, mandare un messaggio tramite "Developer Tools -> 
 ```
 message: "Ciao Ctrl+Alt Museum"
 ```
+
+
+
+
+### Telegram bot
+```
+telegram_bot:
+  # Using broadcast, instead of polling or webhooks, because I don't need to receive messages from Telegram to HA
+  - platform: broadcast
+    api_key: !secret telegram_api_yellowhouse_ha_bot
+    allowed_chat_ids:
+      - !secret telegram_chatid_all_alerts
+      - !secret telegram_chatid_family_alerts
+
+notify:
+  # Alert sent only to system admins
+  - name: telegram_all_alerts
+    platform: telegram
+    chat_id: !secret telegram_chatid_all_alerts
+
+  # Alert sent to all the family
+  - name: telegram_family_alerts
+    platform: telegram
+    chat_id: !secret telegram_chatid_family_alerts
+```
+
 
 E selezionare "Call Service". Ci sono diverse altre [opzioni a disposizione](https://www.home-assistant.io/integrations/telegram/#text-message), per mandare foto, video, ecc.  
 Si possono creare servizi di notifica, per poi aggregarli tutti sotto un'[unico gruppo](https://indomus.it/guide/notifiche-della-domotica-home-assistant-tramite-telegram/), in modo da comunicare a tutti con un solo comando.  
@@ -162,9 +326,7 @@ action:
     message: "E' ora di svegliarsi!!!!"
 ```
 Ci sono molti modi di definire [trigger temporali](https://indomus.it/formazione/automazioni-su-base-temporale-in-varie-modalita-su-home-assistant/): orari, periodicamente (ogni 15 minuti, al 15esimo minuto di ogni ora, ecc), 
-<br />
 Per fare delle prove, si possono anche scatenare eventi a mano, per esempio simulare quando HA si sta spegnendo: "Developer Tools", "Events", "homeassistant_stop", "Fire event"
-<br />
 
 Come dividere i file del *configuration.yaml* è spesso una questione personale, e le [opzioni disponibili](https://indomus.it/guide/configuration-yaml-come-suddividere-il-file-di-configurazione-di-home-assistant/) sono molte. Un video che spiega una configurazione reale abbastanza complessa: [Understanding YAML as it's used in Home Assistant Config files ](https://www.youtube.com/watch?v=FfjSA2o_0KA).
 
@@ -185,6 +347,9 @@ Le prossime cose che suggerisco di fare
 - Esempio di home assistat Tag: https://www.home-assistant.io/blog/2020/09/15/home-assistant-tags/
 
 <br />
+
+
+## Risorse per continuare
 
 Consiglio di seguire la [Home Assistant Creator Network](https://partner.home-assistant.io/creators/), in particolare
 - https://www.youtube.com/c/smarthomejunkie

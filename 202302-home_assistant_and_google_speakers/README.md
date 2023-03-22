@@ -178,20 +178,36 @@ Come dividere i file del *configuration.yaml* è spesso una questione personale,
 HA ha un servizio di autodiscovery integrato. Basta andare in "Integrations" e controllare che l'integrazione [Google Cast](https://www.home-assistant.io/integrations/cast) sia abilitata, e vedere quali sono i device con Google Cast che sono stati trovati nella stessa LAN.  
 Per ogni Google Cast, verranno generati 1 device e 1 entity media player. Per customizzare il device, "Configuration", "Entities", scegliere il media_player.XXXX e cambiare nome, stanza, ecc.  
 Inoltre, andando nell'icona dei settings, si può testare il Text-to-Speech. Lo stesso si può fare da UI Lovelace.  
-<br />
+
+Send the message
+```
+service: tts.google_translate_say
+data:
+  entity_id: media_player.scrivania_alfredo
+  message: Ciao da Alfredo
+```
+
 Per [cambiare la lingua in italiano](https://indomus.it/guide/far-parlare-google-home-come-sistema-di-notifica-domotica-su-home-assistant/), occore modificare la configurazione dell'integrazione [Google Translate](https://www.home-assistant.io/integrations/google_translate/), specificando la lingua che si vuole usare, tra tutte quelle disponibili:
 ```
+---
+# The Google Text-to-Speech platform use Google Text-to-Speech engine to
+# read a text with a natural sounding voice(s).
+#
+# https://www.home-assistant.io/integrations/google_translate/
+
 tts:
   - platform: google_translate
-    language: 'it'
+    language: "it"
 ```
+
 Nuova prova: "Developer Tools", "Services", "tts.google_translate_say", e come Service Data
 ```
 entity_id: media_player.scrivania_alfredo
 message: "Adesso parlo italiano!"
 ```
+
 Se uso "all" come entity_id, chiamo tutti i Google Cast configurati.  
-<br />
+
 Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa parte nella sezione "action":
 ```
     - service: tts.google_tranlate_say
@@ -202,6 +218,13 @@ Per aggiungere la notifica vocale in un'automazione, basta aggiungere questa par
 **TODO** Il testo può anche provenire da un template, o da un termostato di qualche genere  
 Esempio sensore RASPI  
 **TODO** Manual configuration and docker advice: https://www.home-assistant.io/integrations/cast/  
+
+
+Other methods for TTS: https://www.youtube.com/watch?v=Ys9xP6XP800
+- Google Translate
+- Alexa Media Player
+- Nabu Casa
+- Amazon Polly
 
 
 <br />
