@@ -75,6 +75,7 @@ telegram_bot:
       - -987654321  # example id of a group, starts with a -
 
 # Definisco le notifiche e le collego a delle specifiche chat_id
+```
 notify:
   - platform: telegram
     name: telegram_devfest
