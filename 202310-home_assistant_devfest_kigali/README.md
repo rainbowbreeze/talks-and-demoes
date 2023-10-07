@@ -79,6 +79,10 @@ https://www.home-assistant.io/integrations/
 
 ### Add the bluetooth thermostat
 Xiaomi Smart LCD Screen Digital Thermometer 2
+- https://atc1441.github.io/TelinkFlasher.html
+  - Mi token: 816b0652092723299c0b3c60
+  - Mi bind key: 0478274d6238556858fca8bdcfbf2da6
+
 Show its cost: https://www.aliexpress.com/item/1005002401046796.html
 Show in the integration the new sensor
 
