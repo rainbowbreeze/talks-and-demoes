@@ -6,13 +6,30 @@ Author: Alfredo Morresi
 TODO
 
 ## Preparing the event
-TODO
+
 
 ### Generate event description and creativity
 TODO
 
 ## Reporting
-TODO
+### Count your attendees
+
+Resources
+* https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstarts/quickstart-multimodal?hl=en
+
+Steps
+* Take a photo of the event attendees
+* In the Google Cloud console, go to the Vertex AI Studio page
+* Click Multimodal
+* Under Sample prompts, locate the prompt titled Extract text from images, and click Open
+* The prompt page opens and the prompt is populated in the Prompt field.
+* Press "Clear Prompt"
+* Select model: gemini-1.0-pro-vision-001 ([more on models](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/models?hl=en))
+* Upload the picture of the attendees
+* Prompt: "How many people are in the picture?"
+* Submit the prompt by clicking Submit.
+* Enjoy an automatic count of the number of attendees
+
 
 ## Attendees Analysis
 TODO
