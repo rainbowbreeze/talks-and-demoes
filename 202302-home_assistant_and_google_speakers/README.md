@@ -1,16 +1,16 @@
-# Home Automation 2023
+# Sessione introduttuva Home Assistant (30 min)
 
 **Titolo talk**: Primi passi nel mondo dell'home automation con Home Assistant
 
 
+## Introduzione di chi sono
+https://rainbowbreeeze.carrd.co/
 <br />
 <br />
 
 
 ## Capiamo chi siamo
 Sondaggio per capire come siamo messi su questi temi
-
-
 <br />
 <br />
 
@@ -58,8 +58,6 @@ Balena Etched o Raspberry PI Imager
 Per configurare i parametri di avvio, come Wifi
 Qualche guida
 - [How to Install Home Assistant OS on Raspberry Pi 4 over the Network](https://peyanski.com/home-assistant-os-on-raspberry-pi-4-over-the-network/)
-
-
 <br />
 <br />
 

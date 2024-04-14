@@ -1,20 +1,22 @@
-# Home Assistant demo at DevFest Kigali
+# Home Assistant intro Session (30 mins)
 
 
 ## Introduce myself
 https://rainbowbreeeze.carrd.co/
-
-
+<br />
+<br />
 
 
 ## Audience check
 Who is using Home Automation solutions, and what
-
+<br />
+<br />
 
 
 ## What offers the market
 https://www.google.com/search?q=software+for+home+automation
-
+<br />
+<br />
 
 
 
@@ -33,8 +35,8 @@ https://www.home-assistant.io/blog/2023/09/17/10-years-home-assistant/
 
 Show the map of current Home Assistant Installation 
 https://analytics.home-assistant.io/
-
-
+<br />
+<br />
 
 
 ## Install Home Assistant
@@ -46,8 +48,8 @@ https://www.home-assistant.io/installation/
 
 Deep dive of the Raspi installation for Home Assistant Operating System
 https://www.home-assistant.io/installation/raspberrypi
-
-
+<br />
+<br />
 
 
 ## Onboarding
@@ -69,7 +71,8 @@ Show the different pieces of the UI
 Enable the [Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) in the user profile to have more options and more components in the Add-on store
 
 Companion app: https://companion.home-assistant.io/
-
+<br />
+<br />
 
 
 ## Integration
@@ -91,8 +94,8 @@ https://www.home-assistant.io/integrations/open_meteo/
 
 ### Add Workday
 https://www.home-assistant.io/integrations/workday/
-
-
+<br />
+<br />
 
 
 ## Entities and Sensors
@@ -102,8 +105,8 @@ Explain what is an entity
 https://www.home-assistant.io/docs/glossary#entity
 
 Play with Developer Tools to see the values of the sensors
-
-
+<br />
+<br />
 
 
 ## Services
@@ -128,8 +131,8 @@ data:
 ```
 
 More details in the services: https://www.home-assistant.io/docs/scripts/service-calls/
-
-
+<br />
+<br />
 
 
 ## Automation
@@ -143,15 +146,15 @@ https://www.home-assistant.io/docs/automation/basics/
 
 Create an automation to send a message when the temperature is above a limit with the editor
 https://www.home-assistant.io/docs/automation/editor/
-
-
+<br />
+<br />
 
 
 ## Add-ons
 
 Install [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) 
-
-
+<br />
+<br />
 
 
 ## Accessing Home Assistant from anywhere
@@ -167,8 +170,8 @@ https://www.nabucasa.com/
   - The monthly subscription costs 6.50 USD. The annual subscription costs 65 USD. This price is excluding local value-added tax (VAT) or sales tax.
 - About Us
   - to know il team behind Home Assistant
-
-
+<br />
+<br />
 
 
 ## What you can attach
@@ -177,8 +180,8 @@ https://shop.m5stack.com/products/atom-lite-esp32-development-kit
 https://www.emadashi.com/2021/01/m5-atom-lite-home-assistant-esphome-and-capacitive-soil-sensor/
 
 https://sonoff.tech/products/
-
-
+<br />
+<br />
 
 
 ## To remain updated
@@ -191,8 +194,8 @@ https://partner.home-assistant.io/creators
 
 The Home Assistant Community
 https://community.home-assistant.io/
-
-
+<br />
+<br />
 
 
 ## Bonus - Telegram
