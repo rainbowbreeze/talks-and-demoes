@@ -13,6 +13,11 @@ Author: Alfredo Morresi
 ## Planning your event
 TODO
 
+
+## Speaker selection
+https://github.com/VinciGit00/Scrapegraph-ai
+
+
 ## Preparing the event
 
 ### Generate event description
