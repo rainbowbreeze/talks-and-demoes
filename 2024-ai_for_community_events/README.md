@@ -25,6 +25,9 @@ https://github.com/VinciGit00/Scrapegraph-ai
 Prompts to try
 - You're a social media manager. You need to write social-media tailored prompt to advertise an event about AngularJS and a new library to create responsive websites.
 Create different snippets of text
+- The more context you give to Gemini, the better it can understand your request and generate a useful response.
+  - Instead of..."Write about a sales job.", try this..."Write a job description for a [job title], including the required skills and experience, as well as a summary of [company name] and the position."
+  - Instead of..."Create project plan.", try this..."Create a project plan for the launch of a brand new product. The timeframe should be from now until June 2024."
 
 ### Generate event creativity
 
@@ -68,5 +71,20 @@ Steps
 - Enjoy an automatic count of the number of attendees
 
 
+## At the event
+
+### Ask questions to the speaker
+- Prompt Gemini
+  - Instead of..."Marketing talking points.", try this..."Give me 12 thoughtful questions to ask a Chief Marketing Officer on their strategy for 2024."
+  - As usual, If you want Gemini to perform several related tasks, break them apart into separate prompts. This helps the AI understand the task and provide useful responses.
+
+
 ## Attendees Analysis
-TODO
+
+Resources
+- 
+
+Steps
+- Open Gemini
+- TODO: get your answers from Bevy
+- Ask it if it will summarize a set of data, giving as much specifics as possible (i.e. please summarize this survey data from an internal reading challenge). Paste the data and press enter.
