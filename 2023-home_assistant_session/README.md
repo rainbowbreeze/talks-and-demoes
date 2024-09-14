@@ -1,4 +1,5 @@
 # Home Assistant intro Session (30 mins)
+_Last update: 20240913_
 
 
 ## Introduce myself
@@ -20,30 +21,25 @@ https://www.google.com/search?q=software+for+home+automation
 
 
 
-## Why home automation, and Home Assistant?
-Home Assistant is based on [The Open Home vision](https://www.home-assistant.io/blog/2021/12/23/the-open-home/)
-- The three principles - Privacy, choice and durability
-- The values of this vision really resonates with me
-
-
-For curios people, there is also the Home Assistant Manifesto written 7 years ago that still holds true
-https://www.home-assistant.io/blog/2016/01/19/perfect-home-automation/
-
-And their recently made 10!
-https://www.home-assistant.io/blog/2023/09/17/10-years-home-assistant/
-
-
-Show the map of current Home Assistant Installation 
-https://analytics.home-assistant.io/
+## Why Home Assistant?
+Because Home Assistant:
+- Follows the [The Open Home Foundation vision](https://www.openhomefoundation.org/) and its three principles:
+  - **Privacy**: control your personal data
+  - **Choice**: mix and match devices
+  - **Sustainability**: repurpose your hardware
+- It's [worldwide adopted](https://analytics.home-assistant.io/) with 361k active installation as of today (_12k in Italy_)
+- Has [11 years](https://www.home-assistant.io/blog/2023/09/17/10-years-home-assistant/) of development
+- It's the 2nd most active open-source project in the world according to [GitHub’s 2023 Octoverse report](https://github.blog/news-insights/research/the-state-of-open-source-and-ai/#the-state-of-open-source)
 <br />
 <br />
 
 
 ## Install Home Assistant
 Homepage of the project: https://www.home-assistant.io/
-- If you want to check the code: https://github.com/home-assistant
 
-The four ways to install HA
+If you want to check the code: https://github.com/home-assistant
+
+The many ways to install HA
 https://www.home-assistant.io/installation/
 
 Deep dive of the Raspi installation for Home Assistant Operating System
@@ -53,74 +49,43 @@ https://www.home-assistant.io/installation/raspberrypi
 
 
 ## Onboarding
-
 https://www.home-assistant.io/getting-started/onboarding/
 
 Show the different pieces of the UI
-- Standard dashboard
-- Energy
+- Default dashboard
 - Settings
   - Integrations
-    - container for code that tells HASS how to work with a specified device or web service. from the dev docs: "Each integration is responsible for a specific domain within Home Assistant. [ integrations] can listen for or trigger events, offer services, and maintain states"
+    - https://www.home-assistant.io/integrations/
+    - Container for code that tells HASS how to work with a specified device or web service. from the dev docs: "Each integration is responsible for a specific domain within Home Assistant. Integrations can listen for or trigger events, offer services, and maintain states"
+  - Devices and entities
+    - https://www.home-assistant.io/docs/glossary#entity
   - Areas and Zones
     - We can start building our "Smarth Home"
-  - System
 - Developer Tools
   - Toolset to play with many features of Home Assistant
+- Energy
 
 Enable the [Advanced mode](https://www.home-assistant.io/blog/2019/07/17/release-96/#advanced-mode) in the user profile to have more options and more components in the Add-on store
+
+Add-Ons: https://www.home-assistant.io/addons/
 
 Companion app: https://companion.home-assistant.io/
 <br />
 <br />
 
 
-## Integration
+## Actions
+Explain what is an action
+https://www.home-assistant.io/docs/glossary#action
 
-https://www.home-assistant.io/integrations/
-- Every integration can be configured in a different way
-
-### Add the bluetooth thermostat
-Xiaomi Smart LCD Screen Digital Thermometer 2
-- https://atc1441.github.io/TelinkFlasher.html
-  - Mi token: 816b0652092723299c0b3c60
-  - Mi bind key: 0478274d6238556858fca8bdcfbf2da6
-
-Show its cost: https://www.aliexpress.com/item/1005002401046796.html
-Show in the integration the new sensor
-
-### Add Open Meteo
-https://www.home-assistant.io/integrations/open_meteo/
-
-### Add Workday
-https://www.home-assistant.io/integrations/workday/
-<br />
-<br />
-
-
-## Entities and Sensors
-Show in the defaul dashboard the new entity and sensors
-
-Explain what is an entity
-https://www.home-assistant.io/docs/glossary#entity
-
-Play with Developer Tools to see the values of the sensors
-<br />
-<br />
-
-
-## Services
-Explain what is a service
-https://www.home-assistant.io/docs/glossary#service
-
-Use the Services Developer Tool to test data to pass in a service call
+Use the Services Developer Tool to test data to pass in an action call
 
 Send a simple notification with a message
 https://www.home-assistant.io/integrations/persistent_notification/
 ```
 service: notify.persistent_notification
 data:
-  message: Welcome DevFest Kigali!!!!
+  message: Welcome to this wonderful event!
 ```
 
 Send a nofification with a piece of variable information
@@ -135,7 +100,7 @@ More details in the services: https://www.home-assistant.io/docs/scripts/service
 <br />
 
 
-## Automation
+## Create the first automation
 https://www.home-assistant.io/docs/automation/
 
 Anatomy of an automation
@@ -144,15 +109,101 @@ https://www.home-assistant.io/docs/automation/basics/
 - Conditions
 - Actions
 
-Create an automation to send a message when the temperature is above a limit with the editor
-https://www.home-assistant.io/docs/automation/editor/
+Automation editor: https://www.home-assistant.io/docs/automation/editor/
+
+Create a time-triggered alert close the the session end time, using a persistent notification: https://www.home-assistant.io/integrations/persistent_notification/
 <br />
 <br />
 
 
 ## Add-ons
+Add the Install [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) 
+<br />
+<br />
 
-Install [File Editor](https://github.com/home-assistant/hassio-addons/tree/master/configurator) 
+
+## Add entities and sensors
+
+### Add the Workday integration
+https://www.home-assistant.io/integrations/workday/
+
+
+
+### Add a new WiFi Plug device
+Add a TAPO P155 smart plug: https://www.home-assistant.io/integrations/tplink
+- [reset](https://www.tp-link.com/no/support/faq/2612) the plug pressing 10 seconds the power button 
+- Install the https://python-kasa.readthedocs.io/en/latest/cli.html#provisioning
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install pyhton-kasa
+
+kasa --host 192.168.0.1 wifi scan
+kasa --host 192.168.0.1 wifi join Pocket-Rainbow
+```
+
+Keytype: wpa2_psk
+
+To check the address from the plug ([help](https://www.redhat.com/sysadmin/quick-nmap-inventory)):
+```
+nmap -sn 192.168.134.0/24  
+```
+
+
+### Add Android IP Cam integration
+
+https://www.home-assistant.io/integrations/android_ip_webcam/
+
+https://www.home-assistant.io/integrations/camera/  
+Show the dashboard with the camera stream
+<br />
+<br />
+
+
+## Create the first script
+
+Change ```configuration.yaml``` using the File Edition add-on 
+
+Allow access to file
+```
+homeassistant:
+  allowlist_external_dirs:
+    # used for camera screenshots
+    - /config/www/cameras
+```
+
+Create the automation  
+/config/www/ in file path is /local/ in notification path
+
+```
+alias: Camera snapshot
+sequence:
+  - action: camera.snapshot
+    metadata: {}
+    data:
+      filename: /config/www/cameras/moca_snapshot.jpg
+    target:
+      device_id: 44eea0d135033f6e03854e2e6a4118a6
+  - action: notify.persistent_notification
+    metadata: {}
+    data:
+      message: <b>Garage Motion ![Garage Motion](/local/cameras/moca_snapshot.jpg)
+      title: Camera snap
+description: Send a screenshot of the camera
+icon: mdi:camera
+```
+<br />
+<br />
+
+
+## Add the bluetooth thermostat
+Xiaomi Smart LCD Screen Digital Thermometer 2
+- https://atc1441.github.io/TelinkFlasher.html
+  - Mi token: 816b0652092723299c0b3c60
+  - Mi bind key: 0478274d6238556858fca8bdcfbf2da6
+
+Show its cost: https://www.aliexpress.com/item/1005002401046796.html  
+Show in the integration the new sensor
 <br />
 <br />
 
