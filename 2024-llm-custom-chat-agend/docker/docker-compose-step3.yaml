@@ -1,0 +1,45 @@
+services:
+  # https://hub.docker.com/r/ollama/ollama
+  ollama:
+    container_name: ollama
+    image: ollama/ollama:latest
+    volumes:
+      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/ollama:/root/.ollama
+    tty: true
+    restart: unless-stopped
+
+
+  tts:
+    # piper for all models, no gpu/nvidia required, ~1GB
+    #container_name: openedai-speech-min
+    #image: ghcr.io/matatonic/openedai-speech-min
+   # support also coqui-tts
+    container_name: openedai-speech
+    image: ghcr.io/matatonic/openedai-speech
+    env_file:
+      /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/speech.env
+#    environment:
+#      - 'TTS_HOME=voices'
+#      - 'HF_HOME=voices'
+#      - 'PRELOAD_MODEL=xtts'
+    ports:
+      - "8000:8000"
+    volumes:
+      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/voices:/app/voices
+      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/config:/app/config
+    restart: unless-stopped
+
+
+  open-webui:
+    container_name: open-webui
+    image: ghcr.io/open-webui/open-webui
+    volumes:
+      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/open-webui:/app/backend/data
+    ports:
+      - 8080:8080
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    depends_on:
+      - ollama
+      - tts
+    restart: unless-stopped
