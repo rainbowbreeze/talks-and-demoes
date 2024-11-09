@@ -1,4 +1,4 @@
-# TALK STEPS
+# Bringing Doc Brown to life with open source tools and LLM - DevFest Pescara 2024
 
 
 ## Open WebUI
