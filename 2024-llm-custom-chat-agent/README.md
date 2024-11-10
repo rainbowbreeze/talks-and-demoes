@@ -309,13 +309,9 @@ append to the file volumes/openedai-speech/config/voice-to-speaker.yaml
 ```
 
 
-Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8
-
-Show code to extract voice
-https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2
-
-Show file 
-volumes/openedai-speech/config/voice-to-speaker.yaml
+Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8  
+Show code to extract voice: https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2  
+Show file ```volumes/openedai-speech/config/voice-to-speaker.yaml```  
 
 Go to Open WebUI
 Settings - Admin Settings
@@ -337,8 +333,8 @@ Settings
 And now start chatting with your Doc Brown bot!
 
 
-
-
+<br/>
+<br/>
 ## Appendix - Prepare the RunPod Pod to run Ollama and OpenedAI Speech
 
 Resources 
@@ -346,26 +342,26 @@ Resources
   - (basic pytorch machine, with Cuda and ssh, then it's possible to install software separately (but not via docker))
 
 ### RunPod Network disk
-Network volume
-EUR-RO-1 (where RTX A4000 - 16Gb are)
-name: doc-brown
-GB: 40
+Network volume  
+EUR-RO-1 (where RTX A4000 - 16Gb are)  
+name: doc-brown  
+GB: 40  
 
 
 ### Create a Pod
 Container image: runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
 
 Edit template
-http ports: 8888,8000,11434
-tcp ports: 22
-env vars
-- OLLAMA_MODELS: /workspace/ollama/models
-- OLLAMA_HOST: 0.0.0.0
-- OLLAMA_DEBUG: 1
-- TTS_HOME: voices
-- HF_HOME: voices
-- COQUI_TOS_AGREED=1
-- PRELOAD_MODEL=xtts
+- http ports: 8888,8000,11434
+- tcp ports: 22
+- env vars
+  - OLLAMA_MODELS: /workspace/ollama/models
+  - OLLAMA_HOST: 0.0.0.0
+  - OLLAMA_DEBUG: 1
+  - TTS_HOME: voices
+  - HF_HOME: voices
+  - COQUI_TOS_AGREED=1
+  - PRELOAD_MODEL=xtts
 
 Update the system
 ```
@@ -450,7 +446,9 @@ bash startup.sh -L DEBUG
 ```
 
 
-### Obtain a sample of Emmet Brown voice
+<br/>
+<br/>
+## Appendix Obtain a sample of Emmet Brown voice
 
 Create a emmet_brown.wav file following [guideliles](https://github.com/matatonic/openedai-speech?tab=readme-ov-file#guidelines-for-preparing-good-sample-files-for-coqui-xtts-v2)
 
