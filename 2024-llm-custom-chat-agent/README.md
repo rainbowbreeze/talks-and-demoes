@@ -1,7 +1,15 @@
 # Bringing Doc Brown to life with open source tools and LLM - DevFest Pescara 2024
 
+## Slides
+https://docs.google.com/presentation/d/1nk9ANOLYjT1IY3rHaTptc3dvROvOv4fwVGLRcsRXHpo/edit
+
+
+
 
 ## Open WebUI
+```
+cd /Volumes/Data/zz_nobackup/development/openweb-ui
+```
 
 docker-compose-step1.yaml
 ```
@@ -16,12 +24,12 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
-
 ```
 
+```
 cd /Volumes/Data/zz_nobackup/development/openweb-ui
-
 docker-compose -f docker-compose-step1.yaml up
+```
 
 While waiting
 https://openwebui.com/
@@ -32,8 +40,6 @@ Open browser at localhost:8080
 Register a new user: rainbow@bree.ze - rainbow
 
 A quick tour on the interface (chat)
-
-Then introduce the "brain"
 
 
 
@@ -65,7 +71,9 @@ services:
     restart: unless-stopped
 ```
 
+```
 docker-compose -f docker-compose-step2.yaml up
+```
 
 Go to Open WebUI
 Settings - Admin Settings
@@ -101,10 +109,9 @@ Create a model
 
 Ask some questions
 New Chat - Select Doc Brown - Set as default
-Who are you?
-Who is Emmet Brown?
+_Who are you?_
+_Who is Emmet Brown?_
 
-Switch to a Ollama instance on the cloud
 
 Workspace
 Open Doc model
@@ -113,8 +120,8 @@ Open Doc model
     - You are Emmett 'Doc' Brown, the eccentric, genius scientist from the Back to the Future series. Capture his quirky mannerisms, scientific jargon, and enthusiasm for time travel. When addressing questions, quote original jargon from Return to the Future movies, Respond in the tone, manner, and vocabulary characteristic of Emmett 'Doc' Brown, reflecting his quirky mannerisms and entushiasm. Use maximum two sentences to reply.
 
 Ask some questions
-Who are you?
-Do you have family, Doc?
+_Who are you?_
+_Do you have family, Doc?_
 
 
 
@@ -126,8 +133,8 @@ Add as a source the script of the first movie
 data_sources/scripts/backtothefuture_1_complete_fandom.com.txt
 
 Ask some questions and look at the information provided
-What is the real Doc's name?
-Does Doc have a family?
+_What is the real Doc's name?_
+_Does Doc have a family?_
 
 Rename the script to backtothefuture_1
 Now add script of second and third movie
@@ -135,12 +142,15 @@ data_sources/scripts/backtothefuture_2_complete_fandom.com.txt
 data_sources/scripts/backtothefuture_3_complete_fandom.com.txt
 
 Ask the same questions and check for differences
-What is the real Doc's name?
-Does Doc have a family?
+_What is the real Doc's name?_
+_Does Doc have a family?_
+
 
 Generate the FAQ
+```
 I need a detailed FAQ document about Emmet Brown. It should contain all the information on the character, his role on the story, strenghts and weakenesses , fun facts and relevant actions.
 Use a minimum of 20000 words
+```
 
 Copy the output, paste it a text document, and save the document as text file
 
@@ -159,7 +169,7 @@ Workspace - Models
   - Knowledge, select Knowledge, add "Emmet Brown FAQ"
 
 New Chat, and ask
-Are you a father?
+_Are you a father?_
 
 
 
@@ -299,9 +309,7 @@ append to the file volumes/openedai-speech/config/voice-to-speaker.yaml
 ```
 
 
-Show video
-Christopher Lloyd
-https://www.youtube.com/watch?v=DFLMc-RRlo8
+Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8
 
 Show code to extract voice
 https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2
@@ -318,6 +326,7 @@ Settings - Admin Settings
     - doc-brown
 
 Take an existing reply, and play it.
+
 Go to Open WebUI
 Settings
 - Audio
@@ -325,8 +334,130 @@ Settings
     - Auto-playback response
       - On
 
-
 And now start chatting with your Doc Brown bot!
 
 
+
+
+## Appendix - Prepare the RunPod Pod to run Ollama and OpenedAI Speech
+
+Resources 
+- https://docs.runpod.io/tutorials/pods/run-ollama
+  - (basic pytorch machine, with Cuda and ssh, then it's possible to install software separately (but not via docker))
+
+### RunPod Network disk
+Network volume
+EUR-RO-1 (where RTX A4000 - 16Gb are)
+name: doc-brown
+GB: 40
+
+
+### Create a Pod
+Container image: runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04
+
+Edit template
+http ports: 8888,8000,11434
+tcp ports: 22
+env vars
+- OLLAMA_MODELS: /workspace/ollama/models
+- OLLAMA_HOST: 0.0.0.0
+- OLLAMA_DEBUG: 1
+- TTS_HOME: voices
+- HF_HOME: voices
+- COQUI_TOS_AGREED=1
+- PRELOAD_MODEL=xtts
+
+Update the system
+```
+apt update && apt dist-upgrade -y && apt install -y vim
+```
+
+
+
+### Ollama
+Connect to Web Terminal
+
+```
+apt install -y lshw
+curl -fsSL https://ollama.com/install.sh | sh
+export (controla vars)
+cd /workspace/ollama
+```
+
+Run Ollala
+```
+ollama serve
+```
+
+Alternatively
+```
+cd /workspace/ollama
+ollama serve > ollama.log 2>&1 &
+tail -f ollama.log
+```
+
+Preload model
+```
+ollama run gemma2:2b
+Hi model!
+```
+
+
+
+### OpenedAI Speech
+
+Connect to Web Terminal
+
+Run only once, to prime the network volume
+https://github.com/matatonic/openedai-speech?tab=readme-ov-file#installation-instructions
+```
+mkdir /workspace/openedai-speech
+cd /workspace/openedai-speech
+git clone https://github.com/matatonic/openedai-speech
+cp sample.env speech.env
+python -m venv .venv
+source .venv/bin/activate
+pip install -U -r requirements.txt
+bash startup.sh
+```
+
+Stop the app, anche check ```config``` and ```voices``` folders are created
+
+Copy to ```voices/clone/emmet-brown``` the file ```emmet_brown.wav```
+
+Append to ```config/voice_to_speaker.yaml``` Doc Brown voice
+```
+  doc-brown:
+    model: xtts
+    speaker: voices/clone/emmet_brown/emmet_brown.wav # this could be you
+    language: auto
+    enable_text_splitting: True
+    length_penalty: 1.0
+    repetition_penalty: 10
+    speed: 1.0
+    temperature: 0.75
+    top_k: 50
+    top_p: 0.85
+    comment: This is Doc Emmet Brown voice, from Return to the Future
+```
+
+All the time the container is restarted
+```
+apt install -y curl ffmpeg
+cd /workspace/openedai-speech
+source .venv/bin/activate
+bash startup.sh -L DEBUG
+```
+
+
+### Obtain a sample of Emmet Brown voice
+
+Create a emmet_brown.wav file following [guideliles](https://github.com/matatonic/openedai-speech?tab=readme-ov-file#guidelines-for-preparing-good-sample-files-for-coqui-xtts-v2)
+
+```
+yt-dlp --extract-audio --audio-format wav --audio-quality 22050 https://www.youtube.com/watch?v=DFLMc-RRlo8
+
+# convert a multi-channel audio file to mono, set sample rate to 22050 hz, trim to 30 seconds, and output as WAV file.
+ffmpeg -i input.mp3 -ac 1 -ar 22050 -ss 00:01:26.0 -t 30 -y emmet_brown.wav
+```
 
