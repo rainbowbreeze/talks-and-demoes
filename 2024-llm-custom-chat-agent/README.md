@@ -335,6 +335,7 @@ And now start chatting with your Doc Brown bot!
 
 <br/>
 <br/>
+
 ## Appendix - Prepare the RunPod Pod to run Ollama and OpenedAI Speech
 
 Resources 
@@ -448,6 +449,7 @@ bash startup.sh -L DEBUG
 
 <br/>
 <br/>
+
 ## Appendix Obtain a sample of Emmet Brown voice
 
 Create a emmet_brown.wav file following [guideliles](https://github.com/matatonic/openedai-speech?tab=readme-ov-file#guidelines-for-preparing-good-sample-files-for-coqui-xtts-v2)
