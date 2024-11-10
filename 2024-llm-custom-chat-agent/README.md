@@ -43,6 +43,7 @@ A quick tour on the interface (chat)
 
 
 
+<br/>
 
 ## Ollama
 docker-compose-step2.yaml
@@ -125,6 +126,7 @@ _Do you have family, Doc?_
 
 
 
+<br/>
 
 ## Knowledge
 
@@ -173,6 +175,7 @@ _Are you a father?_
 
 
 
+<br/>
 
 ## Voice 
 
