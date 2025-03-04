@@ -100,7 +100,7 @@ https://openwebui.com/m/geometric/sigmund-freud
 Workspace
 Create a model
 - picture
-  - pickup from ata-sources/pictures/hemmet-webp
+  - pickup from data-sources/pictures/hemmet-webp
 - name
   - Doc Brown
 - Base model
@@ -261,6 +261,7 @@ Settings - Admin Settings
       - Open AI
     - Host
       - http://host.docker.internal:8000/v1
+        - https://8aiptwuwaje7c7k9j3dr:rm2magd6isakq2cfnipc@sx0bys4vael4mu-19123-8aiptwuwaje7c7k9j3dr.proxy.runpod.net/v1
     - API key
       - sk-111111111
   - TTS Model
@@ -279,6 +280,7 @@ Settings - Admin Settings
       - Open AI
     - Host
       - http://host.docker.internal:8000/v1
+        - https://8aiptwuwaje7c7k9j3dr:rm2magd6isakq2cfnipc@sx0bys4vael4mu-19123-8aiptwuwaje7c7k9j3dr.proxy.runpod.net/
     - API key
       - sk-111111111
   - TTS Model
@@ -381,7 +383,7 @@ Connect to Web Terminal
 apt install -y lshw
 curl -fsSL https://ollama.com/install.sh | sh
 export (controla vars)
-cd /workspace/ollama
+mkdir /workspace/ollama
 ```
 
 Run Ollala
@@ -398,8 +400,12 @@ tail -f ollama.log
 
 Preload model
 ```
+ollama pull gemma2:2b
 ollama run gemma2:2b
+```
+```
 Hi model!
+/bye
 ```
 
 
@@ -411,9 +417,9 @@ Connect to Web Terminal
 Run only once, to prime the network volume
 https://github.com/matatonic/openedai-speech?tab=readme-ov-file#installation-instructions
 ```
-mkdir /workspace/openedai-speech
-cd /workspace/openedai-speech
+cd /workspace/
 git clone https://github.com/matatonic/openedai-speech
+cd opendai-speech
 cp sample.env speech.env
 python -m venv .venv
 source .venv/bin/activate
@@ -423,6 +429,11 @@ bash startup.sh
 
 Stop the app, anche check ```config``` and ```voices``` folders are created
 
+```
+mkdir -f voices/clone/emmet-brown
+cd voices/clone/emmet-brown
+wget https://www.rainbowbreeze.it/site-media/voices/emmet_brown.wav
+```
 Copy to ```voices/clone/emmet-brown``` the file ```emmet_brown.wav```
 
 Append to ```config/voice_to_speaker.yaml``` Doc Brown voice
@@ -443,7 +454,7 @@ Append to ```config/voice_to_speaker.yaml``` Doc Brown voice
 
 All the time the container is restarted
 ```
-apt install -y curl ffmpeg
+apt install -y ffmpeg
 cd /workspace/openedai-speech
 source .venv/bin/activate
 bash startup.sh -L DEBUG
