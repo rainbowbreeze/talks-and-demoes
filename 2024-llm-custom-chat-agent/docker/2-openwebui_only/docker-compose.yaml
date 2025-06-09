@@ -1,0 +1,50 @@
+# Ollama runs on somewhere over the network
+#
+# Launch with
+#  docker compose -p "openwebui_stack" up -d
+#  Without -p option, the stack takes the name of the source folder
+# For logs
+#  docker logs -f open-webui
+
+services:
+  open-webui:
+    container_name: open-webui
+    image: ghcr.io/open-webui/open-webui:cuda
+    restart: unless-stopped
+
+    volumes:
+      - /media/data/development/openweb-ui/volumes/open-webui:/app/backend/data
+
+    ports:
+      - 8080:8080
+
+    environment:
+      # Enable debug level for Open-WebUI
+      - GLOBAL_LOG_LEVEL=DEBUG
+      # If Ollama is installed on a different computer / url
+      # - OLLAMA_BASE_URL=http://somewhere.com:11434
+      # If Ollama is a standalone app / container on the same machine
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+
+    # Make the host computer available inside the container as host.docker.internal
+    #  Because Ollama is installed as standalone server in the host computer,
+    #  it's possible to use the host.docker-internal alias to access the host computer
+    #  network from this container, instead of specificying host computer IP address.
+    #  localhost won't work because it refers to the container, no to the host computer
+    # Do not use / ignore if Ollama is installed on another computer
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
+
+    # Enable CUDA support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+

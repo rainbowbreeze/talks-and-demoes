@@ -1,0 +1,49 @@
+# Start Open-WebUI + Ollama as a single docker container
+# Cuda support, if available
+
+# Launch with
+#  docker compose -p "openwebui_stack" up -d
+#  Without -p option, the stack takes the name of the source folder
+# For logs
+#  docker logs -f open-webui
+
+services:
+  open-webui:
+    container_name: open-webui
+    image: ghcr.io/open-webui/open-webui:ollama
+    restart: unless-stopped
+
+    volumes:
+      - /media/data/development/openweb-ui/volumes/ollama:/root/.ollama
+      - /media/data/development/openweb-ui/volumes/open-webui:/app/backend/data
+
+    ports:
+      # Exposes Open-WebUI
+      - 8080:8080
+      # Exposes Ollama, but only if OLLAMA_HOST is set below
+      # - 11434:11434
+
+    environment:
+      # All the Ollama env vars: https://github.com/ollama/ollama/blob/main/envconfig/config.go
+      # Enable verbose logging
+      - OLLAMA_DEBUG=1
+      # Enable debug level for Open-WebUI
+      - GLOBAL_LOG_LEVEL=DEBUG
+      # Ollama is installed on the same container of Open-WebUI
+      - OLLAMA_BASE_URL=http://localhost:11434
+      # To expose Ollama too
+      # - OLLAMA_HOST=0.0.0.0
+
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
+
+    # Enable GPU Support (remove if no GPU are available)
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

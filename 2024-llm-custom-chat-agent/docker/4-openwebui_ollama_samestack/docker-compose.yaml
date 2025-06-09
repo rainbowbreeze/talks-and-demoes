@@ -1,23 +1,29 @@
-services:
+# Launch Ollama and Open-WebUI as two separate containers, in the same stack
+# This makes both Ollama and Open-WebUI available in the network
+#
+# Launch with
+#  docker compose -p "openwebui_stack" up -d
+#  Without -p option, the stack takes the name of the source folder
+# For logs
+#  docker logs -f open-webui
+#  docker logs -f ollama
+
 
 services:
   # https://hub.docker.com/r/ollama/ollama
   ollama:
     container_name: ollama
     image: ollama/ollama:latest
-    restart: always
-    tty: true
-
+    restart: unless-stopped
     volumes:
       - /media/data/development/ollama/volumes/ollama:/root/.ollama
-
+    # Ports directive can be removed if Ollama shouldn't be exposed outside of this stack
     ports:
       - 11434:11434
-
+    tty: true
     environment:
       # All the Ollama env vars: https://github.com/ollama/ollama/blob/main/envconfig/config.go
-      # Makes Ollama accessible across al the network (the llm-network defined above),
-      #  and not only localhost (which means only the local machine)
+      # Makes Ollama accessible outside of localhost, which is this specific container only
       - OLLAMA_HOST=0.0.0.0
       # Keeps model in cache for some more time
       - OLLAMA_KEEP_ALIVE=1h
@@ -28,7 +34,7 @@ services:
       # Watchtower will check for updates
       - "com.centurylinklabs.watchtower.enable=true"
 
-    # Enable CUDA support
+    # Enable GPU Support (remove if no GPU are available)
     deploy:
       resources:
         reservations:
@@ -37,25 +43,6 @@ services:
               count: all
               capabilities: [gpu]
 
-  tts:
-    # piper for all models, no gpu/nvidia required, ~1GB
-    #container_name: openedai-speech-min
-    #image: ghcr.io/matatonic/openedai-speech-min
-   # support also coqui-tts
-    container_name: openedai-speech
-    image: ghcr.io/matatonic/openedai-speech
-    env_file:
-      /media/data/development/openweb-ui/tts/speech.env
-#    environment:
-#      - 'TTS_HOME=voices'
-#      - 'HF_HOME=voices'
-#      - 'PRELOAD_MODEL=xtts'
-    ports:
-      - "8000:8000"
-    volumes:
-      - /media/data/development/openweb-ui/volumes/openedai-speech/voices:/app/voices
-      - /media/data/development/openweb-ui/volumes/openedai-speech/config:/app/config
-    restart: unless-stopped
 
   open-webui:
     container_name: open-webui
@@ -67,7 +54,6 @@ services:
       - 8080:8080
     depends_on:
       - ollama
-      - tts
     environment:
       # Enable debug level for Open-WebUI
       - GLOBAL_LOG_LEVEL=DEBUG
