@@ -74,7 +74,7 @@ Settings - Admin Settings
 Workspace
 Create a model
 - picture
-  - pickup from data-sources/pictures/hemmet-webp
+  - pickup from [file](pictures/Doc_Emmett_Brown.webp)
 - name
   - Doc Brown
 - Base model
@@ -293,12 +293,14 @@ https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2
 Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8  
 Show code to extract voice: https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2  
 
-append to the file ```volumes/openedai-speech/config/voice-to-speaker.yaml```
+Create the folder for the voice sample ```volumes/openedai-speech/voices/clone/emmet_brown```
+Copy the (sample voice file)[voices/emmet_brown/emmet_brown.wav] to the dir
+
+Append to the file ```volumes/openedai-speech/config/voice-to-speaker.yaml```
 ```
   doc-brown:
-    #model: xtts_v2.0.2 # you can specify an older xtts version
     model: xtts # you can specify an older xtts version
-    speaker: voices/clone/emmet_brown/emmet_brown.wav # this could be you
+    speaker: voices/clone/emmet_brown/emmet_brown.wav
     language: auto
     enable_text_splitting: True
     length_penalty: 1.0
@@ -309,6 +311,7 @@ append to the file ```volumes/openedai-speech/config/voice-to-speaker.yaml```
     top_p: 0.85
     comment: You can add a comment here also, which will be persistent and otherwise ignored.
 ```
+This file file should be like [this one](voices/voice_to_speaker.yaml)
 
 Go to Open WebUI
 Settings - Admin Settings
