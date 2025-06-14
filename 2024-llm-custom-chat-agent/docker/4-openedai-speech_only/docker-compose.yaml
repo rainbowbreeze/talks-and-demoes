@@ -1,0 +1,24 @@
+services:
+  openedai-speech:
+    # Piper for all models, no gpu/nvidia required, ~1GB
+    #container_name: openedai-speech-min
+    #image: ghcr.io/matatonic/openedai-speech-min
+
+    # Support also coqui-tts, in addition to piper, gpu required, very slow on CPU only
+    container_name: openedai-speech
+    image: ghcr.io/matatonic/openedai-speech
+
+    environment:
+      - 'TTS_HOME=voices'
+      - 'HF_HOME=voices'
+      - 'PRELOAD_MODEL=xtts'
+    ports:
+      - "8000:8000"
+    volumes:
+      - /Volumes/Data/development/docker/openedai-speech/volumes/voices:/app/voices
+      - /Volumes/Data/development/docker/openedai-speech/volumes/config:/app/config
+    restart: unless-stopped
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"

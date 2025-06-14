@@ -1,87 +1,65 @@
-# Bringing Doc Brown to life with open source tools and LLM - DevFest Pescara 2024
+# Bringing Doc Brown to life with open source tools and LLM
 
 ## Slides
-https://docs.google.com/presentation/d/1nk9ANOLYjT1IY3rHaTptc3dvROvOv4fwVGLRcsRXHpo/edit
+https://docs.google.com/presentation/d/1sw7D6axwrNQSQGYTD4IMqbsXXT1wFFqh6dzFcjN6JsU/edit
 
 
 
+## Ollama
 
-## Open WebUI
+Start Ollama
+
+On a CUDA-supported environment, via an independent docker compose file - [example](docker/1-ollama_only/docker-compose.yaml).
+
+On a Mac, as a standalone app
 ```
-cd /Volumes/Data/zz_nobackup/development/openweb-ui
+brew install ollama
+ollama serve 
+ollama run gemma2:9b
 ```
-
-docker-compose-step1.yaml
-```
-services:
-  open-webui:
-    container_name: open-webui
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/open-webui:/app/backend/data
-    ports:
-      - 8080:8080
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    restart: unless-stopped
-```
-
-```
-cd /Volumes/Data/zz_nobackup/development/openweb-ui
-docker-compose -f docker-compose-step1.yaml up
-```
-
-While waiting
-https://openwebui.com/
-https://github.com/open-webui/open-webui
-
-Open browser at localhost:8080
-
-Register a new user: rainbow@bree.ze - rainbow
-
-A quick tour on the interface (chat)
+Ask some questions to check if the model works
 
 
 
 <br/>
 
-## Ollama
-docker-compose-step2.yaml
-```
-services:
-  # https://hub.docker.com/r/ollama/ollama
-  ollama:
-    container_name: ollama
-    image: ollama/ollama:latest
-    volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/ollama:/root/.ollama
-    tty: true
-    restart: unless-stopped
+## Open WebUI
 
-  open-webui:
-    container_name: open-webui
-    image: ghcr.io/open-webui/open-webui
-    volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/open-webui:/app/backend/data
-    ports:
-      - 8080:8080
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    depends_on:
-      - ollama
-    restart: unless-stopped
+On a Mac, as a standalone container - [example](docker/2-openwebui_only_mac/docker-compose.yaml)
+```
+cd <local_dev_path>/docker
+docker compose -p "openwebui_stack" up -d
+docker logs -f open-webui
 ```
 
-```
-docker-compose -f docker-compose-step2.yaml up
-```
+
+On a CUDA-supported environement, in multiple ways
+- Open-WebUI + Ollama bundled in a single docker image - [example](docker/3-openwebui_ollama_bundled/docker-compose.yaml)
+- Open-WebUI + Ollama in the same docker compose stack - [example](docker/3-openwebui_ollama_samestack/docker-compose.yaml)
+- Open-WebUI + Ollama in two separated docker container stacks - [example](docker/3-openwebui_ollama_separated)
+
+
+While waiting
+https://openwebui.com/
+https://github.com/open-webui/open-webui
+To know all the environment vars: https://docs.openwebui.com/getting-started/env-configuration/
+
+
+Open browser at localhost:8080
+Register a new user: rainbow@bree.ze - rainbow
+A quick tour on the interface (chat)
+
+
+
+### Connect with Ollama
+
 
 Go to Open WebUI
 Settings - Admin Settings
 - Connections
   - Disable OpenAI API
   - Ollama API
-    - http://ollama:11434
+    - http://host.docker.internal:11434 (or what is pointed in the docker file for OLLAMA_BASE_URL variable)
     - Verify connection
 
 visit to look for model
@@ -91,11 +69,7 @@ Go to Open WebUI
 Settings - Admin Settings
 - Models
   - Pull a model from Ollama.com
-    - gemma2:2b
-
-visit to look for personalities
-https://openwebui.com/m/nihaal007/nikolas-tesla
-https://openwebui.com/m/geometric/sigmund-freud
+    - gemma2:9b
 
 Workspace
 Create a model
@@ -114,15 +88,25 @@ _Who are you?_
 _Who is Emmet Brown?_
 
 
+
+### Acting as the character
+visit to look for personalities
+https://openwebui.com/m/nihaal007/nikolas-tesla
+https://openwebui.com/m/geometric/sigmund-freud
+
+
 Workspace
 Open Doc model
 - Model Params
   - System Prompt
-    - You are Emmett 'Doc' Brown, the eccentric, genius scientist from the Back to the Future series. Capture his quirky mannerisms, scientific jargon, and enthusiasm for time travel. When addressing questions, quote original jargon from Return to the Future movies, Respond in the tone, manner, and vocabulary characteristic of Emmett 'Doc' Brown, reflecting his quirky mannerisms and entushiasm. Use maximum two sentences to reply.
+    - You are Emmett 'Doc' Brown, the eccentric, genius scientist from the Back to the Future series. Capture his quirky mannerisms, scientific jargon, and enthusiasm for time travel. When addressing questions, quote original jargon from Return to the Future movies, Respond in the tone, manner, and vocabulary characteristic of Emmett 'Doc' Brown, reflecting his quirky mannerisms and enthusiasm. Use maximum two sentences to reply.
 
 Ask some questions
 _Who are you?_
 _Do you have family, Doc?_
+
+
+To look at the logs: https://jsonformatter.curiousconcept.com/
 
 
 
@@ -130,18 +114,16 @@ _Do you have family, Doc?_
 
 ## Knowledge
 
+### Generate Doc Brown FAQ
 Open https://notebooklm.google.com/
-Add as a source the script of the first movie
-data_sources/scripts/backtothefuture_1_complete_fandom.com.txt
+Add as a source the [script](scripts/backtothefuture_1_complete_fandom.com.txt) of the first movie
 
 Ask some questions and look at the information provided
 _What is the real Doc's name?_
 _Does Doc have a family?_
 
 Rename the script to backtothefuture_1
-Now add script of second and third movie
-data_sources/scripts/backtothefuture_2_complete_fandom.com.txt
-data_sources/scripts/backtothefuture_3_complete_fandom.com.txt
+Now add script of [second](scripts/backtothefuture_2_complete_fandom.com.txt) and [third](scripts/backtothefuture_3_complete_fandom.com.txt) movie
 
 Ask the same questions and check for differences
 _What is the real Doc's name?_
@@ -154,9 +136,39 @@ I need a detailed FAQ document about Emmet Brown. It should contain all the info
 Use a minimum of 20000 words
 ```
 
-Copy the output, paste it a text document, and save the document as text file
+Copy the output, paste it a text document (like [this one](scripts/emmet_brown_faq_15000.txt)), and save the document as text file
+
+
+### RAG for the model
+Return to Open WebUI, and check the RAG configuration
+
+Admin Settings - Documents
+Default
+- Embedding Model Engine
+  - Default (sentence transformers)
+  - sentence-transformers/all-MiniLM-L6-v2
+
+Show other models at https://sbert.net/docs/sentence_transformer/pretrained_models.html#original-models
+Show https://ollama.com/library/nomic-embed-text
+
+Show performance at https://huggingface.co/spaces/mteb/leaderboard (linked in the previous post, under "_Consider using the Massive Textual Embedding Benchmark leaderboard as an inspiration of strong Sentence Transformer models_")
+- search for all-Mini
+- search for nomic
+
+Show https://www.bentoml.com/blog/a-guide-to-open-source-embedding-models
+Show https://medium.com/@guptak650/nomic-embeddings-a-cheaper-and-better-way-to-create-embeddings-6590868b438f
 
 Return to Open WebUI
+Admin Settings - Documents
+Change to
+- Embedding Model Engine
+  - Ollama
+  - Address: http://host.docker.internal:11434 (or what is pointed in the docker file for OLLAMA_BASE_URL variable)
+- Embedding Model
+  - nomic-embed-text:latest
+
+
+
 Workspace - Knowledge
 Create a knowledge base (+ button)
 - Name
@@ -200,58 +212,49 @@ Play button
 Show the other settings for the Text-to-Speech Engine
 
 
-### OpenedAI Speech
-Open https://github.com/matatonic/openedai-speech
-docker-compose-step3.yaml
+
+### Kokoro-web (optional)
+
+https://docs.openwebui.com/tutorials/text-to-speech/kokoro-web-integration/
+
+https://github.com/eduardolat/kokoro-web
+https://huggingface.co/hexgrad/Kokoro-82M
+- with voices
+
 ```
 services:
-  # https://hub.docker.com/r/ollama/ollama
-  ollama:
-    container_name: ollama
-    image: ollama/ollama:latest
-    volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/ollama:/root/.ollama
-    tty: true
-    restart: unless-stopped
-
-  # https://github.com/matatonic/openedai-speech/releases/
-  tts:
-    # piper for all models, no gpu/nvidia required, ~1GB
-    #container_name: openedai-speech-min
-    #image: ghcr.io/matatonic/openedai-speech-min
-
-    # support also coqui-tts
-    container_name: openedai-speech
-    image: ghcr.io/matatonic/openedai-speech
-#    env_file:
-#      /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/speech.env
+  kokoro-web:
+    image: ghcr.io/eduardolat/kokoro-web:latest
+    ports:
+      - "3000:3000"
     environment:
-      - 'TTS_HOME=voices'
-      - 'HF_HOME=voices'
-      - 'PRELOAD_MODEL=xtts'
-    ports:
-      - "8000:8000"
+      # Change this to any secret key to use as your OpenAI compatible API key
+      - KW_SECRET_API_KEY=your-rainbow
+      - KW_PUBLIC_NO_TRACK=
     volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/voices:/app/voices
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/openedai-speech/config:/app/config
-    restart: unless-stopped
-
-  open-webui:
-    container_name: open-webui
-    image: ghcr.io/open-webui/open-webui
-    volumes:
-      - /Volumes/Data/zz_nobackup/development/openweb-ui/volumes/open-webui:/app/backend/data
-    ports:
-      - 8080:8080
-    extra_hosts:
-      - host.docker.internal:host-gateway
-    depends_on:
-      - ollama
-      - tts
+      - /Volumes/Data/development/docker/kokoro-web/volumes/kokoro-cache:/kokoro/cache
     restart: unless-stopped
 ```
 
-docker-compose -f docker-compose-step3.yaml up
+Admin Panel → Settings → Audio
+Text-to-Speech Engine: OpenAI
+API Base URL: http://host.docker.internal:3000/api/v1
+API Key: rainbow
+TTS Model: model_q8f16 (best balance of size/quality)
+TTS Voice: af_heart (default warm, natural english voice). You can change this to any other voice or formula from the Kokoro Web Demo
+
+
+
+### OpenedAI Speech
+
+Show https://docs.openwebui.com/category/%EF%B8%8F-text-to-speech with the different TTS tutorials
+
+https://docs.openwebui.com/tutorials/text-to-speech/openedai-speech-integration/
+Open https://github.com/matatonic/openedai-speech
+
+On a Mac, as a standalone container - [example](docker/4-openedai-speech_only/docker-compose.yaml)
+
+On a CUDA-supported environement, Open-WebUI + Ollama + Openedai-Speech in the same docker compose stack - [example](docker/4-openedai-speech-samestack/docker-compose.yaml)
 
 Go to Open WebUI
 Settings - Admin Settings
@@ -260,8 +263,7 @@ Settings - Admin Settings
     - Text-to-Speech Engine
       - Open AI
     - Host
-      - http://host.docker.internal:8000/v1
-        - https://8aiptwuwaje7c7k9j3dr:rm2magd6isakq2cfnipc@sx0bys4vael4mu-19123-8aiptwuwaje7c7k9j3dr.proxy.runpod.net/v1
+      - http://host.docker.internal:8000/v1 (or what is pointed in the docker file for AUDIO_TTS_OPENAI_API_BASE_URL variable)
     - API key
       - sk-111111111
   - TTS Model
@@ -269,34 +271,29 @@ Settings - Admin Settings
   - TTS Voice
     - shimmer
 
-Take an existing reply, and play it.
+Take an existing reply, and play it (generated by Piper).
 
 
 Go to Open WebUI
 Settings - Admin Settings
 - Audio
   - TTS Settings
-    - Text-to-Speech Engine
-      - Open AI
-    - Host
-      - http://host.docker.internal:8000/v1
-        - https://8aiptwuwaje7c7k9j3dr:rm2magd6isakq2cfnipc@sx0bys4vael4mu-19123-8aiptwuwaje7c7k9j3dr.proxy.runpod.net/
-    - API key
-      - sk-111111111
   - TTS Model
     - tts-1-hd
   - TTS Voice
     - alloy
 
-Take an existing reply, and play it.
+Take an existing reply, and play it (generated by Coqui)
 
 
 
 ### Voice Cloning
 https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2
 
+Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8  
+Show code to extract voice: https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2  
 
-append to the file volumes/openedai-speech/config/voice-to-speaker.yaml
+append to the file ```volumes/openedai-speech/config/voice-to-speaker.yaml```
 ```
   doc-brown:
     #model: xtts_v2.0.2 # you can specify an older xtts version
@@ -312,11 +309,6 @@ append to the file volumes/openedai-speech/config/voice-to-speaker.yaml
     top_p: 0.85
     comment: You can add a comment here also, which will be persistent and otherwise ignored.
 ```
-
-
-Show video of Christopher Lloyd: https://www.youtube.com/watch?v=DFLMc-RRlo8  
-Show code to extract voice: https://github.com/matatonic/openedai-speech?tab=readme-ov-file#coqui-xtts-v2  
-Show file ```volumes/openedai-speech/config/voice-to-speaker.yaml```  
 
 Go to Open WebUI
 Settings - Admin Settings
@@ -336,6 +328,7 @@ Settings
       - On
 
 And now start chatting with your Doc Brown bot!
+
 
 
 <br/>

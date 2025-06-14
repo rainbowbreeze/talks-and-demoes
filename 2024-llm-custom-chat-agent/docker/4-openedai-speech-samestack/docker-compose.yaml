@@ -1,6 +1,4 @@
 services:
-
-services:
   # https://hub.docker.com/r/ollama/ollama
   ollama:
     container_name: ollama
@@ -37,25 +35,42 @@ services:
               count: all
               capabilities: [gpu]
 
+
   tts:
-    # piper for all models, no gpu/nvidia required, ~1GB
-    #container_name: openedai-speech-min
-    #image: ghcr.io/matatonic/openedai-speech-min
-   # support also coqui-tts
+    # Support also coqui-tts, in addition to piper, gpu required, very slow on CPU only
     container_name: openedai-speech
     image: ghcr.io/matatonic/openedai-speech
+
+    # Init some values via an env file, with a sample
+    # available at https://github.com/matatonic/openedai-speech/blob/main/sample.env
     env_file:
       /media/data/development/openweb-ui/tts/speech.env
-#    environment:
-#      - 'TTS_HOME=voices'
-#      - 'HF_HOME=voices'
-#      - 'PRELOAD_MODEL=xtts'
+
+    # Or via env vars
+    #environment:
+    #  - 'TTS_HOME=voices'
+    #  - 'HF_HOME=voices'
+    #  - 'PRELOAD_MODEL=xtts'
     ports:
       - "8000:8000"
     volumes:
       - /media/data/development/openweb-ui/volumes/openedai-speech/voices:/app/voices
       - /media/data/development/openweb-ui/volumes/openedai-speech/config:/app/config
     restart: unless-stopped
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
+
+    # Enable CUDA support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
 
   open-webui:
     container_name: open-webui
@@ -74,6 +89,8 @@ services:
       # Access Ollama using its container name, because there are on the same stack
       #  and OLLAMA_HOST above makes possible to access Ollama outside of localhost
       - OLLAMA_BASE_URL=http://ollama:11434
+      # The TTS engine 
+      - AUDIO_TTS_OPENAI_API_BASE_URL=http://tts:8000/v1
 
     labels:
       # Watchtower will check for updates
