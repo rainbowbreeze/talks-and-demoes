@@ -15,36 +15,34 @@ It's important to follow these steps **before joining the workshop** to avoid va
 
 
 ### Docker
-For Mac/Win/Linux, install Docker Desktop: https://docs.docker.com/desktop/
-For Linux systems only, Docker Engine is enough: https://docs.docker.com/engine/install/
+Mac/Win: install Docker Desktop: https://docs.docker.com/desktop/.  
+Linux: install Docker Desktop: https://docs.docker.com/desktop/ or Docker Engine is enough: https://docs.docker.com/engine/install/. 
 
-For Win/Linux with an nVidia GPU, install CUDA Toolkit for Docker: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html
-For Win/Linux with an AMD GPU, install ROCm runtime: https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html
+Win/Linux with an nVidia GPU, install CUDA Toolkit for Docker: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html.   
+Win/Linux with an AMD GPU, install ROCm runtime: https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html. 
 
 
 ### Ollama
 
-Mac
-Install Ollama: https://ollama.com/download
-OR
+Mac: Install Ollama via the official DMG at https://ollama.com/download.  
+Alternatively, install it using HomeBrew:
 ```
 $ brew install ollama
 $ ollama serve
 ```
 
-Linux/Windows: you can both install Ollama as a standalone app, but it's preferred to run Ollama in Docker
+Linux/Windows: you can both install Ollama as a standalone app following https://ollama.com/download, but it's preferred to run Ollama in Docker: 
 ```
 docker run -d ollama/ollama --name ollama -p 11434:11434 -v ollama:/root/.ollama 
 ```
 
-Once Ollama is installed and working, execute this command to download an LLM model locally (it will require approx 4GB of disk space)
+Mac/Win/Linux: once Ollama is installed and working, execute this command to download an LLM model locally (it will require approx 4GB of disk space): 
 ```
 ollama run gemma3:4b
 ```
-
 Alternatively, to download a smaller model requiring 1GB of disk space and 1GB of VRAM:
 ```
-ollama run gemma3:4b
+ollama run gemma3:1b
 ```
 
 
