@@ -84,3 +84,7 @@ docker logs -f openwebui | tspin
 ### Json formatter
 https://jsonformatter.curiousconcept.com/#
 
+
+
+### mactop
+[mactop](https://github.com/context-labs/mactop) is a terminal-based monitoring tool "top" designed to display real-time metrics for Apple Silicon chips
