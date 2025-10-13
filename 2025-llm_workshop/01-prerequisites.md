@@ -68,3 +68,19 @@ The suggestion is to create an account on RunPod ([affiliated link](https://runp
 
 Otherwise, any other cloud provider offering a VM with GPU, or a docker with GPU support will work. In this case, arrive to the workshop with the cloud setup already configured following your preference.
 
+
+
+
+## Nice to have toolset
+
+### Tailspin
+[Tailspin](https://github.com/bensadeh/tailspin): A log file highlighter.
+```
+# Read from stdin and print to stdout
+docker logs -f openwebui | tspin
+```
+
+
+### Json formatter
+https://jsonformatter.curiousconcept.com/#
+
