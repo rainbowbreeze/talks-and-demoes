@@ -71,7 +71,7 @@ Otherwise, any other cloud provider offering a VM with GPU, or a docker with GPU
 
 
 
-## Nice to have toolset
+## Nice to have tools
 
 ### Tailspin
 [Tailspin](https://github.com/bensadeh/tailspin): A log file highlighter.
