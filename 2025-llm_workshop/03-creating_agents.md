@@ -66,10 +66,14 @@ Workspace > Create a new model
   - Image tagger
 - Base Model (from)
   - Gemma3:4b
+- Model picture (optional)
+  - Upload image [resources/avatar-photographer.png](resources/avatar-photographer.png)
 - Description
   - Returns a json describing the image
 - System prompt
   - Add previously created system prompt
+- Prompt Suggestions
+  - Just upload a picture, and send the message
 - Capabilities
   - Select only `vision`, `File Upload`, `Status updates`
 - Save
