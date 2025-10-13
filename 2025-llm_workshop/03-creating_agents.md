@@ -59,7 +59,7 @@ You are an expert image analysis engine and a professional prompt engineer. Your
 
 ### Configure the model in Open WebUI
 
-Workspace > Create a new model
+Workspace -> Model -> Create a new model
 - Model Name
   - Image tagger
 - Base Model (from)
