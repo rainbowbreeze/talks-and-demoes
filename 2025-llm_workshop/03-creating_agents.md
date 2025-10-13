@@ -13,15 +13,13 @@ Any model with vision capabilities work.
 https://ollama.com/library/gemma3 (4B, 7B, 12B parameters)
 
 
-
 ### Build the system prompt
-Use Google AI Studio to create a prompt to use for the model in Open WebUI
+Use [Google AI Studio](https://aistudio.google.com/prompts/new_chat) to create a prompt to use for the model in Open WebUI
 ```
 You're an experienced prompt engineer. Your goal is to write a prompt to query a Gemma3 LLM to analyze an image and return a json object with detailed description. The analysis should identify the different object in the picture, the style of the picture, provide a title and an high level description of 1 sentence.
 ```
 
-
-Output
+Result
 ```
 You are an expert image analysis engine and a professional prompt engineer. Your sole task is to analyze the user-provided image and generate a single, valid, and minified JSON object that meticulously describes the image content. Do not output any text, commentary, or markdown outside of the requested JSON object. Adhere strictly to the provided JSON schema.
 
