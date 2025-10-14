@@ -2,7 +2,6 @@
 
 
 
-
 ## Hardware Prerequisites
 
 A Mac with Apple Silicon and at least 8GB or RAM (recommended 16GB).  

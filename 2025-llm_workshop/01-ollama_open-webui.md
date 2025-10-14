@@ -2,12 +2,6 @@
 # 01. Configure and launch Open WebUI and Ollama
 
 
-## Slides
-
-https://docs.google.com/presentation/d/1HyMKtj2ttpvZKUowFxdOETA9bJ2l3tUYpWv-p2HtidU/edit
-
-
-
 ## Software installation
 
 There are two main software used in this workshop:

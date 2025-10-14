@@ -1,65 +1,17 @@
-# LLM Workshop
+# Ollama + Open WebUI LLM Workshop
 
 
-## Hardware Prerequisites
+[Step 0 - Prerequisites for running the workshop](00-prerequisites.md).  
 
-A Mac with Apple Silicon and at least 8GB or RAM (recommended 16GB).  
-A laptop with at the very least 8GB of RAM (recommended 16GB), and an NVIDIA/AMD GPU with at least 4GB of VRAM (recommended 8GB).  
-
-At least 15/20GB of free disk space.
-
-
-## Software Prerequisites
-
-It's important to follow these steps **before joining the workshop** to avoid various GBs of download during the workshop. Because we all know it's impossible to download various GBs over a conference network.
+[1. Install Ollama and Open WebUI](01-ollama_open-webui.md). 
+[3. Creating agents for specific tasks](03-creating_agents.md).  
+[4. Extend knowledge with Documents and RAG](04-documents-rag.md).  
+[5. Search on the internet](05-search.md).  
+[6. Extending agents capabilities with OpenAPI tools](06-tools.md).  
+[7. Extending agents capabilities with MCP servers](07-mcp_native.md)
 
 
-### Docker
-Mac/Win: install Docker Desktop: https://docs.docker.com/desktop/.  
-Linux: install Docker Desktop: https://docs.docker.com/desktop/ or Docker Engine is enough: https://docs.docker.com/engine/install/. 
-
-Win/Linux with an nVidia GPU, install CUDA Toolkit for Docker: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html.   
-Win/Linux with an AMD GPU, install ROCm runtime: https://instinct.docs.amd.com/projects/container-toolkit/en/latest/container-runtime/overview.html. 
+**Slides**: https://docs.google.com/presentation/d/1HyMKtj2ttpvZKUowFxdOETA9bJ2l3tUYpWv-p2HtidU/edit
 
 
-### Ollama
-
-Mac: Install Ollama via the official DMG at https://ollama.com/download.  
-Alternatively, install it using HomeBrew:
-```
-$ brew install ollama
-$ ollama serve
-```
-
-Linux/Windows: you can both install Ollama as a standalone app following https://ollama.com/download, but it's preferred to run Ollama in Docker: 
-```
-docker run -d ollama/ollama --name ollama -p 11434:11434 -v ollama:/root/.ollama 
-```
-
-Mac/Win/Linux: once Ollama is installed and working, execute this command to download an LLM model locally (it will require approx 4GB of disk space): 
-```
-ollama run gemma3:4b
-```
-Alternatively, to download a smaller model requiring 1GB of disk space and 1GB of VRAM:
-```
-ollama run gemma3:1b
-```
-
-
-### Open-WebUI
-
-Mac/Win/Linux: run this command so Docker will download the Open-WebUI image 
-```
-docker run -d ghcr.io/open-webui/open-webui:main --name open-webui -v openweb-ui:/app/backend/data
-```
-
-
-
-## Cloud-hosted alternatives
-
-In case an Apple Silicon or a Windows/Linux computer is not available, it would be possible to use a cloud service to run Ollama+Open-WebUI.
-
-The suggestion is to create an account on RunPod ([affiliated link](https://runpod.io?ref=9ph6k4oh)), and charge it with 2-3 dollars, which are enough to run the entire workshop.  
-
-Otherwise, any other cloud provider offering a VM with GPU, or a docker with GPU support will work. In this case, arrive to the workshop with the cloud setup already configured following your preference.
-
+By Alfredo "Rainbowbreze" Morresi
