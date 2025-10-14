@@ -68,7 +68,9 @@ Tools in Open WebUI can be configured as **User Tool Server** or **Global Tool S
   - public or a more fine-graned permission model
 
 
-### Use the time server
+
+
+## Use the time server
 
 Open a chat with gemma3:4b and ask:
 ```
