@@ -1,0 +1,46 @@
+# Start Ollama as a standalone docker container
+# Cuda support, if available
+#
+# Launch with
+#  docker compose -p "ollama_stack" up -d
+#  Without -p option, the stack takes the name of the source folder
+# For logs
+#  docker logs -f ollama-local
+
+services:
+  # https://hub.docker.com/r/ollama/ollama
+  ollama-local:
+    container_name: ollama-local
+    image: ollama/ollama:latest
+    restart: always
+    tty: true
+
+    volumes:
+      - /media/data/development/ollama/volumes/ollama:/root/.ollama
+
+    ports:
+      - 11434:11434
+
+    environment:
+      # All the Ollama env vars: https://github.com/ollama/ollama/blob/main/envconfig/config.go
+      # Makes Ollama accessible across al the network (the llm-network defined above),
+      #  and not only localhost (which means only the local machine)
+      - OLLAMA_HOST=0.0.0.0
+      # Keeps model in cache for some more time
+      - OLLAMA_KEEP_ALIVE=1h
+      # Enable verbose logging
+      - OLLAMA_DEBUG=1
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
+
+    # Enable CUDA support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
