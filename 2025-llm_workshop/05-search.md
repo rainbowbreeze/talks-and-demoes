@@ -188,6 +188,7 @@ Search for today's news about the city of Pavia, Italy, about the current day. R
 
 
 
+
 ## Additional resources
 
 - It's possible to enable Web Search provide via environmental variables directly in the `docker-compose.yaml` file

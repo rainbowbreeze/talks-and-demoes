@@ -112,8 +112,10 @@ Example of result
 
 
 
-## Other system prompt ideas
+## Additional resources
 
-Other ideas to create agents
-- Create the email draft with a baseline structure, and different information retrieved from an external file / PDF
+Open-WebUI prompts
+- https://docs.openwebui.com/features/workspace/prompts/
+- https://openwebui.com/prompts
+
 

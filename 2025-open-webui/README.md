@@ -5,13 +5,6 @@
 
 Json formatter - https://jsonformatter.curiousconcept.com/
 
-Open-WebUI prompts
-- https://docs.openwebui.com/features/workspace/prompts/
-- https://openwebui.com/prompts
-
-
-Open-WebUI tools
-- https://openwebui.com/tools
 
 
 

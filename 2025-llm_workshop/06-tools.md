@@ -91,3 +91,9 @@ Open the chat window.
 - Change the Function Calling parameter from `Default` to `Native`.
 
 If a model without tools calling support (like gemma3) is used, an error message is returned
+
+
+
+
+## Additional resources
+
