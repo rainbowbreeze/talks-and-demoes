@@ -109,5 +109,5 @@ What is a Sudden Death in the Pokemon card game?
 
 
 
-## Additional resources
-- https://docs.openwebui.com/features/rag/
+## Additional resources (TODO)
+- [Open WebUI Knowledge Bases: RAG & Embeddings (Beginner's Guide)]() by Professor Patterns, Feb 2025
