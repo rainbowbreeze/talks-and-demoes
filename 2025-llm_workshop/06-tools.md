@@ -97,3 +97,8 @@ If a model without tools calling support (like gemma3) is used, an error message
 
 ## Additional resources
 
+
+
+## Next session
+[MCP calling](07-mcp_native.md)
+

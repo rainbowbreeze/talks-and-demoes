@@ -105,6 +105,9 @@ https://jsonformatter.curiousconcept.com/#
 
 
 
-
 ## Additional resources
 
+
+
+## Next session
+[Configure the first agent](03-creating_agents.md)

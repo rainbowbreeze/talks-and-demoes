@@ -194,3 +194,11 @@ Search for today's news about the city of Pavia, Italy, about the current day. R
 - It's possible to enable Web Search provide via environmental variables directly in the `docker-compose.yaml` file
   - https://docs.openwebui.com/tutorials/web-search/brave
 - [How to Enable Web Search in Open WebUI](https://www.youtube.com/watch?v=fwscnJu_Md0)
+
+
+
+
+## Next session
+[Tools](06-tools.md)
+
+

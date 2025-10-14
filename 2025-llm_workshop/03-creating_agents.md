@@ -119,3 +119,9 @@ Open-WebUI prompts
 - https://openwebui.com/prompts
 
 
+
+
+## Next session
+[Knowlodge base and RAG](04-documents-rag.md)
+
+
