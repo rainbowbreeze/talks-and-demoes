@@ -1,7 +1,7 @@
 # Ollama + Open WebUI LLM Workshop
 
 
-[01 - Prerequisites for running the workshop](01-prerequisites.md).  
+[01. Prerequisites for running the workshop](01-prerequisites.md).  
 [02. Install Ollama and Open WebUI](02-ollama_open-webui.md).  
 [03. Creating agents for specific tasks](03-creating_agents.md).  
 [04. Extend knowledge with Documents and RAG](04-documents-rag.md).  
