@@ -1,4 +1,4 @@
-# 07. User MCP natively in Open WebUI
+# 07. Use MCP natively in Open WebUI
 
 
 
@@ -17,21 +17,24 @@ MCP server communicates with the client using one of the following three channel
 Open WebUI [supports natively](https://docs.openwebui.com/features/mcp) only MCP via HTTP Streaming. [Video](https://www.reddit.com/r/LocalLLaMA/comments/1ns7f86/native_mcp_now_in_open_webui/).
 
 
+
 #### Catalogs with MCP servers
+
+There are many online catalogs listing MCP servers. Here some:
 - https://mcpservers.org/remote-mcp-servers (it lists only MCP servers, search for the ones supporting http)
-- https://mcp.so/
+- https://mcp.so/servers
+
+
+### Additional resources with info
+- Official instruction on how to configure an MCP server: https://docs.openwebui.com/features/mcp.
 
 
 
 
-## Connect to an MCP server
+## Connect Open WebUI to an MCP server
 
-There are different catalogs of MCP servers: https://mcp.so/servers, https://mcpservers.org/, etc.
+The goal is to access the [CoinGecko MCP server](https://mcp.api.coingecko.com/), which is accessible via Streameable HTTP.
 
-https://mcpservers.org/remote-mcp-servers shows the MCP server with Streameable HTTP, like the [one from CoinGecko](https://mcp.api.coingecko.com/).
-
-
-[Instructions](https://docs.openwebui.com/features/mcp) to confige the server 
 
 Admin Panel -> Settings -> External Tools.
 - Click `Add Server`.
@@ -43,8 +46,10 @@ Admin Panel -> Settings -> External Tools.
   - None
 - ID
   - coingecko_mcp_http
+  - this is the name reported in the logs
 - Name
   - CoinGecko MCP via http
+  - this is the name used in the UI
 - Description
   - Get real time quotation of crypto assets
 - Save
@@ -54,25 +59,33 @@ Admin Panel -> Settings -> External Tools.
 
 ## Use the MCP server
 
-Open a chat with qwen3:8b and ask:
+To use an MCP server, the model needs to have the tool calling capabily. It means it understands the user's query, decides whether an external function needs to be called, correctly formats the call, and integrates the tool's output into the conversation. [qwen3:8b](https://ollama.com/library/qwen3) has them.
+
+
+First, let's see what happens when the model can only use its internal knowledge. Open a chat with qwen3:8b and ask:
 ```
 What's the current BTC value?
 ```
+The model should return a BTC value linked to its latest data cut. Which, of course, is not updated.
 
-Now, open another chat, still with qwen3:8b, select the `CoinGecko MCP via http` tool in the list of available tools.
 
-Use "Native" Function Calling ReACT-style (Reasoning + Acting) Tool Use
-- Open the chat window.
-- Go to Chat Controls -> Advanced Params.
+Now, open another chat, still with qwen3:8b and
+- Select the `CoinGecko MCP via http` tool in the list of available tools, and enable it.
+- Go to Chat Controls -> Advanced Params (top right of the chat window).
 - Change the Function Calling parameter from `Default` to `Native`.
+  - This option enables Function Calling ReACT-style (Reasoning + Acting) tool use.
 
 And finally ask again:
 ```
 What's the current BTC value?
 ```
-Check also the log of the docker container with the time tool to see if it was called.
+The model should now show it has called the CoinGecko MCP and return the right current value of BTC is USD.  
 
-Log example when using MCP over http
+
+The same info (MCP to call and native Function Calling can also be preset in a new agent).
+
+
+To check the model called the MCO server, check the log of the docker container. Log example when using MCP over http:
 ``` 
 2025-10-12 11:01:30.929 | DEBUG    | mcp.client.streamable_http:streamablehttp_client:480 - Connecting to StreamableHTTP endpoint: https://mcp.api.coingecko.com/mcp
 
@@ -88,7 +101,3 @@ Log example when using MCP over http
 
 ## Next session
 [MCP via mcpo](08-mcp_via_mcpo.md)
-
-
-
-
