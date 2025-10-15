@@ -1,7 +1,11 @@
 # 06. Using Tools in Open WebUI
 
 
-## How Tools work in Open WebUI
+
+
+## Some background information
+
+### How Tools work in Open WebUI
 
 https://docs.openwebui.com/openapi-servers/open-webui
 - Open WebUI v0.6+ supports integration with external tools via the OpenAPI servers

@@ -1,7 +1,11 @@
 # 04. Documents and RAG in Open WebUI
 
 
-## What is RAG
+
+
+## Some background information
+
+### What is RAG
 
 https://docs.openwebui.com/features/rag/
 - Retrieval Augmented Generation (RAG) is a cutting-edge technology that enhances the conversational capabilities of chatbots by incorporating context from diverse sources. It works by retrieving relevant information from a wide range of sources such as local and remote documents, web content, and even multimedia sources like YouTube videos.

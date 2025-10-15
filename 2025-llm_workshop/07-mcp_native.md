@@ -1,6 +1,8 @@
 # 07. User MCP natively in Open WebUI
 
 
+
+
 ## Some background information
 
 ### What is MCP?
