@@ -50,7 +50,7 @@ This workshop requires at least 6-10Gb of data download. Because we all know it'
 As a workaround, it's possible to download the majority of the data **before** the workshop.
 
 **Ollama model**
-Mac/Win/Linux: connect to the standalone Ollama app to download the models used in this workshop
+Mac/Win/Linux: connect to the standalone Ollama app ([instructions to install it](02-ollama_open-webui.md)) to download the models used in this workshop
 ```
 ollama run gemma3:4b
 ollama run qwen3:4b

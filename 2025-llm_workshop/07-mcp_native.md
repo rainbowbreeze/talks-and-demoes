@@ -59,17 +59,17 @@ Admin Panel -> Settings -> External Tools.
 
 ## Use the MCP server
 
-To use an MCP server, the model needs to have the tool calling capabily. It means it understands the user's query, decides whether an external function needs to be called, correctly formats the call, and integrates the tool's output into the conversation. [qwen3:8b](https://ollama.com/library/qwen3) has them.
+To use an MCP server, the model needs to have the tool calling capabily. It means it understands the user's query, decides whether an external function needs to be called, correctly formats the call, and integrates the tool's output into the conversation. [qwen3:4b](https://ollama.com/library/qwen3) has them.
 
 
-First, let's see what happens when the model can only use its internal knowledge. Open a chat with qwen3:8b and ask:
+First, let's see what happens when the model can only use its internal knowledge. Open a chat with qwen3:4b and ask:
 ```
 What's the current BTC value?
 ```
 The model should return a BTC value linked to its latest data cut. Which, of course, is not updated.
 
 
-Now, open another chat, still with qwen3:8b and
+Now, open another chat, still with qwen3:4b and
 - Select the `CoinGecko MCP via http` tool in the list of available tools, and enable it.
 - Go to Chat Controls -> Advanced Params (top right of the chat window).
 - Change the Function Calling parameter from `Default` to `Native`.

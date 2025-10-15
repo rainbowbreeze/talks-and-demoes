@@ -1,15 +1,15 @@
 
-# 01. Configure and launch Open WebUI and Ollama
+# 02. Configure and launch Open WebUI and Ollama
 
 
 ## Software installation
 
 There are two main software used in this workshop:
 - [Ollama](https://ollama.com/) is a locally deployed AI model runner, designed to allow users to download and execute large language models (LLMs) directly on their personal computer.  
-- [Open WebUI](https://docs.openwebui.com/) is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG,
+- [Open WebUI](https://docs.openwebui.com/) is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, etc.  
 
 On a Lin/Win CUDA-supported environment, the easiest way to install them is via the `ghcr.io/open-webui/open-webui:ollama` docker image. It includes both of them, with CUDA support enabled.  
-[docker-compose example](docker/1-ollama_only/docker-compose.yaml).
+[docker-compose example](docker/1-ollama_only/docker-compose.yaml).  
 
 On Mac Silicon (M1 - Mx), if Ollama is installed via docker, GPU acceleration is not available. The only way (as for 20251014) to leverage Apple Metal or ANE acceleration, is to install Ollama as a standalone app.
 
@@ -19,9 +19,9 @@ On Mac Silicon (M1 - Mx), if Ollama is installed via docker, GPU acceleration is
 
 Ollama has standalone [clients](https://ollama.com/download) for Win/Lin/Mac. If accelerated hardware is available, the client uses it.   
 
-On a Mac Intel / Apple Silicon, also the Homebrew way is possible using `brew install ollama`.  Apple Silicon hardware acceleration is supported.  
+On a Mac Intel / Apple Silicon, also the Homebrew way is possible using `brew install ollama`. Apple Silicon hardware acceleration is supported.  
 
-To install using docker, hardware accelerated images are available `ollama/ollama:latest`.  If installed on Mac, no hardware acceleration is available (_although small models with < 1B parameters are usable_).  
+To install using docker, hardware accelerated images are available `ollama/ollama:latest`. If installed on Mac, no hardware acceleration is available (_although small models with < 1B parameters are usable_).  
 [docker compose example](docker/1-ollama_only/docker-compose.yaml).
 
 
@@ -59,7 +59,7 @@ Admin Panel -> Settings -> Connections
 - Enable Ollama API
 - Manage Ollama API connection
   - Put the most appropriate access for the Ollana servier
-  - http://host.docker.internal:11434 (becaose Ollama runs a standalone app in the same machine of Open WebUI)
+  - http://host.docker.internal:11434 (because Ollama runs a standalone app in the same machine of Open WebUI)
 - Verify the connection
 
 
@@ -72,7 +72,7 @@ Admin Panel -> Settings -> Connections
 - Ollama API -> Manage
   - Pull a model form Ollama.com
     - Select gemma3:4b and pull the model
-    - Select qwen3:8b and pull the model
+    - Select qwen3:4b and pull the model
 
 
 
