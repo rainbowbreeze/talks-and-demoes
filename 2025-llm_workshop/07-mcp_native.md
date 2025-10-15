@@ -12,6 +12,10 @@ MCP server communicates with the client using one of the following thee channels
 Open WebUI [supports natively](https://docs.openwebui.com/features/mcp) only MCP via HTTP Streaming. [Video](https://www.reddit.com/r/LocalLLaMA/comments/1ns7f86/native_mcp_now_in_open_webui/).
 
 
+### Catalogs with MCP servers
+- https://mcp.so/
+
+
 
 
 ## Connect to an MCP server
@@ -73,6 +77,11 @@ Log example when using MCP over http
 
 
 ## Additional Resources
+
+
+
+## Next session
+[MCP via mcpo](08-mcp_via_mcpo.md)
 
 
 

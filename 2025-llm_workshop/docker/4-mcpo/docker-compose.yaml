@@ -1,0 +1,22 @@
+services:
+  mcpo:
+    container_name: mcpo
+    image: ghcr.io/open-webui/mcpo:main
+    restart: unless-stopped
+
+    volumes:
+      - /Volumes/Data/development/open-webui/volumes/mcpo:/app/config
+
+    ports:
+      - 8000:8000
+
+    environment:
+      # Add potential environmental vars to configure the MCP servers here
+      - TOP_SECRET_API_KEY=xxxxx
+
+    # launch the mcpo server
+    command: --config /app/config/config.json --hot-reload
+
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
