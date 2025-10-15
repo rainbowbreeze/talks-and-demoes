@@ -82,7 +82,7 @@ What's the current BTC value?
 The model should now show it has called the CoinGecko MCP and return the right current value of BTC is USD.  
 
 
-The same info (MCP to call and native Function Calling can also be preset in a new agent).
+The same info (MCP to call and native Function Calling) can also be preset in a new agent.
 
 
 To check the model called the MCO server, check the log of the docker container. Log example when using MCP over http:
