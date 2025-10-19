@@ -100,6 +100,8 @@ https://jsonformatter.curiousconcept.com/#
 
 
 ## Additional resources
+- Connect Gemini to Open-WebUI: https://github.com/open-webui/open-webui/discussions/8445
+
 
 
 

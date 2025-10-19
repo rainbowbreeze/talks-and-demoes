@@ -9,7 +9,7 @@ Then, the info can be saved on a database (or as EXIF info in the image itself) 
 
 
 ### Select the base model to use
-Any model with vision capabilities work.
+Any [model with vision](https://ollama.com/search?c=vision) capabilities work.
 https://ollama.com/library/gemma3 (4B, 7B, 12B parameters)
 
 
