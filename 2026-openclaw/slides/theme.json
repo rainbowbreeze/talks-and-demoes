@@ -1,0 +1,11 @@
+{
+    "font-main": "'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif",
+    "bg-color": "#0a0f1a",
+    "text-color": "#f0f4ff",
+    "text-font-size": "16px",
+    "title-color": "#ff4d4d",
+    "title-font-size": "4.5em",
+    "footer-text": "🦞 OpenClaw inspired theme 🦞",
+    "footer-font-size": "14px",
+    "footer-text-color": "#8892b0"
+}
