@@ -121,7 +121,7 @@
       "data": {
         "title": "🦞 OpenClaw",
         "bullets": [
-          "An LLM, an harness, and a way to access them"
+          "The harness that gave the AI brain a body"
         ],
         "speaker_notes": "OpenClaw is an agent, configured with a particular harness. And with a application layer to access them."
       }
@@ -131,7 +131,7 @@
       "data": {
         "title": "🦞 OpenClaw",
         "bullets": [
-          "An LLM, an harness, and a way to access them",
+          "The harness that gave the AI brain a body",
           "It KNOWS you and has a clear GOAL",
           "It can DO things for you",
           "It REMENBERS things",
@@ -148,7 +148,7 @@
       "data": {
         "title": "🦞 OpenClaw",
         "bullets": [
-          "An LLM, an harness, and a way to access them",
+          "The harness that gave the AI brain a body",
           "It KNOWS you and has a clear GOAL",
           "It can DO things for you",
           "It REMENBERS things",
@@ -310,7 +310,7 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "Interacting with OpenClaw",
+        "title": "Interaction surfaces",
         "bullets": [
           "OpenClaw TUI and GUI as a baseline interaction surface",
           "Seamless interaction via WhatsApp, Discord, Slack, Telegram, Signal, Teams, etc, etc...",
@@ -324,8 +324,31 @@
     {
       "template": "section_title",
       "data": {
+        "title": "Live Demonstration",
+        "sentence": "Putting all of this together",
+        "speaker_notes": "Time to check what OpenClaw car really do"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A few examples",
+        "bullets": [
+          "Discord server with different agents, one per personality",
+          "How the different agents are configured",
+          "News Report example (searching for news, parsing YouTube channels, reading emails)",
+          "From workflow to skill (ideapad)",
+          "GAStronauti Community Manager (keep track of community operations)",r
+          "Teaching agents"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
         "title": "How to \"Install\" OpenClaw",
-        "sentence": "Choosing your hardware and reducing the blast radius.",
+        "sentence": "Choosing your hardware, making your magic, and reducing the blast radius.",
         "speaker_notes": "Since our time is limited today, I will skip the basic step-by-step installation tutorial and jump straight into hardware choices, security advice, and how to configure an active system."
       }
     },
@@ -359,7 +382,7 @@
             "Headless vs desktop setup: Access to camera and other OS-specific skills",
             "Local inference: run LLMs locally, do not use cloud models",
             "VPS: Always-on, isolated",
-            "Raspberry Pi: even a Raspi4, 2GB of RAM is great for running OpenClaw"
+            "Raspberry Pi: even a RasPi4, 2GB of RAM is enough for running OpenClaw"
           ]
         },
         "column_right": {
@@ -367,12 +390,14 @@
           "bullets": [
             "Never run with root or admin accounts",
             "Sandbox environments using Docker or restricted users",
+            "Never expose the Gateway on the internet",
             "Apply the principle of least privilege"
           ]
         },
-        "speaker_notes": "When it comes to hardware, you have a few choices. You can run OpenClaw locally on a dedicated Mac Mini... Alternatively, you can run it on a VPS... No matter what hardware you choose, you must immediately implement core security practices to reduce the 'blast radius' if something goes wrong. The most crucial rule is to never run OpenClaw using a root or admin account. Always apply the principle of least privilege."
+        "speaker_notes": "No matter what hardware you choose, you must immediately implement core security practices to reduce the 'blast radius' if something goes wrong. The most crucial rule is to never run OpenClaw using a root or admin account. Sandboxing is hard, but it pays you back. Always apply the principle of least privilege."
       }
-    },    {
+    },
+    {
       "template": "content_simple",
       "data": {
         "title": "Creating your first agent",
@@ -385,34 +410,24 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "Defensive Architecture",
+        "title": "Creating your first agent",
         "bullets": [
-          "Every surface can be a vector for prompt injection (emails, web pages, messages, etc)",
-          "Configure credentials in the right way (env, secrets, NOT in the config files directly",
-          "Malicious supply chain code in skills"
+          "Hatch the agent as onboarding a real human",
+          "Configure chaneels (_optional, but useful_)"
         ],
-        "speaker_notes": "As we integrate our agents with the real world, security is paramount. First, you must implement separate identities to reduce the blast radius."
+        "speaker_notes": "Select how you want to interact with your agent. Planning to use with other family members? Maybe Whatsapp is the right approach. Want flexibility and multi-agent system? Discord backs you up. Wanna start playing as soon as possible, and locally? Just use the GUI."
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Mitigation Strategies",
+        "title": "Creating your first agent",
         "bullets": [
-          "Separate identities and isolated Agent Mail",
-          "Defensive text sanitation layers and frontier model scanning",
-          "Read-only access limits and draft approvals",
-          "Source code auditing before installing skills"
+          "Hatch the agent as onboarding a real human",
+          "Configure chaneels (_optional, but useful_)",
+          "Start building your first workflow"
         ],
-        "speaker_notes": "Do not let the agent operate using your personal browser profile. Create a distinct entity. You must understand that every input channel is a potential prompt injection surface. You must establish defensive text sanitation layers. Never blindly hand over the 'Keys to the Kingdom'. Limit the agent to read-only access wherever possible, verifying its work before approving destructive actions. Use Agent Mail for secure email isolation. Finally, always audit the source code of a third-party skill before installing it."
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
-        "title": "Best Practices & Live Demonstration",
-        "sentence": "From unstructured vibe coding to repeatable logic.",
-        "speaker_notes": "Now let's discuss best practices and look at a live demonstration. When building your Agentic OS, you must start simple. Start with a single agent handling a basic task. Move away from unstructured 'vibe coding' toward defining strict, repeatable, and logical processes."
+        "speaker_notes": "When building your Agentic OS, you must start simple. Start with a single agent handling a basic task. Move away from unstructured 'vibe coding' toward defining strict, repeatable, and logical processes."
       }
     },
     {
@@ -430,7 +445,46 @@
       }
     },
     {
-      "template": "content_and_image",
+      "template": "content_simple",
+      "data": {
+        "title": "Mitigation Strategies",
+        "bullets": [
+          "Every surface can be a vector for prompt injection (emails, web pages, messages, etc)",
+          "Defensive text sanitation layers and frontier model scanning"
+        ],
+        "speaker_notes": "As we integrate our agents with the real world, security is paramount. You must understand that every input channel is a potential prompt injection surface. You must establish defensive text sanitation layers."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Mitigation Strategies",
+        "bullets": [
+          "Every surface can be a vector for prompt injection (emails, web pages, messages, etc)",
+          "Defensive text sanitation layers and frontier model scanning",
+          "Separate identities: enthusiasm can be dangerous!",
+          "Read-only access limits and draft approvals"
+        ],
+        "speaker_notes": "Second, you must implement separate identities to reduce the blast radius. Do not let the agent operate using your personal browser profile. Create a distinct entity. Never blindly hand over the 'Keys to the Kingdom'. Limit the agent to read-only access wherever possible, verifying its work before approving destructive actions."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Mitigation Strategies",
+        "bullets": [
+          "Every surface can be a vector for prompt injection (emails, web pages, messages, etc)",
+          "Defensive text sanitation layers and frontier model scanning",
+          "Separate identities: enthusiasm can be dangerous!",
+          "Read-only access limits and draft approvals",
+          "Malicious supply chain code in skills",
+          "Source code auditing before installing skills"
+        ],
+        "speaker_notes": "Finally, always audit the source code of a third-party skill before installing it."
+      }
+    },
+    {
+      "template": "content_simple",
       "data": {
         "title": "Auto-Improving the OS",
         "bullets": [
@@ -439,16 +493,14 @@
           "Diagnoses and repairs broken workflows",
           "Maintains the 'Human in the Loop' principle"
         ],
-        "image_uri": "https://picsum.photos/800/800",
-        "image_position": "right",
         "speaker_notes": "Your Agentic OS can also auto-improve. By leveraging the generative aspect of the LLM, you can tell OpenClaw to review its own codebase and conversation logs daily. It will analyze how a task was handled, identify inefficiencies, and propose code changes. And remember: shit happens. Keep a 'human in the loop,' but ask OpenClaw to solve its own problems by diagnosing log errors."
       }
     },
     {
       "template": "section_title",
       "data": {
-        "title": "Closing Session",
-        "sentence": "The true future we are building toward is Swarms.",
+        "title": "A close look at the future",
+        "sentence": "Which is probably next 4 weeks... 🤯",
         "speaker_notes": "To wrap up, the ecosystem around Agentic AI is moving at a breakneck pace. OpenClaw is phenomenal, but it exists in a rapidly evolving landscape."
       }
     },
