@@ -7,9 +7,31 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Introduction: The Evolution of the Agentic OS",
-        "sentence": "Moving from 'question to answer' to 'goal to result'.",
-        "speaker_notes": "Welcome, everyone, to 'Building Your First Agentic OS with OpenClaw.' We are currently witnessing a massive paradigm shift in how we interact with artificial intelligence. If we look at the evolution of AI interaction over the past couple of years, we started with simple, sandboxed chat applications. These chat models operated purely on a 'question to answer' basis, where you would ask a question, the AI would reply, and then you had to manually take that answer and do the actual work yourself."
+        "title": "🦞 OpenClaw and the Agentic OS era"
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Alfredo Morresi",
+        "bullets": [
+          "Community builder and developer by passion, Developer Relation @ Google by profession",
+          "Leading the Google Developer Experts (GDE) program - Deep knowledge in a Google tech? Love to share your knowledge with other? We need to talk!",
+          "🇮🇹, I love being a dad, free-software, running on the beach, snowboarding",
+          "I relentlessly train myself in preparing (and eating) Tiramisù",
+          "I'm definitely yellow 💛"
+        ],
+        "image_uri": "rainbowbreeze_full.png",
+        "image_position": "left",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "The Evolution of the Agentic OS",
+        "sentence": "From 'question to answer' to 'goal to result'",
+        "speaker_notes": ""
       }
     },
     {
@@ -17,35 +39,140 @@
       "data": {
         "title": "The Paradigm Shift",
         "bullets": [
-          "Evolution from simple chat applications to advanced tool use",
-          "Expansion through Model Context Protocol (MCP) and custom skills",
-          "The Agentic OS: Goal-oriented instead of query-oriented",
-          "OpenClaw acts as a proactive entity, not a reactive chatbot"
+          "\"Simple\" chat applications"
         ],
-        "speaker_notes": "From there, we evolved to more advanced applications that allowed expansion and customization through tools like Model Context Protocol (MCP) and custom skills. However, the ultimate evolution we are stepping into today is the 'Agentic OS'. An Agentic OS completely changes the dynamic from 'question to answer' to 'goal to result'. Instead of constantly ping-ponging prompts back and forth, you give the system a goal, and the agent proactively plans out the task, executes it, and delivers the final result."
+        "speaker_notes": "ChatGPT came on 2022. Impacful, but you had to craft \"The Perfect Prompt\" to ri-elaborate information. Limited because it could only talk back to you, and could not sent emails, browse and interact with sites, you need to pass the files, etc. The app wrote the email draft, but you had to copy and past it."
       }
     },
     {
-      "template": "content_double",
+      "template": "content_simple",
       "data": {
-        "title": "A New Engineering Discipline",
-        "column_left": {
-          "sub_heading": "Prompt Engineering (Old)",
-          "bullets": [
-            "Crafting the perfect prompt",
-            "Manual execution of tasks",
-            "Iterative Q&A refinement"
-          ]
-        },
-        "column_right": {
-          "sub_heading": "Agentic Engineering (New)",
-          "bullets": [
-            "Context engineering for rich backgrounds",
-            "Incredibly simple daily prompts",
-            "Architecting and guiding automated systems"
-          ]
-        },
-        "speaker_notes": "This shift requires a new engineering discipline. We are moving away from traditional 'prompt engineering' and entering the era of 'agentic engineering'. In the past, people spent hours crafting the perfect prompt to get the right output. With an Agentic OS, you focus on 'context engineering,' where you load your agent with robust context about yourself, your business, and your preferences. Your daily job as a developer or operator changes from executing manual digital tasks to architecting and guiding these automated systems."
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc"
+        ],
+        "speaker_notes": "Then, over time, LLMs became more capable, added reasoning, added a bigger context windows, RAG to retrieve information in a smart way, and much more. But it was still a chat application."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools"
+        ],
+        "speaker_notes": "Finally, there agents started to have the possibility to interact with the rest of the world. They got the first function calling capabilities, AKA tools. Agents finally had the ability to act."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill"
+        ],
+        "speaker_notes": "And from tools, MCP emerged to give even more capabilities to agent, using a common format. And them we got AgentSkills, as a way to packages and repeat specific flows."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness"
+        ],
+        "speaker_notes": "All of this layer around the LLM created the harness. It's like the \"entire car\" built around the engine. The engine, without the car, goes nowhere. The car, without the engine, cannot move.\nBut together, they work. They can move!"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows"
+        ],
+        "speaker_notes": "And thanks to all of this, we have now our Agentic Workflows. Entire flows solved using LLMs and they harnesses. By their own, without our interventions."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows",
+          "🦞 OpenClaw"
+        ],
+        "speaker_notes": "And then, OpenClaw arrived."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "An LLM, an harness, and a way to access them"
+        ],
+        "speaker_notes": "OpenClaw is an agent, configured with a particular harness. And with a application layer to access them."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "An LLM, an harness, and a way to access them",
+          "It KNOWS you and has a clear GOAL",
+          "It can DO things for you",
+          "It REMENBERS things",
+          "Can communicate over any CHAT tool",
+          "It has access to built-in functionalies, TOOLS, skills",
+          "It's PROACTIVE and can AUTOMATE things",
+          "It gets better over time"
+        ],
+        "speaker_notes": "They allow OpenClaw to KNOW who you are and its GOAL. Can DO things for you.\nIt REMENBERS things.\nCan communicate over any CHAT tool.\nIt has access to built-in functionalies, TOOLS, skills.\nIt's PROACTIVE and can AUTOMATE things.\nIt gets better over time."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "An LLM, an harness, and a way to access them",
+          "It KNOWS you and has a clear GOAL",
+          "It can DO things for you",
+          "It REMENBERS things",
+          "Can communicate over any CHAT tool",
+          "It has access to built-in functionalies, TOOLS, skills",
+          "It's PROACTIVE and can AUTOMATE things",
+          "It gets better over time",
+          "First PERSONAL and AUTONOMOUS agent"
+        ],
+        "speaker_notes": "OpenClaw is the first PERSONAL and AUTONOMOUS agent"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows",
+          "🦞 OpenClaw",
+          "Agentic OS"
+        ],
+        "speaker_notes": "OpenClaw paved the way for the Agentic OS. The Agentic OS is a software layer that manages and coordinates autonomous AI agents to do tasks for you, rather than offering applications to interact with to the job done.\nA traditional operating system takes instructions. An AI operating system takes objectives.\nIt enables AI to plan, take action, and execute complex workflows independently—such as sending emails or scheduling tasks—by interacting with software, files, and tools on the user's behalf."
       }
     },
     {
@@ -55,6 +182,31 @@
         "sentence": "The harness that gives the AI brain a body.",
         "speaker_notes": "So, what exactly is OpenClaw? To understand it, we must break down the internal mechanism an agent uses to achieve its goals, which is known as the Agent Loop: Observe, Think, and Act."
       }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "The agent is only as good as the system you build around it",
+        "attribution": "And OpenClaw gives you the tool to control all of this",
+        "speaker_notes": "Thank you for your time. I'd now like to open the floor to any questions you might have."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "The Core Mechanics",
+        "column_left": {
+          "sub_heading": "The Agent Loop",
+          "bullets": [
+            "Observe: Gather context and research",
+            "Think: Formulate a plan for the next step",
+            "Act: Write code or execute tools"
+          ]
+        },
+        "column_right": {
+        }
+      },
+        "speaker_notes": "When you give the agent a prompt, it doesn't just generate text; it continuously loops through three steps. First, it Observes by checking the workspace and gathering context. Second, it Thinks about what to do next and formulates a plan. Finally, it Acts by writing code or using tools."
     },
     {
       "template": "content_double",
@@ -75,28 +227,125 @@
             "OpenClaw serves as the harness (hands, eyes, skills)"
           ]
         },
-        "speaker_notes": "When you give the agent a prompt, it doesn't just generate text; it continuously loops through three steps. First, it Observes by checking the workspace and gathering context. Second, it Thinks about what to do next and formulates a plan. Finally, it Acts by writing code or using tools. A helpful way to visualize this is the 'Brain in the Middle' model. The LLM acts as the 'brain,' but OpenClaw acts as the 'harness' or the body surrounding the brain, giving it hands, eyes, and an ecosystem of skills."
+        "speaker_notes": "A helpful way to visualize this is the 'Brain in the Middle' model. The LLM acts as the 'brain,' but OpenClaw acts as the 'harness' or the body surrounding the brain, giving it hands, eyes, and an ecosystem of skills."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "The OpenClaw Harness",
+        "image_uri": "openclaw-tools-skills-architecture.webp",
+        "speaker_notes": "3 layers-system.\n- Layer 1: 8 Core tools like filesystem access, internet search and fetch, execute local commands.\n- Layer 2: Advances tools to manage sessions, memory, cron, additional nodes to connect to OpenClaw\n- Layer 3: Built-in Skills to access to a baseline of services"
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Channels & The Competitors Landscape",
+        "title": "Interaction Layers & Tooling",
         "bullets": [
-          "Seamless interaction via WhatsApp, Discord, Slack, and Telegram",
-          "Supports asynchronous voice memos",
-          "Alternative platforms: NemoClaw, Manus, Claude Code, Codeex",
-          "OpenClaw's edge: A generalized personal assistant that retains deep business context"
+          "Tools: Typed functions for taking action",
+          "Skills: Markdown SOPs (Standard Operative Procedures) for step-by-step processes, in AgentSkill format",
+          "Plugins: Community packages for models and integrations",
+          "MCP client: OpenClaw can act as MCP client to multiple MCP servers"
         ],
-        "speaker_notes": "Furthermore, OpenClaw introduces seamless interaction through user-friendly channels. Instead of just typing commands into a terminal, you can interact with your agent using the chat apps you already use every day. You can even send it voice memos while you are driving. When we look at the competitors' landscape, there are other products taking a similar approach but in different ways... OpenClaw differentiates itself by acting as a generalized personal assistant that sits between you and all of your tools."
+        "speaker_notes": "OpenClaw interacts with the world using three primary layers: Tools, Skills, and Plugins. Tools are the typed functions the agent invokes to take action. Skills are Markdown files injected into the system prompt that act as SOPs (Standard Operative Procedures). They are defined using the AgentSkill standard. Finally, plugins are packages published by the community."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Identity Files",
+        "bullets": [
+          "SOUL.md: Defines personality, core truths, values, and boundaries",
+          "IDENTITY.md: Defines the agent's name, vibe, and emojis",
+          "USERS.md: Defines who the user is, they goals and preferences",
+          "AGENTS.md: Standard Operating Procedures (SOP) rulebook and memory protocols",
+          "TOOLS.md: A reminder list of all accessible tools",
+          "MEMORY.md: TODO"
+        ],
+        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Identity Files",
+        "bullets": [
+          "SOUL.md: Defines personality, core truths, values, and boundaries",
+          "IDENTITY.md: Defines the agent's name, vibe, and emojis",
+          "USERS.md: Defines who the user is, they goals and preferences",
+          "AGENTS.md: Standard Operating Procedures (SOP) rulebook and memory protocols",
+          "TOOLS.md: A reminder list of all accessible tools",
+          "MEMORY.md: TODO",
+          "Loaded at every interaction with the LLM!"
+        ],
+        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Memory and Context",
+        "bullets": [
+          "MEMORY.md: TODO",
+          "Daily Memory: Synthesizes important facts into a daily memory.md file",
+          "Context Compaction: Automatically compacts older conversations to save space",
+          "Segmentation: Use separate channels/threads for distinct tasks",
+          "Vector Search and RAG (locally or on a second brain like Obsidial Vaults)"
+        ],
+        "speaker_notes": "Managing memory and context is a critical aspect of an Agentic OS. OpenClaw automatically and continuously compacts older conversations to save space. Every night, it creates a daily memory.md file. A crucial best practice for memory management is segmenting your conversations into different channels. OpenClaw is also highly reactive thanks to its 'heartbeat', waking up every 30 minutes to proactively check tasks. Finally, you can elevate your agent's memory by integrating an Obsidian Vault for Vector Memory Search and RAG."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Proactivity",
+        "bullets": [
+          "Heartbeat: Internal cron job wakes up every 30 minutes to run background workflows",
+          "Cron Scheduler: Execute specific jobs at specific times"
+        ],
+        "speaker_notes": "OpenClaw is also highly reactive thanks to its 'heartbeat', waking up every 30 minutes to proactively check tasks. It also integrates a cron scheduler, to execute specific jobs at specific times. Ant these jobs are prompt sent to the agent. They retain the identity of the agent (but not the memory)"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Interacting with OpenClaw",
+        "bullets": [
+          "OpenClaw TUI and GUI as a baseline interaction surface",
+          "Seamless interaction via WhatsApp, Discord, Slack, Telegram, Signal, Teams, etc, etc...",
+          "Supports asynchronous voice memos",
+          "OpenClaw Gateway interact via CLI",
+          "OpenClaw MCP Server"
+        ],
+        "speaker_notes": "Furthermore, OpenClaw introduces seamless interaction through user-friendly channels. Instead of just typing commands into a terminal, you can interact with your agent using the chat apps you already use every day. You can even send it voice memos while you are driving."
       }
     },
     {
       "template": "section_title",
       "data": {
-        "title": "How to \"Install\" OpenClaw & Security Basics",
+        "title": "How to \"Install\" OpenClaw",
         "sentence": "Choosing your hardware and reducing the blast radius.",
         "speaker_notes": "Since our time is limited today, I will skip the basic step-by-step installation tutorial and jump straight into hardware choices, security advice, and how to configure an active system."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Hardware Choices",
+        "column_left": {
+          "sub_heading": "Hardware Setup",
+          "bullets": [
+            "Local computer: Local execution for top-tier privacy",
+            "Headless vs desktop setup: Access to camera and other OS-specific skills",
+            "Local inference: run LLMs locally, do not use cloud models",
+            "VPS: Always-on, isolated",
+            "Raspberry Pi: even a Raspi4, 2GB of RAM is great for running OpenClaw"
+          ]
+        },
+        "column_right": {
+        },
+        "speaker_notes": "When it comes to hardware, you have a few choices. You can run OpenClaw locally on a dedicated Mac Mini... Alternatively, you can run it on a VPS... No matter what hardware you choose, you must immediately implement core security practices to reduce the 'blast radius' if something goes wrong. The most crucial rule is to never run OpenClaw using a root or admin account. Always apply the principle of least privilege."
       }
     },
     {
@@ -106,9 +355,11 @@
         "column_left": {
           "sub_heading": "Hardware Setup",
           "bullets": [
-            "Mac Mini: Local execution for top-tier privacy",
-            "VPS: Always-on, isolated, but exposes an SSH port",
-            "Raspberry Pi: Great for smart home integrations"
+            "Local computer: Local execution for top-tier privacy",
+            "Headless vs desktop setup: Access to camera and other OS-specific skills",
+            "Local inference: run LLMs locally, do not use cloud models",
+            "VPS: Always-on, isolated",
+            "Raspberry Pi: even a Raspi4, 2GB of RAM is great for running OpenClaw"
           ]
         },
         "column_right": {
@@ -121,62 +372,39 @@
         },
         "speaker_notes": "When it comes to hardware, you have a few choices. You can run OpenClaw locally on a dedicated Mac Mini... Alternatively, you can run it on a VPS... No matter what hardware you choose, you must immediately implement core security practices to reduce the 'blast radius' if something goes wrong. The most crucial rule is to never run OpenClaw using a root or admin account. Always apply the principle of least privilege."
       }
-    },
-    {
-      "template": "section_title",
+    },    {
+      "template": "content_simple",
       "data": {
-        "title": "The Foundation Elements of OpenClaw",
-        "sentence": "Onboarding your agent like a real human employee.",
+        "title": "Creating your first agent",
+        "bullets": [
+          "Hatch the agent as onboarding a real human"
+        ],
         "speaker_notes": "Once installed, setting up OpenClaw is exactly like onboarding a real human employee. You cannot expect an executive assistant to walk into your office on day one and flawlessly execute tasks without understanding your business, your clients, and your tools. You must provide it with business context."
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Identity Files",
+        "title": "Defensive Architecture",
         "bullets": [
-          "SOUL.md: Defines personality, core truths, values, and boundaries",
-          "IDENTITY.md: Defines the agent's name, vibe, and emojis",
-          "AGENTS.md: Standard Operating Procedures (SOP) rulebook and memory protocols",
-          "TOOLS.md: A reminder list of all accessible tools"
+          "Every surface can be a vector for prompt injection (emails, web pages, messages, etc)",
+          "Configure credentials in the right way (env, secrets, NOT in the config files directly",
+          "Malicious supply chain code in skills"
         ],
-        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
-      }
-    },
-    {
-      "template": "content_double",
-      "data": {
-        "title": "Interaction Layers & Tooling",
-        "column_left": {
-          "sub_heading": "Core Mechanics",
-          "bullets": [
-            "Tools: Typed functions for taking action",
-            "Skills: Markdown SOPs for step-by-step processes",
-            "Plugins: Community packages for models and integrations"
-          ]
-        },
-        "column_right": {
-          "sub_heading": "Connectivity",
-          "bullets": [
-            "Web Searching: Brave API, Grok, SearXNG",
-            "MCP: Standardizes connection to external apps (Gmail, Slack)"
-          ]
-        },
-        "speaker_notes": "OpenClaw interacts with the world using three primary layers: Tools, Skills, and Plugins. Tools are the typed functions the agent invokes to take action. Skills are Markdown files injected into the system prompt that act as SOPs. Plugins are packages published by the community. One essential capability is web searching, powered by Brave API, Grok, or SearXNG. To interact with your existing applications, we use the Model Context Protocol (MCP), which acts as a powerful universal translator."
+        "speaker_notes": "As we integrate our agents with the real world, security is paramount. First, you must implement separate identities to reduce the blast radius."
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Memory, Context & Reactivity",
+        "title": "Mitigation Strategies",
         "bullets": [
-          "Context Compaction: Automatically compacts older conversations to save space",
-          "Daily Memory: Synthesizes important facts into a daily memory.md file",
-          "Segmentation: Use separate channels/threads for distinct tasks",
-          "Heartbeat: Internal cron job wakes up every 30 minutes to run background workflows",
-          "Obsidian Vault: Massive memory graph for Vector Search and RAG"
+          "Separate identities and isolated Agent Mail",
+          "Defensive text sanitation layers and frontier model scanning",
+          "Read-only access limits and draft approvals",
+          "Source code auditing before installing skills"
         ],
-        "speaker_notes": "Managing memory and context is a critical aspect of an Agentic OS. OpenClaw automatically and continuously compacts older conversations to save space. Every night, it creates a daily memory.md file. A crucial best practice for memory management is segmenting your conversations into different channels. OpenClaw is also highly reactive thanks to its 'heartbeat', waking up every 30 minutes to proactively check tasks. Finally, you can elevate your agent's memory by integrating an Obsidian Vault for Vector Memory Search and RAG."
+        "speaker_notes": "Do not let the agent operate using your personal browser profile. Create a distinct entity. You must understand that every input channel is a potential prompt injection surface. You must establish defensive text sanitation layers. Never blindly hand over the 'Keys to the Kingdom'. Limit the agent to read-only access wherever possible, verifying its work before approving destructive actions. Use Agent Mail for secure email isolation. Finally, always audit the source code of a third-party skill before installing it."
       }
     },
     {
@@ -219,38 +447,6 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Security: Interacting with the Outside World Safely",
-        "sentence": "Defending against prompt injections and malicious skills.",
-        "speaker_notes": "As we integrate our agents with the real world, security is paramount. First, you must implement separate identities to reduce the blast radius."
-      }
-    },
-    {
-      "template": "content_double",
-      "data": {
-        "title": "Defensive Architecture",
-        "column_left": {
-          "sub_heading": "Threat Vectors",
-          "bullets": [
-            "Prompt injections via emails and web pages",
-            "Hidden instructions to forward passwords",
-            "Malicious supply chain code in skills"
-          ]
-        },
-        "column_right": {
-          "sub_heading": "Mitigation Strategies",
-          "bullets": [
-            "Separate identities and isolated Agent Mail",
-            "Defensive text sanitation layers and frontier model scanning",
-            "Read-only access limits and draft approvals",
-            "Source code auditing before installing skills"
-          ]
-        },
-        "speaker_notes": "Do not let the agent operate using your personal browser profile. Create a distinct entity. You must understand that every input channel is a potential prompt injection surface. You must establish defensive text sanitation layers. Never blindly hand over the 'Keys to the Kingdom'. Limit the agent to read-only access wherever possible, verifying its work before approving destructive actions. Use Agent Mail for secure email isolation. Finally, always audit the source code of a third-party skill before installing it."
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
         "title": "Closing Session",
         "sentence": "The true future we are building toward is Swarms.",
         "speaker_notes": "To wrap up, the ecosystem around Agentic AI is moving at a breakneck pace. OpenClaw is phenomenal, but it exists in a rapidly evolving landscape."
@@ -270,10 +466,38 @@
       }
     },
     {
-      "template": "quote_slide",
+      "template": "content_double",
       "data": {
-        "quote": "Thank you for your time. I'd now like to open the floor to any questions you might have.",
-        "attribution": "Q&A Session",
+        "title": "A New Engineering Discipline",
+        "column_left": {
+          "sub_heading": "Prompt Engineering (Old)",
+          "bullets": [
+            "Crafting the perfect prompt",
+            "Manual execution of tasks",
+            "Iterative Q&A refinement"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Agentic Engineering (New)",
+          "bullets": [
+            "Context engineering for rich backgrounds",
+            "Incredibly simple daily prompts",
+            "Architecting and guiding automated systems"
+          ]
+        },
+        "speaker_notes": "This shift requires a new engineering discipline. We are moving away from traditional 'prompt engineering' and entering the era of 'agentic engineering'. In the past, people spent hours crafting the perfect prompt to get the right output. With an Agentic OS, you focus on 'context engineering,' where you load your agent with robust context about yourself, your business, and your preferences. Your daily job as a developer or operator changes from executing manual digital tasks to architecting and guiding these automated systems."
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Thanks",
+        "bullets": [
+          "Thanks and... questions?",
+          "Reach me at https://linkedin.com/in/alfredomorresi"
+        ],
+        "image_uri": "rainbowbreeze_full.png",
+        "image_position": "right",
         "speaker_notes": "Thank you for your time. I'd now like to open the floor to any questions you might have."
       }
     }
