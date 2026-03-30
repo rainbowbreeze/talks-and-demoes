@@ -348,7 +348,7 @@
             "Headless vs desktop setup: Access to camera and other OS-specific skills",
             "Local inference: run LLMs locally, do not use cloud models",
             "VPS: Always-on, isolated",
-            "Raspberry Pi: even a Raspi4, 2GB of RAM is great for running OpenClaw"
+            "Raspberry Pi: even a RasPi4, 2GB of RAM is enough for running OpenClaw"
           ]
         },
         "column_right": {
@@ -485,7 +485,7 @@
       "template": "section_title",
       "data": {
         "title": "A close look at the future",
-        "sentence": "Which is probably next 4 weeks... 🤯",
+        "sentence": "Which is probably the next 4 weeks... 🤯",
         "speaker_notes": "To wrap up, the ecosystem around Agentic AI is moving at a breakneck pace. OpenClaw is phenomenal, but it exists in a rapidly evolving landscape."
       }
     },
@@ -494,12 +494,12 @@
       "data": {
         "title": "The Future: AI Swarms",
         "bullets": [
-          "Transitioning from a single-agent framework to a true Operating System",
+          "Transitioning from a single-agent framework to a true Agentic Operating System",
           "Orchestrating swarms of self-coordinating agents",
           "Specialized agents handling marketing, coding, and finance simultaneously",
           "The user acts as the human conductor of an entire AI workforce"
         ],
-        "speaker_notes": "The true future we are building toward is Swarms. OpenClaw is transitioning from a framework that runs a single AI agent into a true Operating System that orchestrates entire swarms of self-coordinating agents. Soon, you won't just have an assistant; you will have an entire AI workforce reporting back to you, the human conductor."
+        "speaker_notes": "The true future we are building toward is Swarms. OpenClaw is transitioning from a framework that runs a single AI agent into a true Operating System that orchestrates entire swarms of self-coordinating agents. Soon, you won't just have an assistant; you will have an entire AI workforce reporting back to you, the human conductor. OpenClaw is becoming the Agentic OS."
       }
     },
     {
@@ -517,6 +517,7 @@
         "column_right": {
           "sub_heading": "Agentic Engineering (New)",
           "bullets": [
+            "Building the cognitive infrastructure for a fleet of agents",
             "Context engineering for rich backgrounds",
             "Incredibly simple daily prompts",
             "Architecting and guiding automated systems"
