@@ -256,28 +256,13 @@
       "data": {
         "title": "Identity Files",
         "bullets": [
+          "AGENTS.md: Operating instructions for the agent and how it should use memory",
           "SOUL.md: Defines personality, core truths, values, and boundaries",
+          "USERS.md: Who the user is and how to address them",
           "IDENTITY.md: Defines the agent's name, vibe, and emojis",
-          "USERS.md: Defines who the user is, they goals and preferences",
-          "AGENTS.md: Standard Operating Procedures (SOP) rulebook and memory protocols",
-          "TOOLS.md: A reminder list of all accessible tools",
-          "MEMORY.md: TODO"
-        ],
-        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
-      }
-    },
-    {
-      "template": "content_simple",
-      "data": {
-        "title": "Identity Files",
-        "bullets": [
-          "SOUL.md: Defines personality, core truths, values, and boundaries",
-          "IDENTITY.md: Defines the agent's name, vibe, and emojis",
-          "USERS.md: Defines who the user is, they goals and preferences",
-          "AGENTS.md: Standard Operating Procedures (SOP) rulebook and memory protocols",
-          "TOOLS.md: A reminder list of all accessible tools",
-          "MEMORY.md: TODO",
-          "Loaded at every interaction with the LLM!"
+          "TOOLS.md: Notes about your tools and conventions",
+          "HEARTBEAT: Optional tiny checklist for heartbeat runs",
+          "MEMORY.md: Curated long-term memory"
         ],
         "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
       }
@@ -287,7 +272,7 @@
       "data": {
         "title": "Memory and Context",
         "bullets": [
-          "MEMORY.md: TODO",
+          "MEMORY.md: Curated long-term memory",
           "Daily Memory: Synthesizes important facts into a daily memory.md file",
           "Context Compaction: Automatically compacts older conversations to save space",
           "Segmentation: Use separate channels/threads for distinct tasks",
@@ -335,10 +320,10 @@
         "title": "A few examples",
         "bullets": [
           "Discord server with different agents, one per personality",
-          "How the different agents are configured",
+          "How the main agent is configured (via GUI)",
           "News Report example (searching for news, parsing YouTube channels, reading emails)",
           "From workflow to skill (ideapad)",
-          "GAStronauti Community Manager (keep track of community operations)",r
+          "GAStronauti Community Manager (keep track of community operations)",
           "Teaching agents"
         ],
         "speaker_notes": ""

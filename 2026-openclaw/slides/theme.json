@@ -1,6 +1,7 @@
 {
     "font-main": "'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif",
     "bg-color": "#0a0f1a",
+    "background-image": "openclaw-background.png",
     "text-color": "#f0f4ff",
     "text-font-size": "16px",
     "title-color": "#ff4d4d",
