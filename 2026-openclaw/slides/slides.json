@@ -235,7 +235,7 @@
       "data": {
         "title": "The OpenClaw Harness",
         "image_uri": "openclaw-tools-skills-architecture.webp",
-        "speaker_notes": "3 layers-system.\n- Layer 1: 8 Core tools like filesystem access, internet search and fetch, execute local commands.\n- Layer 2: Advances tools to manage sessions, memory, cron, additional nodes to connect to OpenClaw\n- Layer 3: Built-in Skills to access to a baseline of services"
+        "speaker_notes": "3 layers-system.\n- Layer 1: 8 Core tools like filesystem access, internet search and fetch, execute local commands.\n- Layer 2: Advances tools to manage sessions, memory, cron, additional nodes to connect to OpenClaw\n- Layer 3: Built-in Skills to access to a baseline of services.\nSource: https://yu-wenhao.com/en/blog/openclaw-tools-skills-tutorial/"
       }
     },
     {
@@ -264,7 +264,7 @@
           "HEARTBEAT: Optional tiny checklist for heartbeat runs",
           "MEMORY.md: Curated long-term memory"
         ],
-        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal."
+        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. IDENTITY.md is a minimal file defining who the agent is. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal.\nSource: https://docs.openclaw.ai/concepts/agent-workspace"
       }
     },
     {
