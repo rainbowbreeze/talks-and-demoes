@@ -527,22 +527,15 @@
       }
     },
     {
-      "template": "title_and_image",
-      "data": {
-        "title": "The slides",
-        "image_uri": "qrcode_slides.png",
-        "speaker_notes": "You can find the slides here"
-      }
-    },
-    {
       "template": "content_and_image",
       "data": {
         "title": "Thanks",
         "bullets": [
-          "Thanks and... questions?",
-          "Reach me at https://linkedin.com/in/alfredomorresi"
+          "Questions?",
+          "Reach me at https://linkedin.com/in/alfredomorresi",
+          "Slide deck ->"
         ],
-        "image_uri": "rainbowbreeze_full.png",
+        "image_uri": "qrcode_slides.png",
         "image_position": "right",
         "speaker_notes": "Thank you for your time. I'd now like to open the floor to any questions you might have."
       }
