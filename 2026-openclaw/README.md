@@ -22,18 +22,65 @@ And then open the browser at http://127.0.0.1:5000/
 ### Demo links
 - Discord server with different agents, one per personality
 - Prof. Izuko - Learning agent for kids
-  - docker
-  - restricted tools
-  - manually added content from books
+  - Visual Studio files
+    - IDENTITY.md
+    - USER.md
+    - SOUL.md
+    - AGENTS.md
+      - Teaching & Curriculum
+    - SYLLABUS/SYLLABUS_geometria.md
+    - SYLLABUS/PROGRESS.md
+  - Discord
+    - Channel with the interactions
+      - /status
+    - Channel with the Direct Line
+      - manually added content from books
+    - docker
+    - Channel with the interactions
+      - /tools
 - Prof. Socrates - Learning agend for high-school
-  - docker
-  - tools and internet access
-  - creation of curricula
+  - Visual Studio files
+    - IDENTITY.md
+    - USER.md
+    - SOUL.md
+    - AGENTS.md
+      - Teaching & Curriculum
+    - SYLLABUS/ESSAY/Pitagora.md
+  - Discord
+    - Channel with the interactions
+    - Channel with the direct line
+      - /tools and internet access
+      - creation of curricula
 - GAStronAI - Community Manager
-  - email
-  - skill to keep track of community operations
-  - suppliers management
+  - Visual Studio files
+    - IDENTITY.md
+    - USER.md
+    - SOUL.md
+    - AGENTS.md
+      - 🧠 BRAIN/ - G.A.S. Knowledge Base Rules
+    - skills/agentmail/SKILL.md
+    - skills/process-gas-updates/SKILL.md
+      - Process GAS Updates.md
+    - BRAIN/files with the suppliers
+  - Discord
+    - Channel with the interactions
+      - Daily report from emails
 - Samantah - Productivity agent
+  - Visual Studio files
+    - IDENTITY.md
+    - USER.md
+    - SOUL.md
+    - AGENTS.md
+      - BRAIN - Knowledge & Workflows
+    - MEMORY.md
+    - skills/news-report-openclaw/SKILL.md
+    - skills/process-gas-updates/SKILL.md
+      - Process GAS Updates.md
+    - BRAIN/files with the suppliers
+  - Discord
+    - Channel with the interactions
+      - Daily report from emails
+
   - skill to generate reports
   - cron jobs
   - skill to auto-improve
