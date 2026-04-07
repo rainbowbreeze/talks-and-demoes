@@ -19,6 +19,30 @@ And then open the browser at http://127.0.0.1:5000/
 
 ## Links to open alongsite the slides
 
+### Demo links
+- Discord server with different agents, one per personality
+- Prof. Izuko - Learning agent for kids
+  - docker
+  - restricted tools
+  - manually added content from books
+- Prof. Socrates - Learning agend for high-school
+  - docker
+  - tools and internet access
+  - creation of curricula
+- GAStronAI - Community Manager
+  - email
+  - skill to keep track of community operations
+  - suppliers management
+- Samantah - Productivity agent
+  - skill to generate reports
+  - cron jobs
+  - skill to auto-improve
+  - skill to parse YouTube channels
+  - skill to read Pavia municipality emails
+
+
+### Closing links
+
 - OpenClaw core concepts
   - OpenClaw documentation: https://docs.openclaw.ai/
   - Identity of an agent: https://docs.openclaw.ai/concepts/agent-workspace

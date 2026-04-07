@@ -320,11 +320,11 @@
         "title": "A few examples",
         "bullets": [
           "Discord server with different agents, one per personality",
-          "How the main agent is configured (via GUI)",
-          "News Report example (searching for news, parsing YouTube channels, reading emails)",
-          "From workflow to skill (ideapad)",
-          "GAStronauti Community Manager (keep track of community operations)",
-          "Teaching agents"
+          "Prof. Izuko - Learning agent for kids (docker, restricted tools, manually added content from books)",
+          "Prof. Socrates - Learning agend for high-school (docker, internet access, creation of curricula)",
+          "GAStronAI - Community Manager (email, skill to keep track of community operations, supplier)",
+          "Samantah - Productivity agent (skill to generate reports, skill to auto-improve)",
+          "News Report example (searching for news, parsing YouTube channels, reading emails)"
         ],
         "speaker_notes": ""
       }
