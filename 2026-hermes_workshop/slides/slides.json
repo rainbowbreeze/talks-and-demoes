@@ -1,0 +1,646 @@
+{
+  "presentation_metadata": {
+    "title": "Build your Personal AI Agent with Hermes",
+    "version": "1.0"
+  },
+  "slides": [
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Build your Personal AI Agent with Hermes"
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Alfredo Morresi",
+        "bullets": [
+          "Community builder and developer by passion, Developer Relation @ Google by profession",
+          "Leading the Google Developer Experts (GDE) program",
+          "🇮🇹, I love being a dad, free-software, running on the beach, snowboarding",
+          "I relentlessly train myself in preparing (and eating) Tiramisù",
+          "I'm definitely yellow 💛"
+        ],
+        "image_uri": "rainbowbreeze_full.png",
+        "image_position": "left",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "The Evolution of the Agentic OS",
+        "sentence": "From 'question to answer' to 'goal to result'",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications"
+        ],
+        "speaker_notes": "ChatGPT came on 2022. Impacful, but you had to craft \"The Perfect Prompt\" to ri-elaborate information. Limited because it could only talk back to you, and could not sent emails, browse and interact with sites, you need to pass the files, etc. The app wrote the email draft, but you had to copy and past it."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc"
+        ],
+        "speaker_notes": "Then, over time, LLMs became more capable, added reasoning, added a bigger context windows, RAG to retrieve information in a smart way, and much more. But it was still a chat application, and context was the king."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools"
+        ],
+        "speaker_notes": "Finally, there agents started to have the possibility to interact with the rest of the world. They got the first function calling capabilities, AKA tools. Agents finally had the ability to act."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill"
+        ],
+        "speaker_notes": "And from tools, MCP emerged to give even more capabilities to agent, using a common format. And them we got AgentSkills, as a way to packages and repeat specific flows."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness"
+        ],
+        "speaker_notes": "All of this layer around the LLM created the harness. It's like the \"entire car\" built around the engine. The engine, without the car, goes nowhere. The car, without the engine, cannot move.\nBut together, they work. They can move!"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows"
+        ],
+        "speaker_notes": "And thanks to all of this, we have now our Agentic Workflows. Entire flows solved using LLMs and they harnesses. By their own, without our interventions."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows",
+          "🦞 OpenClaw"
+        ],
+        "speaker_notes": "And then, OpenClaw arrived. Let's say January 2026, even if it was around a few months before."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "The harness that gave the AI brain a body and an identity"
+        ],
+        "speaker_notes": "OpenClaw is an agent, configured with a particular harness. The way the entire harness was designed, and enginereed, was the \"nove\" part."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "The harness that gave the AI brain a body and an identity",
+          "It can use TOOLS and SKILLS",
+          "It can DO things in the digital world",
+          "It COMMUNICATES over many chat channels",
+          "It REMEMBERS things",
+          "It KNOWS you",
+          "It's PROACTIVE and AUTONOMOUS",
+          "It can be easily EXTENDED",
+          "It GETS BETTER over time"
+        ],
+        "speaker_notes": "They allow OpenClaw to KNOW who you are and its GOAL. Can DO things for you.\nIt REMENBERS things.\nCan communicate over any CHAT tool.\nIt has access to built-in functionalies, TOOLS, skills.\nIt's PROACTIVE and can AUTOMATE things.\nIt gets better over time."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "🦞 OpenClaw",
+        "bullets": [
+          "The harness that gave the AI brain a body and an identity",
+          "[...]",
+          "First PERSONAL and AUTONOMOUS agent"
+        ],
+        "speaker_notes": "OpenClaw is the first PERSONAL and AUTONOMOUS agent"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows",
+          "🦞 OpenClaw",
+          "Personal AI Agents"
+        ],
+        "speaker_notes": "OpenClaw consolidated the idea for these \"Personal AI Agents\". AI-driven workflows that can DO stuff for us, in a variety of different ways, reaching us where we are."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Paradigm Shift",
+        "bullets": [
+          "\"Simple\" chat applications",
+          "Reasoning, more advanced LLMs, RAG, sub-agents, etc",
+          "Tools, MCP, AgentSkill -> Harness -> Agentic Workflows",
+          "🦞 OpenClaw",
+          "Personal AI Agents",
+          "Agentic OS"
+        ],
+        "speaker_notes": "And Personal AI Agents are paving the way for the Agentic OS. The Agentic OS is a software layer that manages and coordinates autonomous AI agents to do tasks for you, rather than offering applications to interact with to the job done.\nA traditional operating system takes instructions. An AI operating system takes objectives.\nIt enables AI to plan, take action, and execute complex workflows independently—such as sending emails or scheduling tasks—by interacting with software, files, and tools on the user's behalf."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "What is a \"Personal AI Agent\"?",
+        "sentence": "The harness that gives the AI brain a body and an identity",
+        "speaker_notes": "So, what exactly a Personal AI Agent? To understand it, we must break down how these agents are built, because..."
+      }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "The agent is only as good as the system you build around it",
+        "attribution": "And why Hermes?",
+        "speaker_notes": "Because... The agent is only as good as the system you build around it. \n (Discuss about Hermes preferences: governance, polishness, stabilty vs including the latest cutting edge trends, etc)"
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "The Core Mechanics",
+        "column_left": {
+          "sub_heading": "The Agent Loop",
+          "bullets": [
+            "Observe: Gather context and research",
+            "Think: Formulate a plan for the next step",
+            "Act: Write code or execute tools"
+          ]
+        },
+        "column_right": {
+        }
+      },
+        "speaker_notes": "The internal mechanism an agent uses to achieve its goals, which is known as the Agent Loop: Observe, Think, and Act. When you give the agent a prompt, it doesn't just generate text; it continuously loops through three steps. First, it Observes by checking the workspace and gathering context. Second, it Thinks about what to do next and formulates a plan. Finally, it Acts by writing code or using tools."
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "The Core Mechanics",
+        "column_left": {
+          "sub_heading": "The Agent Loop",
+          "bullets": [
+            "Observe: Gather context and research",
+            "Think: Formulate a plan for the next step",
+            "Act: Write code or execute tools"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "The engine and the car",
+          "bullets": [
+            "LLM serves as the engine (Claude, ChatGPT, Gemini, local models)",
+            "Hermes serves as the rest of the car (hands, eyes, skills)",
+            "Only together, they can move!"
+          ]
+        },
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Interaction Layers & Tooling",
+        "bullets": [
+          "Tools: Typed functions for taking action",
+          "Skills: Markdown SOPs (Standard Operative Procedures) for step-by-step processes, in AgentSkill format",
+          "Plugins: Bundle new tools and skills to solve a specific goal",
+          "MCP client: OpenClaw can act as MCP client to multiple MCP servers"
+        ],
+        "speaker_notes": "OpenClaw interacts with the world using three primary layers: Tools, Skills, and Plugins. Tools are the typed functions the agent invokes to take action. Skills are Markdown files injected into the system prompt that act as SOPs (Standard Operative Procedures). They are defined using the AgentSkill standard. Finally, plugins are packages published by the community."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Workspace Files",
+        "bullets": [
+          "SOUL.md: Defines personality, core truths, values, and boundaries"
+        ],
+        "speaker_notes": "We do this using Identity Files, which define the agent. SOUL.md defines the agent's personality, core truths, values, and boundaries. Define the Why and the main goal."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Workspace Files",
+        "bullets": [
+          "SOUL.md: Defines personality, core truths, values, and boundaries",
+          "AGENTS.md: Operating instructions for the agent and how it should use memory"
+        ],
+        "speaker_notes": "All these other files, define HOW to do stuff. AGENTS.md acts as your agent's Standard Operating Procedures (SOP) rulebook."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Workspace Files",
+        "bullets": [
+          "SOUL.md: Defines personality, core truths, values, and boundaries",
+          "AGENTS.md: Operating instructions for the agent and how it should use memory",
+          "USERS.md: Who the user is and how to address them",
+          "IDENTITY.md: Defines the agent's name, vibe, and emojis",
+          "TOOLS.md: Notes about your tools and conventions",
+          "HEARTBEAT: Optional tiny checklist for heartbeat runs"
+        ],
+        "speaker_notes": "OpenClaw adds different other files to define the agent. They are injected into the prompt following different rules. IDENTITY.md is a minimal file defining who the agent is. USERS.md defines how you are as a user. TOOLS.md is a sticky note that reminds the agent of all the tools it has handy at its disposal.\nSource: https://docs.openclaw.ai/concepts/agent-workspace"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Memory and Context",
+        "bullets": [
+          "Memory and context management is still a challenge"
+        ],
+        "speaker_notes": "Managing memory and context is a critical aspect of an Agentic OS. There are many solutions, but nothing is perfect. You need to understand your need and your specific setup"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Memory and Context",
+        "bullets": [
+          "Memory and context management is still a challenge",
+          "Daily Memory: Synthesizes important facts into a daily memory files",
+          "Context Compaction: Automatically compacts older conversations to save space",
+          "Segmentation: Use separate channels/threads for distinct tasks",
+          "External memory stores: Honcho and other services, working in parallel with the agent",
+          "Vector Search and RAG (locally or on a second brain like Obsidial Vaults)"
+        ],
+        "speaker_notes": "Managing memory and context is a critical aspect of an Agentic OS. OpenClaw automatically and continuously compacts older conversations to save space. Every night, it creates a daily memory.md file. A crucial best practice for memory management is segmenting your conversations into different channels. OpenClaw is also highly reactive thanks to its 'heartbeat', waking up every 30 minutes to proactively check tasks. Finally, you can elevate your agent's memory by integrating an Obsidian Vault for Vector Memory Search and RAG."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Proactivity",
+        "bullets": [
+          "Heartbeat: Internal cron job wakes up every XX minutes to run background workflows",
+          "Cron Scheduler: Execute specific jobs at specific times"
+        ],
+        "speaker_notes": "OpenClaw is also highly reactive thanks to its 'heartbeat', waking up every 30 minutes to proactively check tasks. It also integrates a cron scheduler, to execute specific jobs at specific times. Ant these jobs are prompt sent to the agent. They retain the identity of the agent (but not the memory)"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Interaction surfaces",
+        "bullets": [
+          "Agent's TUI and GUI as a baseline interaction surface",
+          "Seamless interaction via WhatsApp, Discord, Slack, Telegram, Signal, Teams, etc, etc...",
+          "Supports for voice interaction (STT and TTS)",
+          "Gateway interact via CLI",
+          "Agent's MCP Server"
+        ],
+        "speaker_notes": "Furthermore, OpenClaw introduces seamless interaction through user-friendly channels. Instead of just typing commands into a terminal, you can interact with your agent using the chat apps you already use every day. You can even send it voice memos while you are driving."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Installation",
+        "sentence": "The choices you need to make",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hardware Choices",
+        "bullets": [
+          "Local computer: Local execution for top-tier privacy (a RasPi4 with 2GB of RAM is enough to start",
+          "VPS: Always-on, isolated. You pay for your config preferences",
+          "Android with Termux (for the brave!)"
+        ],
+        "speaker_notes": "When it comes to hardware, you have a few choices. You can run OpenClaw locally on a dedicated Mac Mini... Alternatively, you can run it on a VPS... No matter what hardware you choose, you must immediately implement core security practices to reduce the 'blast radius' if something goes wrong. The most crucial rule is to never run OpenClaw using a root or admin account. Always apply the principle of least privilege."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "OS Choices",
+        "bullets": [
+          "Mac, Windows, Linux: all are supported",
+          "Headless setup: for server installation, CLI has to be your friend",
+          "Desktop setup: access to camera, control the OS, access local files",
+          "Virtual Machine (Proxmox, VMWare, QEmu, etc): Still your local hardware, but isolated from your main system",
+          "Docker: isolation, but still within your main system"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Privacy Choices",
+        "bullets": [
+          "Local inference: run LLMs locally, avoid cloud models for total privacy",
+          "Cloud models: access frontiers model, but mind your personal / corp data policy"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Privacy Choices",
+        "bullets": [
+          "Local inference: run LLMs locally, avoid cloud models for total privacy",
+          "Cloud models: access frontiers model, but mind your personal / corp data policy",
+          "... And you can mix them!"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "LLM Choices",
+        "bullets": [
+          "All major provides and models supported",
+          "Always possible to run specialized models via local runners (Ollama / LMStudio / vLLM)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Installation steps",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Follow your preferred creators for instructions (NetworkChuck)",
+        "image_uri": "network-chuck-hermes.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Follow your preferred creators instructions (Greg Isenberg)",
+        "image_uri": "greg-isenberg-openclaw.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Follow your preferred creators instructions (Tech with Tim)",
+        "image_uri": "techwithtim-openclaw.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "It's all about a shell script...",
+        "image_uri": "hermes-agent-install-script.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Security Suggestions",
+        "bullets": [
+            "Never run with root or admin accounts",
+            "Sandbox environments using Docker or restricted users",
+            "VPS on VMs",
+            "Never expose the Gateway on the internet",
+            "Apply the principle of least privilege"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Let's install!",
+        "bullets": [
+            "https://hermes-agent.nousresearch.com/docs/getting-started/installation"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Skills",
+        "sentence": "",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "What is a skill",
+        "bullets": [
+          "Skills are a way to package procedural knowledge and company-, team-, and user-specific context into portable, version-controlled folders that agents load on demand",
+          "A skill consists of Markdown files, and optionally a set of resources like scripts that the agent might use to complete a task",
+          "Instead of stuffing everything into an initial prompt, the agent progressively loads the skill. If a skill's description fits the agent's current need, the agent loads the skill's instructions (and optional resources) on demand",
+          "Skills are precise by design; they don't replace documentation. Rather, they provide workflows and/or objectives"
+        ],
+        "speaker_notes": "Once you perfect a manual workflow in chat, move that workflow into a Skill. To systematically achieve this, we use the SWIFT Framework: Setup, Workflow, Iterate, Formalize, and Trigger. This turns perfected processes into repeatable skills and triggers them with cron schedules."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "What is a skill",
+        "bullets": [
+          "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Best practices",
+        "sentence": "If I had known this before...",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Iterative and \"deterministic\" workflow development",
+        "bullets": [
+          "The SWIFT Framework",
+          "Setup: Scope the project and connect API keys/MCPs",
+          "Workflow: Build the first draft manually with the agent",
+          "Iterate: Refine the output and prompt instructions",
+          "Formalize: Turn the perfected process into a repeatable .md skill",
+          "Trigger: Set to a cron schedule for automatic background execution"
+        ],
+        "speaker_notes": "Once you perfect a manual workflow in chat, move that workflow into a Skill. To systematically achieve this, we use the SWIFT Framework: Setup, Workflow, Iterate, Formalize, and Trigger. This turns perfected processes into repeatable skills and triggers them with cron schedules."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Personality and Sessions",
+        "bullets": [
+          "Define clear goals and personas",
+          "Multiple specialized agents >> One single \"god\" agent",
+          "Split different tasks in different conversations (topics, channels, sessions, etc)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Separate identities",
+        "bullets": [
+          "Give your agent its own credentials",
+          "Your agent is not you, enthusiasm can be dangerous!",
+          "Maintains the 'Human in the Loop' principle"
+        ],
+        "speaker_notes": "Second, you must implement separate identities to reduce the blast radius. Do not let the agent operate using your personal browser profile. Create a distinct entity. Never blindly hand over the 'Keys to the Kingdom'. Limit the agent to read-only access wherever possible, verifying its work before approving destructive actions."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Separate Principles from Mechanics",
+        "bullets": [
+          "SOUL.md: Contains the identity, core loop, tone, and guiding principles. It defines how the agent thinks",
+          "AGENTS.md: Contains the strict rules, file paths, formatting templates, enums (tags/categories), and edge cases. It defines how the agent acts."
+        ],
+        "speaker_notes": "To make the setup both shorter and more effective, we should divide the instructions based on Persona/Principles vs. Mechanics/Execution.\nSOUL.md: Contains the identity, core loop, tone, and guiding principles. It defines how the agent thinks.\nAGENTS.md: Contains the strict rules, file paths, formatting templates, enums (tags/categories), and edge cases. It defines how the agent acts."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Auto-Improving the OS",
+        "bullets": [
+          "LLM reviews codebase and logs daily",
+          "Identifies inefficiencies and proposes changes",
+          "Diagnoses and repairs broken workflows"
+        ],
+        "speaker_notes": "Your Agentic OS can also auto-improve. By leveraging the generative aspect of the LLM, you can tell OpenClaw to review its own codebase and conversation logs daily. It will analyze how a task was handled, identify inefficiencies, and propose code changes. And remember: shit happens. Keep a 'human in the loop,' but ask OpenClaw to solve its own problems by diagnosing log errors."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Security (again)",
+        "bullets": [
+          "Internet is a bad place.",
+          "The coolers is the skill title, the more malicious could be its code",
+          "Defensive text sanitation layers and frontier model scanning",
+          "Contain the blast radius"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Live Demonstration",
+        "sentence": "Putting all of this together",
+        "speaker_notes": "Time to check what OpenClaw car really do"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A few examples",
+        "bullets": [
+          "Discord server with different agents, one per personality",
+          "Prof. Izuko - Learning agent for kids (docker, restricted tools, manually added content from books)",
+          "Prof. Socrates - Learning agend for high-school (docker, internet access, creation of curricula)",
+          "GAStronAI - Community Manager (email, skill to keep track of community operations, supplier)",
+          "Samantha - Productivity agent (skill to generate reports, skill to auto-improve)",
+          "News Reporter - Searching for news, parsing YouTube channels"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "A close look at the future",
+        "sentence": "Which is probably the next 4 weeks... 🤯",
+        "speaker_notes": "To wrap up, the ecosystem around Agentic AI is moving at a breakneck pace. OpenClaw is phenomenal, but it exists in a rapidly evolving landscape."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The Future: AI Swarms",
+        "bullets": [
+          "Transitioning from a single-agent framework to a true Agentic Operating System",
+          "Orchestrating swarms of self-coordinating agents",
+          "Specialized agents handling marketing, coding, and finance simultaneously",
+          "The user acts as the human conductor of an entire AI workforce"
+        ],
+        "speaker_notes": "The true future we are building toward is Swarms. OpenClaw is transitioning from a framework that runs a single AI agent into a true Operating System that orchestrates entire swarms of self-coordinating agents. Soon, you won't just have an assistant; you will have an entire AI workforce reporting back to you, the human conductor. OpenClaw is becoming the Agentic OS."
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Thanks 🙏",
+        "bullets": [
+          "Questions?",
+          "https://linkedin.com/in/alfredomorresi"
+        ],
+        "image_uri": "rainbowbreeze_full.png",
+        "image_position": "right",
+        "speaker_notes": "Thank you for your time. I'd now like to open the floor to any questions you might have."
+      }
+    }
+  ]
+}
