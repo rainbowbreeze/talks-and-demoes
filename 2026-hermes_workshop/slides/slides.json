@@ -411,7 +411,7 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Installation steps",
+        "title": "Install Hermes",
         "speaker_notes": ""
       }
     },
@@ -442,6 +442,14 @@
     {
       "template": "title_and_image",
       "data": {
+        "title": "Follow your preferred creators instructions (Samin Yasar)",
+        "image_uri": "samin-yasar-hermes-full-course.jpg",
+        "speaker_notes": "https://www.youtube.com/watch?v=8yE6G1Lup1s"
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
         "title": "It's all about a shell script...",
         "image_uri": "hermes-agent-install-script.png",
         "speaker_notes": ""
@@ -462,20 +470,90 @@
       }
     },
     {
-      "template": "content_simple",
+      "template": "section_title",
       "data": {
-        "title": "Let's install!",
-        "bullets": [
-            "https://hermes-agent.nousresearch.com/docs/getting-started/installation"
-        ],
+        "title": "Installation",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/getting-started/installation",
         "speaker_notes": ""
       }
     },
     {
       "template": "section_title",
       "data": {
-        "title": "Skills",
+        "title": "Decide how to run the backend",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/configuration#terminal-backend-configuration",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Docker approach",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/docker",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Model selection",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/configuring-models",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Configure Hermes",
         "sentence": "",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "TUI and Dashboard",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/tui",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Channels",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/messaging/",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Soul and ...",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/guides/use-soul-with-hermes",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "... Personality",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/personality",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Extend Hermes",
+        "sentence": "",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Tools",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/tools",
         "speaker_notes": ""
       }
     },
@@ -493,12 +571,42 @@
       }
     },
     {
-      "template": "content_simple",
+      "template": "section_title",
       "data": {
-        "title": "What is a skill",
-        "bullets": [
-          "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills"
-        ],
+        "title": "Skills System",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Profiles",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/profiles",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Web Search",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Browser Automation",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Voice and TTS",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/ttsr",
         "speaker_notes": ""
       }
     },
@@ -588,29 +696,6 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Live Demonstration",
-        "sentence": "Putting all of this together",
-        "speaker_notes": "Time to check what OpenClaw car really do"
-      }
-    },
-    {
-      "template": "content_simple",
-      "data": {
-        "title": "A few examples",
-        "bullets": [
-          "Discord server with different agents, one per personality",
-          "Prof. Izuko - Learning agent for kids (docker, restricted tools, manually added content from books)",
-          "Prof. Socrates - Learning agend for high-school (docker, internet access, creation of curricula)",
-          "GAStronAI - Community Manager (email, skill to keep track of community operations, supplier)",
-          "Samantha - Productivity agent (skill to generate reports, skill to auto-improve)",
-          "News Reporter - Searching for news, parsing YouTube channels"
-        ],
-        "speaker_notes": ""
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
         "title": "A close look at the future",
         "sentence": "Which is probably the next 4 weeks... 🤯",
         "speaker_notes": "To wrap up, the ecosystem around Agentic AI is moving at a breakneck pace. OpenClaw is phenomenal, but it exists in a rapidly evolving landscape."
@@ -630,15 +715,10 @@
       }
     },
     {
-      "template": "content_and_image",
+      "template": "section_title",
       "data": {
         "title": "Thanks 🙏",
-        "bullets": [
-          "Questions?",
-          "https://linkedin.com/in/alfredomorresi"
-        ],
-        "image_uri": "rainbowbreeze_full.png",
-        "image_position": "right",
+        "sentence": "https://linkedin.com/in/alfredomorresi",
         "speaker_notes": "Thank you for your time. I'd now like to open the floor to any questions you might have."
       }
     }
