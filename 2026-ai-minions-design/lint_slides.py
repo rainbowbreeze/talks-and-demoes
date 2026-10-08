@@ -83,11 +83,13 @@ def validate_column(col_data: Any, col_name: str) -> List[str]:
         errors.append(f"Field '{col_name}' must be an object/dict.")
         return errors
 
-    # sub_heading is required by the schema specification
-    if "sub_heading" not in col_data:
-        errors.append(f"Missing required field 'sub_heading' in '{col_name}'.")
-    elif not isinstance(col_data["sub_heading"], str):
+    # sub_heading is optional, but must be a string if present
+    if "sub_heading" in col_data and not isinstance(col_data["sub_heading"], str):
         errors.append(f"Field 'sub_heading' in '{col_name}' must be a string.")
+
+    # sentence is optional, but must be a string if present
+    if "sentence" in col_data and not isinstance(col_data["sentence"], str):
+        errors.append(f"Field 'sentence' in '{col_name}' must be a string.")
 
     # bullets array is required
     if "bullets" not in col_data:
@@ -225,6 +227,9 @@ def validate_slide(
             # title is required
             if "title" not in data or not isinstance(data["title"], str):
                 errors.append(f"Slide {slide_index} (content_simple): Missing or invalid string field 'title'.")
+            # sentence is optional, but must be string if present
+            if "sentence" in data and not isinstance(data["sentence"], str):
+                errors.append(f"Slide {slide_index} (content_simple): Field 'sentence' must be a string.")
             # bullets is required and must be a list
             if "bullets" not in data or not isinstance(data["bullets"], list):
                 errors.append(f"Slide {slide_index} (content_simple): Missing or invalid list field 'bullets'.")

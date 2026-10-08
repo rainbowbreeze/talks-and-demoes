@@ -52,14 +52,15 @@ Every slide in `slides.json` must strictly use one of the following templates:
    - `quote` (*string, required*): Full quote text.
    - `attribution` (*string, required*): Author or source name.
 
-3. **`content_simple`**: Title with a single bullet list.
+3. **`content_simple`**: Title with an optional introductory sentence and a single bullet list.
    - `title` (*string, required*): Slide heading.
+   - `sentence` (*string, optional*): Introductory sentence displayed above the bullet points.
    - `bullets` (*list of strings, required*): Bullet points.
 
-4. **`content_double`**: Two-column content slide.
+4. **`content_double`**: Two-column content slide, each column supporting an optional sub-heading and introductory sentence.
    - `title` (*string, required*): Slide heading.
-   - `column_left` (*object, required*): Contains `sub_heading` (*string*) and `bullets` (*list of strings*).
-   - `column_right` (*object, required*): Contains `sub_heading` (*string*) and `bullets` (*list of strings*).
+   - `column_left` (*object, required*): Contains `sub_heading` (*string, optional*), `sentence` (*string, optional*), and `bullets` (*list of strings, required*).
+   - `column_right` (*object, required*): Contains `sub_heading` (*string, optional*), `sentence` (*string, optional*), and `bullets` (*list of strings, required*).
 
 5. **`content_and_image`**: Split slide with bullets on one side and an image on the other.
    - `title` (*string, required*): Slide heading.
