@@ -34,15 +34,136 @@
       }
     },
     {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: contain the Blast Radius",
+        "bullets": [
+          "Never grant agents unrestricted access to your primary machine",
+          "Assume things can go wrong: rogue commands, bugs, or unexpected behaviors",
+          "Protect against prompt injection triggered during external operations",
+          "Prevent data exfiltration and exposure of personal files or credentials"
+        ],
+        "speaker_notes": "Security is the main reason behind my setup. I don't want to give an autonomous agent full access to my main machine. You always need to contain the blast radius in case something goes wrong—whether it's a security breach, data exfiltration, or a prompt injection triggered while the agent is processing external data."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Solution: Hermes in a Linux VM",
+        "column_left": {
+          "sub_heading": "My Setup: Self-hosted everything",
+          "bullets": [
+            "A self-hosted and dedicated Linux VM on Proxmox",
+            "Docker inside the VM for an extra layer of isolation and reproducibility",
+            "Strict separation between host OS and agent workspace",
+            "Bonus point: VMs are on a separated physical net"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Other Valid Options",
+          "bullets": [
+            "CLI-only Linux VM in your machine",
+            "GUI Linux / Windows VM in your machine: full desktop environment when visual tools or browsers are needed",
+            "Hermes in docker in your machine (mount carefully resources)",
+            "Virtual host somewhere",
+            "Same core principle: keep the host machine untouched"
+          ]
+        },
+        "speaker_notes": "To achieve this isolation, I run a self-hosted Hermes agent inside a local Linux virtual machine. In my specific setup, I created a Linux VM and put Docker inside it to run the agent. However, you don't necessarily need Docker: you can simply spin up a local VM—either CLI-only or with a full GUI—and run the agent directly inside it."
+      }
+    },
+    {
       "template": "section_title",
       "data": {
         "title": "Structure your agent garden"
       }
     },
     {
+      "template": "content_simple",
+      "data": {
+        "title": "Scenarios to Consider",
+        "bullets": [
+          "Managing a single agent",
+          "Managing the context of a single agent",
+          "Managing multiple isolated agents",
+          "Managing multiple interacting agents"
+        ],
+        "speaker_notes": "When structuring your agent garden, there are several progressive scenarios to consider, from handling a single agent and its context to orchestrating multiple isolated or interacting agents. Each scenario has a specific solution."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing a Single Agent",
+        "image_uri": "hermes_web_dashboard.png",
+        "speaker_notes": "The Hermes Web Dashboard is the simplest way to access and communicate with Hermes. Beyond offering a chat interface, it also lets you manage all agent configurations in one place. Its biggest advantage is that everything is handled locally, so your privacy stays completely local. The trade-off is figuring out how to reach the host machine remotely, since the dashboard isn't accessible from the outside unless you use an SSH tunnel or configure more advanced networking mechanisms. Still, privacy and simplicity are definitely the key strengths of this first, most immediate solution."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing a Single Agent",
+        "image_uri": "telegram_chat_single.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing the Context of a Single Agent",
+        "image_uri": "telegram_chat_with_topics.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing Multiple Isolated Agents",
+        "image_uri": "telegram_many_agents.webp",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing Multiple (Interacting) Agents",
+        "image_uri": "hermes_desktop.jpg",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Managing Multiple (Interacting) Agents",
+        "image_uri": "buzz_with_hermes_agents.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "My setup: Discord with multiple agents",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "speaker_notes": "I chose Discord for my agent garden for three main reasons: first, it gives me seamless access across both web and mobile through rock-solid client apps; second, it allowed me to bring multiple agents together in the same workspace right from the start; and third, it makes it easy to keep context strictly separated across different conversations using categories, channels, and threads."
+      }
+    },
+    {
       "template": "section_title",
       "data": {
         "title": "How to split the work"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding Principle: Conversation Privacy",
+        "bullets": [
+          "The core criterion for splitting work across agents is conversation privacy",
+          "Separate agents based on who has access to the conversation and memory",
+          "Prevent context leakage between personal, family, and external interactions",
+          "Each agent should only access data it is safe to expose in its channels"
+        ],
+        "speaker_notes": "The fundamental criterion for choosing how to divide work between a single agent and multiple sub-agents is conversation privacy."
       }
     },
     {
@@ -68,6 +189,36 @@
       "template": "section_title",
       "data": {
         "title": "Recap"
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "The Future"
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Dot",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Muse",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "SpaceX",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "speaker_notes": ""
       }
     }
   ]
