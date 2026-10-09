@@ -934,10 +934,34 @@
         "bullets": [
           "Keep all your skills in a dedicated Git repository",
           "Define shared conventions and standards for every skill in a root `AGENTS.md` file",
-          "Ask the agent to author and update skills following the rules in `AGENTS.md` to maintain consistency over time",
+          "Ask the agent to grill and update skills following the rules in `AGENTS.md` to maintain consistency over time",
           "Version, review, and evolve your skills just like any software project",
           "Loops and evals to check. Don't simply generate the slides. Take a screenshot of each one of them, check for consistency in the design, rewrite the slides"
         ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Define an AGENTS.md to rule them all",
+        "image_uri": "rainbow_harness_repo_04.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Prefer deterministic code over LLM actions",
+        "image_uri": "rainbow_harness_repo_05.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Provide precise examples of reports you want",
+        "image_uri": "rainbow_harness_repo_06.png",
         "speaker_notes": ""
       }
     },
@@ -1157,6 +1181,20 @@
       }
     },
     {
+      "template": "content_simple",
+      "data": {
+        "title": "Recap: Designing your AI Minions",
+        "bullets": [
+          "**Infrastructure**: contain the blast radius by isolating agents in dedicated VMs and Docker containers away from your main machine",
+          "**Agent Garden**: choose segmentation over simplicity—separate agents by persona and privacy boundaries, and interact with them via messaging platforms like Discord",
+          "**Identities**: manage agent accounts, permissions, and credentials with strict diligence",
+          "**Internet Access**: split web tasks into three phases—**Search** (`SearXNG`), **Extract** (`Firecrawl`), and **Interact** (`Camofox`)—balancing capability with RAM cost",
+          "**D.R.Y. with Agent Skills**: turn repeatable processes into skills, offload deterministic work to scripts and linters, and manage skills like code in a dedicated Git repo (`AGENTS.md` + custom skill tap)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
       "template": "section_title",
       "data": {
         "title": "The Future"
@@ -1165,25 +1203,32 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Dot",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "title": "OpenAI Dots",
+        "image_uri": "openai_dots.webp",
         "speaker_notes": ""
       }
     },
     {
       "template": "title_and_image",
       "data": {
-        "title": "Muse",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "title": "Meta Muse",
+        "image_uri": "meta_muse.jpg",
         "speaker_notes": ""
       }
     },
     {
       "template": "title_and_image",
       "data": {
-        "title": "SpaceX",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "title": "Google Gemini Spark",
+        "image_uri": "google_gemini_spark.png",
         "speaker_notes": ""
+      }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "Finally, 2027 is the year of the Linux Desktop",
+        "attribution": ""
       }
     },
     {
