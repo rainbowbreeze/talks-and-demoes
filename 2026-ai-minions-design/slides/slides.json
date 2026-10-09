@@ -802,7 +802,7 @@
           "    ports:",
           "      - \"9377:9377\"",
           "      - \"6080:6080\"  # noVNC",
-          "      - \"5901:5900\". # native VNC",
+          "      - \"5901:5900\" # native VNC",
           "    environment:",
           "      - CAMOFOX_PORT=9377",
           "      - ENABLE_VNC=1",
@@ -887,6 +887,267 @@
       "data": {
         "title": "D.R.Y.",
         "sentence": "How to make the non-deterministic more predictable"
+      }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "Agentic systems don't fail from weak models; they fail from uncurated entropy!",
+        "attribution": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: turn every repeatable process into an Agent Skill",
+        "sentence": "Agent Skills are portable, reusable folders of instructions, scripts, and context that give AI coding agents and assistants structured workflows instead of relying on generic prompts.",
+        "bullets": [
+          "Whenever a process needs to be repeated, codify it into a skill instead of re-explaining it in chat",
+          "Move from ad-hoc, non-deterministic prompting to structured, repeatable workflows",
+          "Package step-by-step instructions, helper scripts, and reference context in a single place",
+          "Continuously refine the skill as you discover edge cases and better practices",
+          "https://agentskills.io/"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Design principles for good skills",
+        "bullets": [
+          "Write a complete YAML frontmatter so the agent can easily discover the skill",
+          "Clearly state what the skill does and its expected outcome",
+          "Describe when to invoke it, providing concrete trigger examples",
+          "Leverage lazy loading via the `references/` and `assets/` folders to save context tokens",
+          "Offload deterministic steps to code: have the agent write it in `scripts` folder and instruct the skill to run it",
+          "Use a linter to validate everything the agent produces (even if it's just for the format)",
+          "Turn every manual correction into a durable instruction for future runs"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Treat skill writing like code writing",
+        "bullets": [
+          "Keep all your skills in a dedicated Git repository",
+          "Define shared conventions and standards for every skill in a root `AGENTS.md` file",
+          "Ask the agent to author and update skills following the rules in `AGENTS.md` to maintain consistency over time",
+          "Version, review, and evolve your skills just like any software project",
+          "Loops and evals to check. Don't simply generate the slides. Take a screenshot of each one of them, check for consistency in the design, rewrite the slides"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#publishing-a-custom-skill-tap",
+        "bullets": [
+          "Share a curated set of skills as a **tap**",
+          "Create a GitHub repo, and add a `skills` folder on it",
+          "Create skills under the `skills` folder",
+          "Add the GitHub repo using `hermes skills tap add <owner/repo>`",
+          "Check for the new skills with `hermes skills search --source github <keyword>`",
+          "Install the skill with `hermes skills install owner/repo/skill-name`",
+          "Remove the tap with `skills tap remove owner/repo`"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_02.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add the repo using `hermes skills tap add rainbowbreeze/rainbow-harness`"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "$HERMES_HOME/skills/.hub/taps.json",
+        "language": "json",
+        "code": [
+          "{",
+          "  \"taps\": [",
+          "    {",
+          "    \"repo\": \"rainbowbreeze/rainbow-harness\"",
+          "    \"path\": \"skills/\"",
+          "    }",
+          "  ]",
+          "}"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add the repo using `hermes skills tap add rainbowbreeze/rainbow-harness`",
+          "Install a skill with `hermes skills install --category rainbowskills rainbowbreeze/rainbow-harness/aphorism-tracker`",
+          "Be aware of potential risks coming from community skills (_direct edit system files, dangerous prompts, etc_). Use `--force` to bypass some of them",
+          "Check with `hermes skills list --enabled-only`"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_03.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add the repo using `hermes skills tap add rainbowbreeze/rainbow-harness`",
+          "Install a skill with `hermes skills install --category rainbowskills rainbowbreeze/rainbow-harness/aphorism-tracker`",
+          "Be aware of potential risks coming from community skills (_direct edit system files, dangerous prompts, etc_). Use `--force` to bypass some of them",
+          "Check with `hermes skills list --enabled-only`",
+          "Remove the skill with `hermes skills unistall aphorism-tracker`"
+
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#skillmd-format",
+        "bullets": [
+          "Version your skills with `version: x.y.z`",
+          "Update skills automatically via `hermes skills update`",
+          "💡: Add this command to a cronjob in your Hermes, and once the new code is published on GitHub, the instance automatically picks it up at its own pace"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "description: Use to save or retrieve text/image quotes or aphorisms to the BRAIN.",
+          "version: 1.2.0",
+          "author: Rainbowbreeze",
+          "# [...]",
+          "---"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "bullets": [
+          "Use `required_environment_variables` when a skill needs an API key or token.",
+          "Missing values do not hide the skill from discovery",
+          "Instead, Hermes prompts for them securely when the skill is loaded in the local CLI"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "# [...]",
+          "required_environment_variables:",
+          "  - name: BRAIN_APHORISMS_PATH",
+          "    prompt: Folder to store aphorisms in the BRAIN knowledge repository", 
+          "    help: Define where the projects folder must be, generally /opt/data/BRAIN/aphorisms",
+          "    required_for: full functionality",
+          "---"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#config-settings-configyaml",
+        "bullets": [
+          "Skills can declare non-secret settings that are stored in config.yaml under the skills.config namespace",
+          "Unlike environment variables (which are secrets stored in .env), config settings are for paths, preferences, and other non-sensitive values"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#config-settings-configyaml",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "# [...]",
+          "metadata:",
+          "  hermes:",
+          "    config:",
+          "      - key: aphorism-tracker.path",
+          "        description: Path to the data directory to store aphorisms",
+          "        default: \"~BRAIN/aphorisms\"",
+          "        prompt: Directory path to store aphorisms"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add `GITHUB_TOKEN` to .env to avoid GitHub rate errors"
+        ],
+        "speaker_notes": ""
       }
     },
     {
