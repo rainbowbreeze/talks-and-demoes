@@ -41,7 +41,7 @@ Every slide template supports these optional properties inside its `data` dictio
   **CRITICAL**: Must always be placed inside `data` (e.g. `slide["data"]["speaker_notes"]`), **never** at the root level of the slide object.
 - `image_uri` (*string, optional*): Path to a local image in `slides/` or external URL.
 
-### The 7 Approved Slide Templates
+### The 8 Approved Slide Templates
 Every slide in `slides.json` must strictly use one of the following templates:
 
 1. **`section_title`**: Centered section title slide.
@@ -62,8 +62,9 @@ Every slide in `slides.json` must strictly use one of the following templates:
    - `column_left` (*object, required*): Contains `sub_heading` (*string, optional*), `sentence` (*string, optional*), and `bullets` (*list of strings, required*).
    - `column_right` (*object, required*): Contains `sub_heading` (*string, optional*), `sentence` (*string, optional*), and `bullets` (*list of strings, required*).
 
-5. **`content_and_image`**: Split slide with bullets on one side and an image on the other.
+5. **`content_and_image`**: Split slide with an optional introductory sentence and bullets on one side and an image on the other.
    - `title` (*string, required*): Slide heading.
+   - `sentence` (*string, optional*): Introductory sentence displayed above the bullet points.
    - `bullets` (*list of strings, required*): Bullet points.
    - `image_uri` (*string, required*): Path to image in `slides/` or external URL.
    - `image_position` (*string, optional*): `"left"` or `"right"` (defaults to `"right"`).
@@ -74,6 +75,12 @@ Every slide in `slides.json` must strictly use one of the following templates:
 
 7. **`image_full_screen`**: Full-bleed image without text or footer.
    - `image_uri` (*string, required*): Path to image in `slides/` or external URL.
+
+8. **`title_and_code`**: Title with an optional introductory sentence and a syntax-highlighted code block.
+   - `title` (*string, required*): Slide heading.
+   - `sentence` (*string, optional*): Introductory sentence displayed above the code block.
+   - `code` (*string or list of strings, required*): Code snippet to display (multiline string or array of line strings).
+   - `language` (*string, optional*): Programming language identifier (e.g., `"python"`, `"javascript"`, `"json"`) for syntax highlighting.
 
 ---
 

@@ -6,7 +6,8 @@ This script verifies that a slides JSON file strictly complies with the schema
 and formatting rules defined in the slide-presenter specifications:
 - Validates the top-level structure (presentation_metadata, slides array).
 - Enforces approved template IDs (section_title, quote_slide, content_simple,
-  content_double, content_and_image, title_and_image, image_full_screen).
+  content_double, content_and_image, title_and_image, image_full_screen,
+  title_and_code).
 - Checks required and optional data attributes for each slide template.
 - Detects misplaced keys (such as speaker_notes located outside the data object).
 - Validates data types (lists, strings, dicts).
@@ -30,6 +31,7 @@ VALID_TEMPLATES = {
     "content_and_image",
     "title_and_image",
     "image_full_screen",
+    "title_and_code",
 }
 
 
@@ -255,6 +257,9 @@ def validate_slide(
             # title is required
             if "title" not in data or not isinstance(data["title"], str):
                 errors.append(f"Slide {slide_index} (content_and_image): Missing or invalid string field 'title'.")
+            # sentence is optional, but must be string if present
+            if "sentence" in data and not isinstance(data["sentence"], str):
+                errors.append(f"Slide {slide_index} (content_and_image): Field 'sentence' must be a string.")
             # bullets is required
             if "bullets" not in data or not isinstance(data["bullets"], list):
                 errors.append(f"Slide {slide_index} (content_and_image): Missing or invalid list field 'bullets'.")
@@ -283,6 +288,28 @@ def validate_slide(
             # image_uri is required for image_full_screen
             if "image_uri" not in data:
                 errors.append(f"Slide {slide_index} (image_full_screen): Missing required field 'image_uri'.")
+
+        elif template == "title_and_code":
+            # title is required
+            if "title" not in data or not isinstance(data["title"], str):
+                errors.append(f"Slide {slide_index} (title_and_code): Missing or invalid string field 'title'.")
+            # sentence is optional, but must be string if present
+            if "sentence" in data and not isinstance(data["sentence"], str):
+                errors.append(f"Slide {slide_index} (title_and_code): Field 'sentence' must be a string.")
+            # language is optional, but must be string if present
+            if "language" in data and not isinstance(data["language"], str):
+                errors.append(f"Slide {slide_index} (title_and_code): Field 'language' must be a string.")
+            # code is required and must be either a string or a list of strings
+            if "code" not in data:
+                errors.append(f"Slide {slide_index} (title_and_code): Missing required field 'code'.")
+            elif isinstance(data["code"], list):
+                for idx, line in enumerate(data["code"]):
+                    if not isinstance(line, str):
+                        errors.append(f"Slide {slide_index} (title_and_code): Code line #{idx+1} must be a string.")
+            elif not isinstance(data["code"], str):
+                errors.append(
+                    f"Slide {slide_index} (title_and_code): Field 'code' must be a string or a list of strings."
+                )
 
     except Exception as err:
         # Catch unexpected validation exceptions to prevent script crash
