@@ -89,7 +89,7 @@
           "Separate agents based on access to conversations and memories",
           "Prevent context leakage between personal, family, and other agents",
           "Each agent should only access data it is safe to expose in its channels",
-          "Within the same agent, keep a session per conversation, to facilitate context management"
+          "Within the same agent, keep a session per concept, to facilitate context management"
         ],
         "speaker_notes": "When structuring your agent garden, there are several progressive scenarios to consider, from handling a single agent and its context to orchestrating multiple isolated or interacting agents. Each scenario has a specific solution."
       }
@@ -97,7 +97,7 @@
     {
       "template": "content_double",
       "data": {
-        "title": "Hermes agent and profiles",
+        "title": "Hermes agent",
         "column_left": {
           "sub_heading": "The (default) Agent",
           "bullets": [
@@ -107,7 +107,7 @@
             "Launches the gateway process"
           ]
         },
-        "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained in the same and was never changed"
+        "speaker_notes": ""
       }
     },
     {
@@ -156,9 +156,10 @@
         "bullets": [
           "The simples use case, the agent has access to everything",
           "Launched on demand by the user or an automation",
-          "Create different sessions for each conversations (_one session for a project work, one session for random information search, one session to check the weather, etc_)",
+          "Create different sessions for each concept (_one session for a project work, one session for random information search, one session to check the weather, etc_)",
           "`/btw` is your friend to keep the context and memory clean",
-          "`hermes chat` or `hermes dashboard`"
+          "`hermes chat` or `hermes dashboard`",
+          "You need direct access to the Hermes machine (ssh, reverse proxy, tunnel, etc)"
         ],
         "speaker_notes": ""
       }
@@ -167,7 +168,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Single agent TUI",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "image_uri": "hermes_tui_agent.png",
         "speaker_notes": ""
       }
     },
@@ -175,7 +176,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Single agent dashboard",
-        "image_uri": "hermes_web_dashboard.png",
+        "image_uri": "hermes_dashboard_agent.png",
         "speaker_notes": ""
       }
     },
@@ -197,7 +198,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Profile TUI",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "image_uri": "hermes_tui_profile.png",
         "speaker_notes": ""
       }
     },
@@ -205,7 +206,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Profile dashboard",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "image_uri": "hermes_dashboard_profile.png",
         "speaker_notes": ""
       }
     },
@@ -213,8 +214,8 @@
       "template": "title_and_image",
       "data": {
         "title": "Hermes Kanban",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
-        "speaker_notes": ""
+        "image_uri": "hermes_kanban.png",
+        "speaker_notes": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban"
       }
     },
     {
@@ -254,10 +255,10 @@
         "title": "Multiple agents (with or without profiles), on-demand",
         "sentence": "Mutiple installations of Hermes, on-demand requests",
         "bullets": [
-          "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same machine",
+          "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same host machine",
           "It requires more resources (_~300Mb each docker container_)",
           "Within the same VMs or docker container, manage profiles based on needs",
-          "It is complex to orchestrate communication among agents"
+          "It is complex to orchestrate communication among agents with the standard UIs"
         ],
         "speaker_notes": ""
       }
@@ -322,8 +323,9 @@
         "sentence": "Mutiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
         "bullets": [
           "The most complex scenario, but easily managed with docker or VMs",
-          "Specific plaforms are emerging that consider both bots and humans first party citizens",
-          "Hermes Desktop as native solution with rapid development in progress"
+          "Scenario where Discord / Slack / etc are great platforms, with some config",
+          "Emerging plaforms that consider both bots and humans first party citizens",
+          "Hermes Desktop as native solution with rapid development"
         ],
         "speaker_notes": ""
       }
@@ -331,7 +333,7 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing Multiple Agents",
+        "title": "Multiple agents - Hermes Dashboard",
         "image_uri": "hermes_desktop.jpg",
         "speaker_notes": ""
       }
@@ -339,7 +341,7 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing Multiple Agents",
+        "title": "Multiple agents - Buzz",
         "image_uri": "buzz_with_hermes_agents.png",
         "speaker_notes": ""
       }
@@ -388,6 +390,14 @@
         "image_uri": "rainbowbreeze_agents.png",
         "image_position": "right",
         "speaker_notes": "Here is a look at the actual agents running in my Discord server: Samantha for personal productivity, YellowFamily Butler for family logistics, Chronicler and Librarian for memory and knowledge management, GAStronauti for our ethical purchasing group, Edulogia for my education and tech project, and Prof Socrate and News Reporter for learning and news."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Discord to interact with my minions",
+        "image_uri": "discord_devportal_bots.png",
+        "speaker_notes": ""
       }
     },
     {
@@ -483,11 +493,12 @@
       "template": "content_simple",
       "data": {
         "title": "browser_use",
-        "sentence": "It gives Hermes a real browser to browse the web",
+        "sentence": "It gives Hermes a real browser to interact with the web",
         "bullets": [
           "`browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_scroll`, etc",
           "Can be run locally or on cloud browsers",
-          "Headless or headed mode for local browser"
+          "Headless or headed mode for local browser",
+          "Can use persistent user profiles"
         ],
         "speaker_notes": ""
       }
@@ -510,9 +521,9 @@
           "sentence": "Can use local profiles, only RAM cost",
           "bullets": [
             "Local Chromium via CDP via /browser connect",
-            "Any browser installed on the machine running Hermes",
             "Camoufox",
-            "Lightpanda"
+            "Lightpanda",
+            "Any browser installed on the machine running Hermes via computer use"
           ]
         },
         "speaker_notes": "When configuring browser automation in Hermes, there are two main families of browsers you can use: cloud-based browsers and local browsers. Among cloud options, you have services like Browserbase or Browser Use. Among local options, you can use Camoufox, Lightpanda, Chromium-compatible local browsers with Chrome DevTools Protocol (CDP), or a browser installed directly on the machine where Hermes runs."
@@ -533,7 +544,7 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "SearXNG",
+        "title": "Search with SearXNG",
         "sentence": "SearXNG is a metasearch engine, aggregating the results of other search engines while not storing information about its users.",
         "bullets": [
           "Removing private data from requests going to search services",
@@ -570,7 +581,7 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "Firecrawl",
+        "title": "Extract with Firecrawl",
         "sentence": "Turn websites into LLM-ready markdown and structured data",
         "bullets": [
           "Clean, LLM-ready output (Markdown, structured JSON, screenshots) that saves tokens",
@@ -579,6 +590,25 @@
           "Self-hosted on my Hermes VM via a Docker container (medium complexity)"
         ],
         "speaker_notes": "Firecrawl turns complex websites into clean, LLM-ready markdown or structured JSON so agents spend fewer tokens and get higher quality context. It handles rotating proxies, JS-heavy rendering, rate limits, and even PDF/DOCX parsing automatically, and is available both as a hosted service (with 500 free credits per month) and as an open-source project."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Interact with Camofox",
+        "sentence": "",
+        "bullets": [
+          "Builtin noVNC viewer to interact with the browser when necessary"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Flexible, yes! But you pay in RAM consumption",
+        "image_uri": "docker_stats.png",
+        "speaker_notes": ""
       }
     },
     {
