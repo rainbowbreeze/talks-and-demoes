@@ -614,7 +614,7 @@
     {
       "template": "section_title",
       "data": {
-        "title": "DRY",
+        "title": "D.R.Y.",
         "sentence": "How to make the undeterministic more predictable"
       }
     },
@@ -651,6 +651,20 @@
       "data": {
         "title": "SpaceX",
         "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Hermes referral code",
+        "bullets": [
+          "Different services offered by Nous Portal (_Models access, BrowserUse, Firecrawl, Perplexity search, etc_)",
+          "No configuration required",
+          "https://portal.nousresearch.com/r/rainbowbreeze",
+          "$15 off for your first paid month"
+        ],
+        "image_position": "right",
         "speaker_notes": ""
       }
     }
