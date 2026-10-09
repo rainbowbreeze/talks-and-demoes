@@ -74,6 +74,9 @@
             "Bonus point: VMs are on a separated physical net"
           ]
         },
+        "column_right": {
+          "bullets": []
+        },
         "speaker_notes": "To achieve this isolation, I run a self-hosted Hermes agent inside a local Linux virtual machine. In my specific setup, I created a Linux VM and put Docker inside it to run the agent."
       }
     },
@@ -167,7 +170,7 @@
             "Same or different sandbox of the associated default agent"
           ]
         },
-        "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained in the same and was never changed"
+        "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained the same and was never changed"
       }
     },
     {
@@ -293,7 +296,7 @@
         "sentence": "Multiple installations of Hermes, on-demand requests",
         "bullets": [
           "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same host machine",
-          "It requires more resources (_~300Mb each docker container_)",
+          "It requires more resources (_~300MB each docker container_)",
           "Within the same VMs or docker container, manage profiles based on needs",
           "It is complex to orchestrate communication among agents with the standard UIs"
         ],
@@ -488,11 +491,11 @@
       "data": {
         "title": "The problems",
         "bullets": [
-          "Sites look great at human eyes, but are a total mess for an agent (_CSS animation, dynamic sites, complex DOM, forms, etc_)",
+          "Sites look great to human eyes, but are a total mess for an agent (_CSS animation, dynamic sites, complex DOM, forms, etc_)",
           "Anti-bot protection implemented in many sites",
           "Understanding complex pages requires more tokens and time",
-          "Lighter models may not be able to parse complex page appropriately",
-          "Are you sure that what you see, is also what your agent sees (_prompt ingjection_)?"
+          "Lighter models may not be able to parse complex pages appropriately",
+          "Are you sure that what you see is also what your agent sees (_prompt injection_)?"
         ],
         "speaker_notes": ""
       }
@@ -577,7 +580,7 @@
           "bullets": [
             "Browserbase",
             "Browser Use",
-            "Firecrawl with build-in scraping"
+            "Firecrawl with built-in scraping"
           ]
         },
         "column_right": {
@@ -600,7 +603,7 @@
         "bullets": [
           "**Search** with **SearXNG**: cheap discovery of candidate URLs",
           "**Extract** with **Firecrawl**: turn messy and complex pages into clean markdown to analyze",
-          "**Interact** with **Camofox**: Operate pages bypassing bot detection and when javascript is really needed",
+          "**Interact** with **Camofox**: operate pages bypassing bot detection and when JavaScript is really needed",
           "All self-hosted"
         ],
         "speaker_notes": ""
@@ -612,12 +615,12 @@
         "title": "Search with SearXNG",
         "sentence": "SearXNG is a metasearch engine, aggregating the results of other search engines while not storing information about its users.",
         "bullets": [
-          "One agent tool call, multiple queries to various search engine",
+          "One agent tool call, multiple queries to various search engines",
           "Removing private data from requests going to search services",
           "Not forwarding anything from third party services through search services (e.g. advertisement)",
           "SearXNG returns snippets, not full page content. Use web_extract, browser tools, or curl for full articles",
           "Self-hosted on my Hermes VM via a Docker container",
-          "Acceptable memory footprint (~140Mb)"
+          "Acceptable memory footprint (~140MB)"
         ],
         "speaker_notes": ""
       }
@@ -703,9 +706,9 @@
           "Uses Playwright/browser infrastructure to render JavaScript pages",
           "Makes JS-heavy and dynamic pages agent-readable",
           "Parses web-hosted media such as PDFs and DOCX files",
-          "The cloud version has residential proxies, anti captcha and other goodies",
+          "The cloud version has residential proxies, anti-CAPTCHA and other goodies",
           "Self-hosted on my Hermes VM via a Docker container (medium complexity)",
-          "Very large memory footprint (4 to 6Gb at least)"
+          "Very large memory footprint (4 to 6GB at least)"
         ],
         "speaker_notes": "Firecrawl turns complex websites into clean, LLM-ready markdown or structured JSON so agents spend fewer tokens and get higher quality context. It handles rotating proxies, JS-heavy rendering, rate limits, and even PDF/DOCX parsing automatically, and is available both as a hosted service (with 500 free credits per month) and as an open-source project."
       }
@@ -714,15 +717,23 @@
       "template": "title_and_code",
       "data": {
         "title": "Firecrawl: Docker Compose",
-        "sentence": "https://docs.firecrawl.dev/contributing/self-host",
+        "sentence": "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md",
         "language": "yaml",
         "code": [
           "# ~/docker/hermes/docker-compose-firecrawl.yml",
           "services:",
+          "  playwright-service:",
+          "    [..]",
           "  firecrawl:",
-          "    # A lot of config",
-          "  valkey:",
-          "    # A lot of config"
+          "    [..]",
+          "  redis:",
+          "    [..]",
+          "  rabbitmq:",
+          "    [..]",
+          "  nuq-postgres:",
+          "    [..]",
+          "  foundationdb:",
+          "    [..]"
         ],
         "speaker_notes": ""
       }
@@ -731,7 +742,7 @@
       "template": "title_and_code",
       "data": {
         "title": "Firecrawl: Hermes .env",
-        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "sentence": "https://docs.firecrawl.dev/integrations/hermes",
         "language": "bash",
         "code": [
           "# $HERMES_HOME/.env",
@@ -739,7 +750,9 @@
           "# Self-hosted Firecrawl",
           "# Because Hermes and Firecrawl are on the same docker network",
           "#  the container name can be used",
-          "FIRECRAWL_URL=http://firecrawl:8888"
+          "FIRECRAWL_API_URL=http://firecrawl:3002",
+          "# Session TTL in seconds (default: 300)",
+          "FIRECRAWL_BROWSER_TTL=600"
         ],
         "speaker_notes": ""
       }
@@ -748,7 +761,7 @@
       "template": "title_and_code",
       "data": {
         "title": "Firecrawl: Hermes config.yaml",
-        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "sentence": "https://docs.firecrawl.dev/integrations/hermes",
         "language": "yaml",
         "code": [
           "# $HERMES_HOME/config.yaml",
@@ -763,12 +776,11 @@
       "template": "content_simple",
       "data": {
         "title": "Interact with Camofox",
-        "sentence": "",
         "bullets": [
           "Powered by Camoufox: an open source anti-detect browser, based on Firefox",
           "Thanks to fingerprint injection & rotation, it can bypass strict anti-bot systems like Cloudflare, Akamai, or DataDome",
           "Camofox wraps Camoufox in a REST API built for agents: accessibility snapshots instead of bloated HTML, stable element refs for clicking, and search macros for common sites",
-          "Builtin noVNC viewer to interact with the browser when necessary",
+          "Built-in noVNC viewer to interact with the browser when necessary",
           "Acceptable memory footprint (between 1 and 2GB)"
         ],
         "speaker_notes": ""
@@ -787,19 +799,19 @@
           "    container_name: camofox-browser",
           "    image: ghcr.io/jo-inc/camofox-browser:latest",
           "    restart: unless-stopped",
-          "  ports:",
-          "    - \"9377:9377\"",
-          "    - \"6080:6080\"  # noVNC",
-          "    - \"5901:5900\". # native VNC",
-          "  environment:",
-          "    - CAMOFOX_PORT=9377",
-          "    - ENABLE_VNC=1",
-          "    - VNC_BIND=0.0.0.0",
-          "    - VNC_RESOLUTION=1920x1080",
-          "    - MAX_OLD_SPACE_SIZE=2048",
-          "  volumes:",
-          "    - ./camofox:/root/.camofox",
-          "  shm_size: \"2g\""
+          "    ports:",
+          "      - \"9377:9377\"",
+          "      - \"6080:6080\"  # noVNC",
+          "      - \"5901:5900\". # native VNC",
+          "    environment:",
+          "      - CAMOFOX_PORT=9377",
+          "      - ENABLE_VNC=1",
+          "      - VNC_BIND=0.0.0.0",
+          "      - VNC_RESOLUTION=1920x1080",
+          "      - MAX_OLD_SPACE_SIZE=2048",
+          "    volumes:",
+          "      - ./camofox:/root/.camofox",
+          "    shm_size: \"2g\""
         ],
         "speaker_notes": ""
       }
@@ -852,10 +864,11 @@
         "title": "Flexible, yes!",
         "sentence": "Now my agents can",
         "bullets": [
-          "Make more extensive online researces",
-          "Parse web pages quicker and using less tokens",
+          "Do more extensive online research",
+          "Be more protected from prompt injections",
+          "Parse web pages quicker and using fewer tokens",
           "Check prices on Amazon",
-          "Search for annonces on immobiliare.it",
+          "Search for listings on immobiliare.it",
           "Shop on Esselunga and Migross sites"
         ],
         "speaker_notes": ""
@@ -866,14 +879,14 @@
       "data": {
         "title": "But you pay in RAM consumption",
         "image_uri": "docker_stats.png",
-        "speaker_notes": "Even when they are idle, the consume a lot of RAM"
+        "speaker_notes": "Even when they are idle, they consume a lot of RAM"
       }
     },
     {
       "template": "section_title",
       "data": {
         "title": "D.R.Y.",
-        "sentence": "How to make the undeterministic more predictable"
+        "sentence": "How to make the non-deterministic more predictable"
       }
     },
     {
@@ -922,6 +935,7 @@
           "https://portal.nousresearch.com/r/rainbowbreeze",
           "$15 off for your first paid month"
         ],
+        "image_uri": "rainbowbreeze_full.png",
         "image_position": "right",
         "speaker_notes": ""
       }
