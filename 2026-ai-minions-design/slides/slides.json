@@ -53,7 +53,7 @@
         "column_left": {
           "sub_heading": "My Setup: Self-hosted everything",
           "bullets": [
-            "A self-hosted and dedicated Linux VM on Proxmox",
+            "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
             "Docker inside the VM for an extra layer of isolation and reproducibility",
             "Strict separation between host OS and agent workspace",
             "Bonus point: VMs are on a separated physical net"
@@ -75,34 +75,212 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Structure your agent garden"
+        "title": "Structure your agent garden",
+        "sentence": "How to assign workflows across one or more agents, and tools to interact with them"
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Scenarios to Consider",
-        "bullets": [
-          "Managing a single agent",
-          "Managing the context of a single agent",
-          "Managing multiple isolated agents",
-          "Managing multiple interacting agents"
+        "title": "Guiding Principles: Context and Privacy",
+        "sentence": "Decide how to organize agents based on context and privacy boudaries",
+      "bullets": [
+          "Think about agents as personas: no one-fits all approach, but tailored to the work the agent manages",
+          "Separate agents based on access to conversations and memories",
+          "Prevent context leakage between personal, family, and other agents",
+          "Each agent should only access data it is safe to expose in its channels",
+          "Within the same agent, keep a session per conversation, to facilitate context management"
         ],
         "speaker_notes": "When structuring your agent garden, there are several progressive scenarios to consider, from handling a single agent and its context to orchestrating multiple isolated or interacting agents. Each scenario has a specific solution."
       }
     },
     {
-      "template": "title_and_image",
+      "template": "content_double",
       "data": {
-        "title": "Managing a Single Agent",
-        "image_uri": "hermes_web_dashboard.png",
-        "speaker_notes": "The Hermes Web Dashboard is the simplest way to access and communicate with Hermes. Beyond offering a chat interface, it also lets you manage all agent configurations in one place. Its biggest advantage is that everything is handled locally, so your privacy stays completely local. The trade-off is figuring out how to reach the host machine remotely, since the dashboard isn't accessible from the outside unless you use an SSH tunnel or configure more advanced networking mechanisms. Still, privacy and simplicity are definitely the key strengths of this first, most immediate solution."
+        "title": "Hermes agent and profiles",
+        "column_left": {
+          "sub_heading": "The (default) Agent",
+          "bullets": [
+            "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
+            "Default `$HERMES_HOME` directory",
+            "Has its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Launches the gateway process"
+          ]
+        },
+        "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained in the same and was never changed"
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Hermes agent and profiles",
+        "column_left": {
+          "sub_heading": "The (default) Agent",
+          "bullets": [
+            "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
+            "Default `$HERMES_HOME` directory",
+            "Has its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Launches the gateway process"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Profiles",
+          "bullets": [
+            "Conceptually equal to a default agent",
+            "A separate Hermes home directory, within the default agent directory",
+            "Each profile gets its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Same sandbox of the associated default agent"
+          ]
+        },
+        "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained in the same and was never changed"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes agent and profiles and subagents",
+        "sentence": "A subagent is different from a agent or profile",
+        "bullets": [
+          "Subagent is a child assistant spawned by delegate_task for a task, with a fresh conversation",
+          "A separate conversation is different from a separate profile",
+          "For example, a cronjob has the identity of an agent, and could spawn the work across multiple subagents"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent, on-demand",
+        "sentence": "Single installation with a single default agent, on-demand requests",
+        "bullets": [
+          "The simples use case, the agent has access to everything",
+          "Launched on demand by the user or an automation",
+          "Create different sessions for each conversations (_one session for a project work, one session for random information search, one session to check the weather, etc_)",
+          "`/btw` is your friend to keep the context and memory clean",
+          "`hermes chat` or `hermes dashboard`"
+        ],
+        "speaker_notes": ""
       }
     },
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing a Single Agent",
+        "title": "Single agent TUI",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Single agent dashboard",
+        "image_uri": "hermes_web_dashboard.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent with multiple profiles, on-demand",
+        "sentence": "Single installation with a single default agent and multiple profiles, on-demand requests",
+        "bullets": [
+          "Pretty much the same of the single agent scenario",
+          "Each profiles get its own directory and config",
+          "Launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
+          "Valid scenario for agents orchestration (_one coordinator agent that delegate works to specialized agents_)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Profile TUI",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Profile dashboard",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes Kanban",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent with multiple profiles, on-demand",
+        "sentence": "Single installation with a single default agent and multiple profiles, on-demand requests",
+        "bullets": [
+          "Pretty much the same of the single agent scenario",
+          "Each profiles get its own directory and config",
+          "Launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
+          "Valid scenario for agents orchestration (_one coordinator agent that delegate works to specialized agents_)",
+          "Default agents and profiles share the same root directory: danger of context spillover"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Default agent context spillover",
+        "image_uri": "agent_context_splillover.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Profile context spillover",
+        "image_uri": "profile_context_splillover.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Multiple agents (with or without profiles), on-demand",
+        "sentence": "Mutiple installations of Hermes, on-demand requests",
+        "bullets": [
+          "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same machine",
+          "It requires more resources (_~300Mb each docker container_)",
+          "Within the same VMs or docker container, manage profiles based on needs",
+          "It is complex to orchestrate communication among agents"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent, with messaging",
+        "sentence": "Single installation with a single default agent, and messaging gateway enabled",
+        "bullets": [
+          "The gateway routes conversation between the external world and the agent",
+          "`hermes gateway` installed as a system service",
+          "Run continuosly and the external word can interact with it",
+          "The agent is a 'bot' in the messaging platform",
+          "The messaging plaftorm must offer a way to separated agent sessions"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Direct messages with a single agent",
         "image_uri": "telegram_chat_single.png",
         "speaker_notes": ""
       }
@@ -110,23 +288,50 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing the Context of a Single Agent",
+        "title": "Topics to separate sessions with a single agent",
         "image_uri": "telegram_chat_with_topics.png",
+        "speaker_notes": "Could also be thread or other options offered by the platform"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent with multiple profiles, with messaging",
+        "sentence": "Single installation with a single default agent and multiple profiles, and messaging gateway enabled",
+        "bullets": [
+          "If Hermes is installed directly on the machine, each profile has it own gateway process",
+          "docker uses a single gateway process for the default agent and the profiles",
+          "Each profile is a 'bot' in the messaging platform",
+          "The platform manages communications among agents"
+        ],
         "speaker_notes": ""
       }
     },
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing Multiple Isolated Agents",
+        "title": "Managing Multiple Agents",
         "image_uri": "telegram_many_agents.webp",
         "speaker_notes": ""
       }
     },
     {
+      "template": "content_simple",
+      "data": {
+        "title": "Multiple agents and profiles, with messaging",
+        "sentence": "Mutiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
+        "bullets": [
+          "The most complex scenario, but easily managed with docker or VMs",
+          "Specific plaforms are emerging that consider both bots and humans first party citizens",
+          "Hermes Desktop as native solution with rapid development in progress"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
       "template": "title_and_image",
       "data": {
-        "title": "Managing Multiple (Interacting) Agents",
+        "title": "Managing Multiple Agents",
         "image_uri": "hermes_desktop.jpg",
         "speaker_notes": ""
       }
@@ -134,48 +339,246 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Managing Multiple (Interacting) Agents",
+        "title": "Managing Multiple Agents",
         "image_uri": "buzz_with_hermes_agents.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "My setup: Segmentation over simplicity",
+        "bullets": [
+          "Segment context and responsibility instead of keeping everything unified",
+          "Both for privacy reason, security and for tighter control of results",
+          "If an agent goes off the rails, the blast radius is contained within its own gateway",
+          "The conversation with my personal agents will never splill to family agent",
+          "Putting offline a system, don't stop the others",
+          "Testing cutting-edge features vs stability of workflows"
+        ],
+        "speaker_notes": "In my setup, I prefer segmenting context rather than keeping everything unified—both for privacy reasons and for greater control over the results. If an agent misbehaves, the blast radius stays contained within that specific gateway. Concretely, I have a dedicated agent for my personal productivity, one for family matters, one for each project I run (such as our ethical purchasing group or my education and technology side project), and one for each fun project, like the one dedicated to study and learning."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Meet my minions",
+        "bullets": [
+          "One agent for personal productivity, with subagents for specific tasks",
+          "One agent for family management",
+          "One agent per side project (ethical purchasing group, education & technology side project, etc)",
+          "One agent per fun project (philosophy teacher, news and bulletins, etc)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Meet my minions",
+        "bullets": [
+          "**Samantha**: Personal productivity & daily assistant (default agent)",
+          "**Chronicler** & **Librarian**: Helping Samantha to manage daily diary, knowledge base (profiles of Samantha)",
+          "**YellowFamily Butler**: Family matters & shared routines (default agent)",
+          "**GAStronauti**: Ethical purchasing group management (default agent)",
+          "**Edulogia**: Education & technology side project (default agent)",
+          "**Prof Socrate**: To teach me philosophy (default agent)",
+          "**News Reporter**: News aggregation and news generation (default agent)"
+        ],
+        "image_uri": "rainbowbreeze_agents.png",
+        "image_position": "right",
+        "speaker_notes": "Here is a look at the actual agents running in my Discord server: Samantha for personal productivity, YellowFamily Butler for family logistics, Chronicler and Librarian for memory and knowledge management, GAStronauti for our ethical purchasing group, Edulogia for my education and tech project, and Prof Socrate and News Reporter for learning and news."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Discord to interact with my minions",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": "I chose Discord for my agent garden for three main reasons: first, it gives me seamless access across both web and mobile through rock-solid client apps; second, it allowed me to bring multiple agents together in the same workspace right from the start; and third, it makes it easy to keep context strictly separated across different conversations using categories, channels, and threads."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Discord to interact with my minions",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_02.png",
         "speaker_notes": ""
       }
     },
     {
       "template": "title_and_image",
       "data": {
-        "title": "My setup: Discord with multiple agents",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
-        "speaker_notes": "I chose Discord for my agent garden for three main reasons: first, it gives me seamless access across both web and mobile through rock-solid client apps; second, it allowed me to bring multiple agents together in the same workspace right from the start; and third, it makes it easy to keep context strictly separated across different conversations using categories, channels, and threads."
+        "title": "Discord to interact with my minions",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_03.png",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Discord to interact with my minions",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_04.png",
+        "speaker_notes": ""
       }
     },
     {
       "template": "section_title",
       "data": {
-        "title": "How to split the work"
-      }
-    },
-    {
-      "template": "content_simple",
-      "data": {
-        "title": "Guiding Principle: Conversation Privacy",
-        "bullets": [
-          "The core criterion for splitting work across agents is conversation privacy",
-          "Separate agents based on who has access to the conversation and memory",
-          "Prevent context leakage between personal, family, and external interactions",
-          "Each agent should only access data it is safe to expose in its channels"
-        ],
-        "speaker_notes": "The fundamental criterion for choosing how to divide work between a single agent and multiple sub-agents is conversation privacy."
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
-        "title": "Agent and identities"
+        "title": "Agent and identities",
+        "sentence": "Where diligence is very important"
       }
     },
     {
       "template": "section_title",
       "data": {
         "title": "Agent and internet access"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Tools Hermes uses to access the Internet",
+        "bullets": [
+          "**web_search**: Search the web to discover relevant pages and information",
+          "**web_extract**: Extract clean, structured content from web pages",
+          "**browser_use**: Interactive browser automation (also used when `web_search` and `web_extract` are unavailable)",
+          "**`curl`**: If none of these tools are available, the agent falls back to a simple `curl`"
+        ],
+        "speaker_notes": "Hermes has three main tools that together give the agent visibility on the internet: web_search, web_extract, and browser_use. If web_search and web_extract are not available, the agent can use browser_use. And if none of these tools are available at all, the agent ultimately falls back to a simple curl command."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "web_search",
+        "sentence": "Search the web and return ranked results",
+        "bullets": [
+          "Firecrawl (500 credits/month)",
+          "Brave Seaerch (2000 queries / month)",
+          "DuckDuckGo",
+          "Perplexity",
+          "**SearXNG** (self-hosted)",
+          "etc"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "web_extract",
+        "sentence": "Fetch and extract readable content from one or more URLs",
+        "bullets": [
+          "Firecrawl (500 credits/month)",
+          "Exa",
+          "Parallel",
+          "Tavily",
+          "etc"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "browser_use",
+        "sentence": "It gives Hermes a real browser to browse the web",
+        "bullets": [
+          "`browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_scroll`, etc",
+          "Can be run locally or on cloud browsers",
+          "Headless or headed mode for local browser"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "browser_use: cloud vs. local",
+        "column_left": {
+          "sub_heading": "Cloud browsers",
+          "sentence": "Provide stealth, CAPTCHA solving, residential proxies. Cost money",
+          "bullets": [
+            "Browserbase",
+            "Browser Use",
+            "Firecrawl with build-in scraping"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Local browsers",
+          "sentence": "Can use local profiles, only RAM cost",
+          "bullets": [
+            "Local Chromium via CDP via /browser connect",
+            "Any browser installed on the machine running Hermes",
+            "Camoufox",
+            "Lightpanda"
+          ]
+        },
+        "speaker_notes": "When configuring browser automation in Hermes, there are two main families of browsers you can use: cloud-based browsers and local browsers. Among cloud options, you have services like Browserbase or Browser Use. Among local options, you can use Camoufox, Lightpanda, Chromium-compatible local browsers with Chrome DevTools Protocol (CDP), or a browser installed directly on the machine where Hermes runs."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: split a web activity in three distinct jobs",
+        "bullets": [
+          "**Search** with **SearXNG**: cheap discovery of candidate URLs",
+          "**Extract** with **Firecrawl**: turn messy and complex pages into clean markdown to analyze",
+          "**Interact** with **Camofox**: Operate pages bypassing bot detection and when javascript is really needed"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "SearXNG",
+        "sentence": "SearXNG is a metasearch engine, aggregating the results of other search engines while not storing information about its users.",
+        "bullets": [
+          "Removing private data from requests going to search services",
+          "Not forwarding anything from third party services through search services (e.g. advertisement)",
+          "Removing private data from requests going to the results pages",
+          "Self-hosted on my Hermes VM via a Docker container (easy)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Docker Compose Setup",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# ~/searxng/docker-compose.yml",
+          "services:",
+          "  searxng:",
+          "    image: searxng/searxng:latest",
+          "    container_name: searxng",
+          "    ports:",
+          "      - \"8888:8080\"",
+          "    volumes:",
+          "      - ./searxng:/etc/searxng:rw",
+          "    environment:",
+          "      - SEARXNG_BASE_URL=http://localhost:8888/",
+          "    restart: unless-stopped"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Firecrawl",
+        "sentence": "Turn websites into LLM-ready markdown and structured data",
+        "bullets": [
+          "Clean, LLM-ready output (Markdown, structured JSON, screenshots) that saves tokens",
+          "Makes agent-readable JS-heavy and dynamic pages",
+          "Parses web-hosted media such as PDFs and DOCX files",
+          "Self-hosted on my Hermes VM via a Docker container (medium complexity)"
+        ],
+        "speaker_notes": "Firecrawl turns complex websites into clean, LLM-ready markdown or structured JSON so agents spend fewer tokens and get higher quality context. It handles rotating proxies, JS-heavy rendering, rate limits, and even PDF/DOCX parsing automatically, and is available both as a hosted service (with 500 free credits per month) and as an open-source project."
       }
     },
     {
@@ -201,7 +604,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Dot",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
         "speaker_notes": ""
       }
     },
@@ -209,7 +612,7 @@
       "template": "title_and_image",
       "data": {
         "title": "Muse",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
         "speaker_notes": ""
       }
     },
@@ -217,7 +620,7 @@
       "template": "title_and_image",
       "data": {
         "title": "SpaceX",
-        "image_uri": "rainbowbreeze_agent_garden_on_discord.png",
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
         "speaker_notes": ""
       }
     }
