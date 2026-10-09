@@ -15,7 +15,7 @@
       "data": {
         "title": "Alfredo Morresi",
         "bullets": [
-          "Community builder and developer by passion, Developer Relation @ Google by profession",
+          "Community builder and developer by passion, Developer Relations @ Google by profession",
           "Leading the Google Developer Experts (GDE) program",
           "🇮🇹, I love being a dad, free-software, running on the beach, snowboarding",
           "I relentlessly train myself in preparing (and eating) Tiramisù",
@@ -65,7 +65,7 @@
       "data": {
         "title": "Solution: Hermes in a Linux VM",
         "column_left": {
-          "sub_heading": "My Setup: Self-hosted and docker",
+          "sub_heading": "My Setup: Self-hosted and Docker",
           "bullets": [
             "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
             "Docker inside the VM for an extra layer of isolation and reproducibility",
@@ -85,7 +85,7 @@
       "data": {
         "title": "Solution: Hermes in a Linux VM",
         "column_left": {
-          "sub_heading": "My Setup: Self-hosted and docker",
+          "sub_heading": "My Setup: Self-hosted and Docker",
           "bullets": [
             "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
             "Docker inside the VM for an extra layer of isolation and reproducibility",
@@ -99,7 +99,7 @@
           "bullets": [
             "CLI-only Linux VM in your machine",
             "GUI Linux / Windows VM in your machine: full desktop environment when visual tools or browsers are needed",
-            "Hermes in docker in your machine (mount carefully resources)",
+            "Hermes in Docker in your machine (carefully mount resources)",
             "Virtual host somewhere",
             "Same core principle: keep the host machine untouched"
           ]
@@ -117,7 +117,7 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "Guiding Principles: Context and Privacy",
+        "title": "Guiding principle: Context and Privacy",
         "sentence": "Decide how to organize agents based on context and privacy boundaries",
         "bullets": [
           "Think about agents as personas: no one-size-fits-all approach, but tailored to the work the agent manages",
@@ -179,7 +179,7 @@
         "title": "Hermes agent and profiles and subagents",
         "sentence": "A subagent is different from an agent or profile",
         "bullets": [
-          "Subagent is a child assistant spawned by delegate_task for a task, with a fresh conversation",
+          "Subagent is a child assistant spawned by `delegate_task` for a task, with a fresh conversation",
           "A separate conversation is different from a separate profile",
           "For example, a cronjob has the identity of an agent, and could spawn the work across multiple subagents"
         ],
@@ -295,9 +295,9 @@
         "title": "Multiple agents (with or without profiles), on-demand",
         "sentence": "Multiple installations of Hermes, on-demand requests",
         "bullets": [
-          "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same host machine",
-          "It requires more resources (_~300MB each docker container_)",
-          "Within the same VMs or docker container, manage profiles based on needs",
+          "Only multiple VMs or separate Docker containers can really guarantee data and process isolation on the same host machine",
+          "It requires more resources (_~300MB each Docker container_)",
+          "Within the same VM or Docker container, manage profiles based on needs",
           "It is complex to orchestrate communication among agents with the standard UIs"
         ],
         "speaker_notes": ""
@@ -331,7 +331,7 @@
       "data": {
         "title": "Topics to separate sessions with a single agent",
         "image_uri": "telegram_chat_with_topics.png",
-        "speaker_notes": "Could also be thread or other options offered by the platform"
+        "speaker_notes": "Could also be threads or other options offered by the platform"
       }
     },
     {
@@ -362,7 +362,7 @@
         "title": "Multiple agents and profiles, with messaging",
         "sentence": "Multiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
         "bullets": [
-          "The most complex scenario, but easily managed with docker or VMs",
+          "The most complex scenario, but easily managed with Docker or VMs",
           "Scenario where Discord / Slack / etc are great platforms, with some config",
           "Emerging platforms that consider both bots and humans first party citizens",
           "Hermes Desktop as native solution with rapid development"
@@ -419,13 +419,13 @@
       "data": {
         "title": "Meet my minions",
         "bullets": [
-          "**Samantha**: Personal productivity & daily assistant (default agent)",
+          "**Samantha**: Personal daily assistant",
           "**Chronicler** & **Librarian**: Helping Samantha to manage daily diary, knowledge base (profiles of Samantha)",
-          "**YellowFamily Butler**: Family matters & shared routines (default agent)",
-          "**GAStronauti**: Ethical purchasing group management (default agent)",
-          "**Edulogia**: Education & technology side project (default agent)",
-          "**Prof Socrate**: To teach me philosophy (default agent)",
-          "**News Reporter**: News aggregation and news generation (default agent)"
+          "**YellowFamily Butler**: Family assistant",
+          "**GAStronauti**: Ethical purchasing group management",
+          "**Edulogia**: Tech4Kids side project",
+          "**Prof Socrate**: To teach me philosophy",
+          "**News Reporter**: News aggregation"
         ],
         "image_uri": "rainbowbreeze_agents.png",
         "image_position": "right",
@@ -470,13 +470,6 @@
         "title": "Discord to interact with my minions",
         "image_uri": "rainbowbreeze_agent_garden_on_discord_04.png",
         "speaker_notes": ""
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
-        "title": "Agent and identities",
-        "sentence": "Where diligence is very important"
       }
     },
     {
@@ -618,7 +611,7 @@
           "One agent tool call, multiple queries to various search engines",
           "Removing private data from requests going to search services",
           "Not forwarding anything from third party services through search services (e.g. advertisement)",
-          "SearXNG returns snippets, not full page content. Use web_extract, browser tools, or curl for full articles",
+          "SearXNG returns snippets, not full page content. Use `web_extract`, browser tools, or `curl` for full articles",
           "Self-hosted on my Hermes VM via a Docker container",
           "Acceptable memory footprint (~140MB)"
         ],
@@ -936,7 +929,7 @@
           "Define shared conventions and standards for every skill in a root `AGENTS.md` file",
           "Ask the agent to grill and update skills following the rules in `AGENTS.md` to maintain consistency over time",
           "Version, review, and evolve your skills just like any software project",
-          "Loops and evals to check. Don't simply generate the slides. Take a screenshot of each one of them, check for consistency in the design, rewrite the slides"
+          "Use evaluation loops: don't just generate outputs—inspect them (e.g. screenshot each slide, verify visual consistency, and iterate)"
         ],
         "speaker_notes": ""
       }
@@ -977,7 +970,7 @@
           "Add the GitHub repo using `hermes skills tap add <owner/repo>`",
           "Check for the new skills with `hermes skills search --source github <keyword>`",
           "Install the skill with `hermes skills install owner/repo/skill-name`",
-          "Remove the tap with `skills tap remove owner/repo`"
+          "Remove the tap with `hermes skills tap remove <owner/repo>`"
         ],
         "speaker_notes": ""
       }
@@ -1019,8 +1012,8 @@
           "{",
           "  \"taps\": [",
           "    {",
-          "    \"repo\": \"rainbowbreeze/rainbow-harness\"",
-          "    \"path\": \"skills/\"",
+          "      \"repo\": \"rainbowbreeze/rainbow-harness\",",
+          "      \"path\": \"skills/\"",
           "    }",
           "  ]",
           "}"
@@ -1060,8 +1053,7 @@
           "Install a skill with `hermes skills install --category rainbowskills rainbowbreeze/rainbow-harness/aphorism-tracker`",
           "Be aware of potential risks coming from community skills (_direct edit system files, dangerous prompts, etc_). Use `--force` to bypass some of them",
           "Check with `hermes skills list --enabled-only`",
-          "Remove the skill with `hermes skills unistall aphorism-tracker`"
-
+          "Remove the skill with `hermes skills uninstall aphorism-tracker`"
         ],
         "speaker_notes": ""
       }
@@ -1083,7 +1075,7 @@
       "template": "title_and_code",
       "data": {
         "title": "Hermes frontmatter fields",
-        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#skillmd-format",
         "language": "markdown",
         "code": [
           "---",
@@ -1103,7 +1095,7 @@
         "title": "Hermes frontmatter fields",
         "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
         "bullets": [
-          "Use `required_environment_variables` when a skill needs an API key or token.",
+          "Use `required_environment_variables` when a skill needs an API key or token",
           "Missing values do not hide the skill from discovery",
           "Instead, Hermes prompts for them securely when the skill is loaded in the local CLI"
         ],
@@ -1122,7 +1114,7 @@
           "# [...]",
           "required_environment_variables:",
           "  - name: BRAIN_APHORISMS_PATH",
-          "    prompt: Folder to store aphorisms in the BRAIN knowledge repository", 
+          "    prompt: Folder to store aphorisms in the BRAIN knowledge repository",
           "    help: Define where the projects folder must be, generally /opt/data/BRAIN/aphorisms",
           "    required_for: full functionality",
           "---"
@@ -1136,8 +1128,8 @@
         "title": "Hermes frontmatter fields",
         "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#config-settings-configyaml",
         "bullets": [
-          "Skills can declare non-secret settings that are stored in config.yaml under the skills.config namespace",
-          "Unlike environment variables (which are secrets stored in .env), config settings are for paths, preferences, and other non-sensitive values"
+          "Skills can declare non-secret settings that are stored in `config.yaml` under the `skills.config` namespace",
+          "Unlike environment variables (which are secrets stored in `.env`), config settings are for paths, preferences, and other non-sensitive values"
         ],
         "speaker_notes": ""
       }
@@ -1158,7 +1150,8 @@
           "      - key: aphorism-tracker.path",
           "        description: Path to the data directory to store aphorisms",
           "        default: \"~BRAIN/aphorisms\"",
-          "        prompt: Directory path to store aphorisms"
+          "        prompt: Directory path to store aphorisms",
+          "---"
         ],
         "speaker_notes": ""
       }
@@ -1169,7 +1162,7 @@
         "title": "Hermes custom skill tap example",
         "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
         "bullets": [
-          "Add `GITHUB_TOKEN` to .env to avoid GitHub rate errors"
+          "Add `GITHUB_TOKEN` to `.env` to avoid GitHub rate errors"
         ],
         "speaker_notes": ""
       }
@@ -1187,7 +1180,6 @@
         "bullets": [
           "**Infrastructure**: contain the blast radius by isolating agents in dedicated VMs and Docker containers away from your main machine",
           "**Agent Garden**: choose segmentation over simplicity—separate agents by persona and privacy boundaries, and interact with them via messaging platforms like Discord",
-          "**Identities**: manage agent accounts, permissions, and credentials with strict diligence",
           "**Internet Access**: split web tasks into three phases—**Search** (`SearXNG`), **Extract** (`Firecrawl`), and **Interact** (`Camofox`)—balancing capability with RAM cost",
           "**D.R.Y. with Agent Skills**: turn repeatable processes into skills, offload deterministic work to scripts and linters, and manage skills like code in a dedicated Git repo (`AGENTS.md` + custom skill tap)"
         ],
@@ -1239,9 +1231,11 @@
           "Different services offered by Nous Portal (_Models access, BrowserUse, Firecrawl, Perplexity search, etc_)",
           "No configuration required",
           "https://portal.nousresearch.com/r/rainbowbreeze",
-          "$15 off for your first paid month"
+          "$15 off for your first paid month",
+          "",
+          "🙏, 🫶, 💛, and QUESTIONS?"
         ],
-        "image_uri": "rainbowbreeze_full.png",
+        "image_uri": "thank_you_and_questions.jpg",
         "image_position": "right",
         "speaker_notes": ""
       }
