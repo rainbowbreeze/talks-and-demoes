@@ -1211,6 +1211,14 @@
     {
       "template": "title_and_image",
       "data": {
+        "title": "xAI Grok Bot",
+        "image_uri": "xai_grok_bot.webp",
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
         "title": "Google Gemini Spark",
         "image_uri": "google_gemini_spark.png",
         "speaker_notes": ""
