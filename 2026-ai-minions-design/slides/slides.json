@@ -27,6 +27,19 @@
       }
     },
     {
+      "template": "content_simple",
+      "data": {
+        "title": "Why this talk",
+        "sentence": "What I learned using AI agents for personal productivity (and how to save you from some insomnia)",
+        "bullets": [
+          "Not 100% satisfied with my agents yet, but miles ahead of a few months ago",
+          "Focus on the areas where there are still no definitive answers, just design choices that benefit from sharing real-world experiences",
+          "Context is **personal productivity**, not coding with agents—though many best practices apply to coding as well"
+        ],
+        "speaker_notes": "The goal of this talk is to share what I've learned using AI agents in the context of personal productivity. I'll start by being honest: I'm not at a point where I'm 100% happy with my agents yet, but I'm definitely much happier than I was a few months ago—mostly thanks to the many nights I spent banging my head against them. So I thought: why not share what I've discovered, and maybe save someone else from insomnia? And here I am. This won't be an all-encompassing talk; instead, it will touch on the pain points that gave me the most trouble, or areas where there are still no definitive solutions—just design choices that benefit from sharing experiences. Keep in mind: the context is personal productivity, not writing code with agents, although we'll see that several best practices apply to coding as well. Let's get started!"
+      }
+    },
+    {
       "template": "section_title",
       "data": {
         "title": "Infrastructure",
