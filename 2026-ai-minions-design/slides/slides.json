@@ -30,7 +30,21 @@
       "template": "section_title",
       "data": {
         "title": "Infrastructure",
-        "sentence": "Building Blocks of My Productivity Agents"
+        "sentence": "The cloud is just someone else's computer!"
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: Privacy and Fun",
+        "bullets": [
+          "I prefer to host my services, because of privacy reasons",
+          "I prefer open source software, also because of transparent data management",
+          "Self-hosting is a fun learning occasion for me",
+          "I can experiment with the configuration I prefer",
+          "In the mid-long term, and with hardware recycling, it's generally cheaper"
+        ],
+        "speaker_notes": ""
       }
     },
     {
@@ -51,11 +65,29 @@
       "data": {
         "title": "Solution: Hermes in a Linux VM",
         "column_left": {
-          "sub_heading": "My Setup: Self-hosted everything",
+          "sub_heading": "My Setup: Self-hosted and docker",
           "bullets": [
             "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
             "Docker inside the VM for an extra layer of isolation and reproducibility",
             "Strict separation between host OS and agent workspace",
+            "Minimum power consumption (16W with an Intel box, 7W with RasPi)",
+            "Bonus point: VMs are on a separated physical net"
+          ]
+        },
+        "speaker_notes": "To achieve this isolation, I run a self-hosted Hermes agent inside a local Linux virtual machine. In my specific setup, I created a Linux VM and put Docker inside it to run the agent."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Solution: Hermes in a Linux VM",
+        "column_left": {
+          "sub_heading": "My Setup: Self-hosted and docker",
+          "bullets": [
+            "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
+            "Docker inside the VM for an extra layer of isolation and reproducibility",
+            "Strict separation between host OS and agent workspace",
+            "Minimum power consumption (16W with an Intel box, 7W with RasPi)",
             "Bonus point: VMs are on a separated physical net"
           ]
         },
@@ -69,7 +101,7 @@
             "Same core principle: keep the host machine untouched"
           ]
         },
-        "speaker_notes": "To achieve this isolation, I run a self-hosted Hermes agent inside a local Linux virtual machine. In my specific setup, I created a Linux VM and put Docker inside it to run the agent. However, you don't necessarily need Docker: you can simply spin up a local VM—either CLI-only or with a full GUI—and run the agent directly inside it."
+        "speaker_notes": "However, you don't necessarily need Docker: you can simply spin up a local VM—either CLI-only or with a full GUI—and run the agent directly inside it."
       }
     },
     {
@@ -83,9 +115,9 @@
       "template": "content_simple",
       "data": {
         "title": "Guiding Principles: Context and Privacy",
-        "sentence": "Decide how to organize agents based on context and privacy boudaries",
-      "bullets": [
-          "Think about agents as personas: no one-fits all approach, but tailored to the work the agent manages",
+        "sentence": "Decide how to organize agents based on context and privacy boundaries",
+        "bullets": [
+          "Think about agents as personas: no one-size-fits-all approach, but tailored to the work the agent manages",
           "Separate agents based on access to conversations and memories",
           "Prevent context leakage between personal, family, and other agents",
           "Each agent should only access data it is safe to expose in its channels",
@@ -103,9 +135,12 @@
           "bullets": [
             "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
             "Default `$HERMES_HOME` directory",
-            "Has its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Has its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
             "Launches the gateway process"
           ]
+        },
+        "column_right": {
+          "bullets": []
         },
         "speaker_notes": ""
       }
@@ -119,7 +154,7 @@
           "bullets": [
             "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
             "Default `$HERMES_HOME` directory",
-            "Has its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Has its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
             "Launches the gateway process"
           ]
         },
@@ -128,8 +163,8 @@
           "bullets": [
             "Conceptually equal to a default agent",
             "A separate Hermes home directory, within the default agent directory",
-            "Each profile gets its own its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
-            "Same sandbox of the associated default agent"
+            "Each profile gets its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Same or different sandbox of the associated default agent"
           ]
         },
         "speaker_notes": "I think it was a quick and scrappy way to create sub-agents, and then remained in the same and was never changed"
@@ -139,7 +174,7 @@
       "template": "content_simple",
       "data": {
         "title": "Hermes agent and profiles and subagents",
-        "sentence": "A subagent is different from a agent or profile",
+        "sentence": "A subagent is different from an agent or profile",
         "bullets": [
           "Subagent is a child assistant spawned by delegate_task for a task, with a fresh conversation",
           "A separate conversation is different from a separate profile",
@@ -154,12 +189,12 @@
         "title": "A single agent, on-demand",
         "sentence": "Single installation with a single default agent, on-demand requests",
         "bullets": [
-          "The simples use case, the agent has access to everything",
-          "Launched on demand by the user or an automation",
+          "The simplest use case, one agent ingests and processes everything",
+          "Launched on demand by the user",
+          "`hermes chat` or `hermes dashboard`",
           "Create different sessions for each concept (_one session for a project work, one session for random information search, one session to check the weather, etc_)",
           "`/btw` is your friend to keep the context and memory clean",
-          "`hermes chat` or `hermes dashboard`",
-          "You need direct access to the Hermes machine (ssh, reverse proxy, tunnel, etc)"
+          "You need direct access to the Hermes machine (_ssh, reverse proxy, tunnel, etc_)"
         ],
         "speaker_notes": ""
       }
@@ -175,7 +210,7 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Single agent dashboard",
+        "title": "Single agent web dashboard",
         "image_uri": "hermes_dashboard_agent.png",
         "speaker_notes": ""
       }
@@ -186,10 +221,11 @@
         "title": "A single agent with multiple profiles, on-demand",
         "sentence": "Single installation with a single default agent and multiple profiles, on-demand requests",
         "bullets": [
-          "Pretty much the same of the single agent scenario",
-          "Each profiles get its own directory and config",
+          "Pretty much the same as the single agent scenario",
+          "Each profile gets its own directory and config",
+          "Each profile has its own context, conversations, data",
           "Launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
-          "Valid scenario for agents orchestration (_one coordinator agent that delegate works to specialized agents_)"
+          "Valid scenario for agents orchestration (_one coordinator agent that delegates work to specialized agents_)"
         ],
         "speaker_notes": ""
       }
@@ -205,7 +241,7 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Profile dashboard",
+        "title": "Profile web dashboard",
         "image_uri": "hermes_dashboard_profile.png",
         "speaker_notes": ""
       }
@@ -213,7 +249,7 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Hermes Kanban",
+        "title": "Hermes web Kanban",
         "image_uri": "hermes_kanban.png",
         "speaker_notes": "https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban"
       }
@@ -224,11 +260,12 @@
         "title": "A single agent with multiple profiles, on-demand",
         "sentence": "Single installation with a single default agent and multiple profiles, on-demand requests",
         "bullets": [
-          "Pretty much the same of the single agent scenario",
-          "Each profiles get its own directory and config",
+          "Pretty much the same as the single agent scenario",
+          "Each profile gets its own directory and config",
+          "Each profile has its own context, conversations, data",
           "Launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
-          "Valid scenario for agents orchestration (_one coordinator agent that delegate works to specialized agents_)",
-          "Default agents and profiles share the same root directory: danger of context spillover"
+          "Valid scenario for agents orchestration (_one coordinator agent that delegates work to specialized agents_)",
+          "Default agents and profiles share the same root directory: 🚨 danger of information spillover"
         ],
         "speaker_notes": ""
       }
@@ -253,7 +290,7 @@
       "template": "content_simple",
       "data": {
         "title": "Multiple agents (with or without profiles), on-demand",
-        "sentence": "Mutiple installations of Hermes, on-demand requests",
+        "sentence": "Multiple installations of Hermes, on-demand requests",
         "bullets": [
           "Only multiple VMs or separate docker containers can really guarantee data and process isolation on the same host machine",
           "It requires more resources (_~300Mb each docker container_)",
@@ -271,9 +308,9 @@
         "bullets": [
           "The gateway routes conversation between the external world and the agent",
           "`hermes gateway` installed as a system service",
-          "Run continuosly and the external word can interact with it",
+          "Runs continuously and the external world can interact with it",
           "The agent is a 'bot' in the messaging platform",
-          "The messaging plaftorm must offer a way to separated agent sessions"
+          "The messaging platform must offer a way to separate agent sessions"
         ],
         "speaker_notes": ""
       }
@@ -300,8 +337,8 @@
         "title": "A single agent with multiple profiles, with messaging",
         "sentence": "Single installation with a single default agent and multiple profiles, and messaging gateway enabled",
         "bullets": [
-          "If Hermes is installed directly on the machine, each profile has it own gateway process",
-          "docker uses a single gateway process for the default agent and the profiles",
+          "If Hermes is installed directly on the machine, each profile has its own gateway process",
+          "Docker uses a single gateway process for the default agent and the profiles",
           "Each profile is a 'bot' in the messaging platform",
           "The platform manages communications among agents"
         ],
@@ -320,11 +357,11 @@
       "template": "content_simple",
       "data": {
         "title": "Multiple agents and profiles, with messaging",
-        "sentence": "Mutiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
+        "sentence": "Multiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
         "bullets": [
           "The most complex scenario, but easily managed with docker or VMs",
           "Scenario where Discord / Slack / etc are great platforms, with some config",
-          "Emerging plaforms that consider both bots and humans first party citizens",
+          "Emerging platforms that consider both bots and humans first party citizens",
           "Hermes Desktop as native solution with rapid development"
         ],
         "speaker_notes": ""
@@ -352,10 +389,10 @@
         "title": "My setup: Segmentation over simplicity",
         "bullets": [
           "Segment context and responsibility instead of keeping everything unified",
-          "Both for privacy reason, security and for tighter control of results",
+          "Both for privacy reasons, security, and tighter control of results",
           "If an agent goes off the rails, the blast radius is contained within its own gateway",
-          "The conversation with my personal agents will never splill to family agent",
-          "Putting offline a system, don't stop the others",
+          "The conversation with my personal agents will never spill to the family agent",
+          "Putting a system offline doesn't stop the others",
           "Testing cutting-edge features vs stability of workflows"
         ],
         "speaker_notes": "In my setup, I prefer segmenting context rather than keeping everything unified—both for privacy reasons and for greater control over the results. If an agent misbehaves, the blast radius stays contained within that specific gateway. Concretely, I have a dedicated agent for my personal productivity, one for family matters, one for each project I run (such as our ethical purchasing group or my education and technology side project), and one for each fun project, like the one dedicated to study and learning."
@@ -442,13 +479,28 @@
     {
       "template": "section_title",
       "data": {
-        "title": "Agent and internet access"
+        "title": "Agent and internet access",
+        "sentence": "Many sites are designed for humans, others want a human-only audience"
       }
     },
     {
       "template": "content_simple",
       "data": {
-        "title": "Tools Hermes uses to access the Internet",
+        "title": "The problems",
+        "bullets": [
+          "Sites look great at human eyes, but are a total mess for an agent (_CSS animation, dynamic sites, complex DOM, forms, etc_)",
+          "Anti-bot protection implemented in many sites",
+          "Understanding complex pages requires more tokens and time",
+          "Lighter models may not be able to parse complex page appropriately",
+          "Are you sure that what you see, is also what your agent sees (_prompt ingjection_)?"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes tools stack for internet access",
         "bullets": [
           "**web_search**: Search the web to discover relevant pages and information",
           "**web_extract**: Extract clean, structured content from web pages",
@@ -461,14 +513,26 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "web_search",
+        "title": "Split a web activity in three distinct phases",
+        "bullets": [
+          "**Search**: focus on discovery of candidate URLs",
+          "**Extract**: focus on obtaining only what is relevant",
+          "**Interact**: fallback to full-human experience when there are no alternatives"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "`web_search` options",
         "sentence": "Search the web and return ranked results",
         "bullets": [
-          "Firecrawl (500 credits/month)",
-          "Brave Seaerch (2000 queries / month)",
+          "Firecrawl (500 credits/month, self-hosted but less powerful)",
+          "Brave Search (2000 queries / month)",
           "DuckDuckGo",
           "Perplexity",
-          "**SearXNG** (self-hosted)",
+          "**SearXNG** (cloud or self-hosted)",
           "etc"
         ],
         "speaker_notes": ""
@@ -477,10 +541,10 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "web_extract",
+        "title": "`web_extract` options",
         "sentence": "Fetch and extract readable content from one or more URLs",
         "bullets": [
-          "Firecrawl (500 credits/month)",
+          "Firecrawl (500 credits/month, self-hosted but less powerful)",
           "Exa",
           "Parallel",
           "Tavily",
@@ -492,7 +556,7 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "browser_use",
+        "title": "`browser_use` options",
         "sentence": "It gives Hermes a real browser to interact with the web",
         "bullets": [
           "`browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_scroll`, etc",
@@ -532,11 +596,12 @@
     {
       "template": "content_simple",
       "data": {
-        "title": "Guiding principle: split a web activity in three distinct jobs",
+        "title": "My personal choice of options",
         "bullets": [
           "**Search** with **SearXNG**: cheap discovery of candidate URLs",
           "**Extract** with **Firecrawl**: turn messy and complex pages into clean markdown to analyze",
-          "**Interact** with **Camofox**: Operate pages bypassing bot detection and when javascript is really needed"
+          "**Interact** with **Camofox**: Operate pages bypassing bot detection and when javascript is really needed",
+          "All self-hosted"
         ],
         "speaker_notes": ""
       }
@@ -547,10 +612,12 @@
         "title": "Search with SearXNG",
         "sentence": "SearXNG is a metasearch engine, aggregating the results of other search engines while not storing information about its users.",
         "bullets": [
+          "One agent tool call, multiple queries to various search engine",
           "Removing private data from requests going to search services",
           "Not forwarding anything from third party services through search services (e.g. advertisement)",
-          "Removing private data from requests going to the results pages",
-          "Self-hosted on my Hermes VM via a Docker container (easy)"
+          "SearXNG returns snippets, not full page content. Use web_extract, browser tools, or curl for full articles",
+          "Self-hosted on my Hermes VM via a Docker container",
+          "Acceptable memory footprint (~140Mb)"
         ],
         "speaker_notes": ""
       }
@@ -558,11 +625,11 @@
     {
       "template": "title_and_code",
       "data": {
-        "title": "SearXNG: Docker Compose Setup",
+        "title": "SearXNG: Docker Compose",
         "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
         "language": "yaml",
         "code": [
-          "# ~/searxng/docker-compose.yml",
+          "# ~/docker/hermes/docker-compose-searxng.yml",
           "services:",
           "  searxng:",
           "    image: searxng/searxng:latest",
@@ -579,17 +646,117 @@
       }
     },
     {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: settings.yml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/searxng/settings.yml",
+          "search:",
+          "  formats:",
+          "    - html",
+          "    - json"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Hermes .env",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted SearXNG",
+          "# Because Hermes and SearXNG are on the same docker network",
+          "#  the container name can be used",
+          "SEARXNG_URL=http://searxng:8888"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Hermes config.yaml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "web:",
+          "  search_backend: \"searxng\""
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
       "template": "content_simple",
       "data": {
         "title": "Extract with Firecrawl",
         "sentence": "Turn websites into LLM-ready markdown and structured data",
         "bullets": [
           "Clean, LLM-ready output (Markdown, structured JSON, screenshots) that saves tokens",
-          "Makes agent-readable JS-heavy and dynamic pages",
+          "Uses Playwright/browser infrastructure to render JavaScript pages",
+          "Makes JS-heavy and dynamic pages agent-readable",
           "Parses web-hosted media such as PDFs and DOCX files",
-          "Self-hosted on my Hermes VM via a Docker container (medium complexity)"
+          "The cloud version has residential proxies, anti captcha and other goodies",
+          "Self-hosted on my Hermes VM via a Docker container (medium complexity)",
+          "Very large memory footprint (4 to 6Gb at least)"
         ],
         "speaker_notes": "Firecrawl turns complex websites into clean, LLM-ready markdown or structured JSON so agents spend fewer tokens and get higher quality context. It handles rotating proxies, JS-heavy rendering, rate limits, and even PDF/DOCX parsing automatically, and is available both as a hosted service (with 500 free credits per month) and as an open-source project."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Docker Compose",
+        "sentence": "https://docs.firecrawl.dev/contributing/self-host",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/docker-compose-firecrawl.yml",
+          "services:",
+          "  firecrawl:",
+          "    # A lot of config",
+          "  valkey:",
+          "    # A lot of config"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Hermes .env",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted Firecrawl",
+          "# Because Hermes and Firecrawl are on the same docker network",
+          "#  the container name can be used",
+          "FIRECRAWL_URL=http://firecrawl:8888"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Hermes config.yaml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "web:",
+          "  extract_backend: \"firecrawl\""
+        ],
+        "speaker_notes": ""
       }
     },
     {
@@ -598,7 +765,98 @@
         "title": "Interact with Camofox",
         "sentence": "",
         "bullets": [
-          "Builtin noVNC viewer to interact with the browser when necessary"
+          "Powered by Camoufox: an open source anti-detect browser, based on Firefox",
+          "Thanks to fingerprint injection & rotation, it can bypass strict anti-bot systems like Cloudflare, Akamai, or DataDome",
+          "Camofox wraps Camoufox in a REST API built for agents: accessibility snapshots instead of bloated HTML, stable element refs for clicking, and search macros for common sites",
+          "Builtin noVNC viewer to interact with the browser when necessary",
+          "Acceptable memory footprint (between 1 and 2GB)"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Docker Compose",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/docker-compose-camofox.yml",
+          "services:",
+          "  camofox-browser:",
+          "    container_name: camofox-browser",
+          "    image: ghcr.io/jo-inc/camofox-browser:latest",
+          "    restart: unless-stopped",
+          "  ports:",
+          "    - \"9377:9377\"",
+          "    - \"6080:6080\"  # noVNC",
+          "    - \"5901:5900\". # native VNC",
+          "  environment:",
+          "    - CAMOFOX_PORT=9377",
+          "    - ENABLE_VNC=1",
+          "    - VNC_BIND=0.0.0.0",
+          "    - VNC_RESOLUTION=1920x1080",
+          "    - MAX_OLD_SPACE_SIZE=2048",
+          "  volumes:",
+          "    - ./camofox:/root/.camofox",
+          "  shm_size: \"2g\""
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Hermes .env",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted Camofox",
+          "# Because Hermes and Camofox are on the same docker network",
+          "#  the container name can be used",
+          "CAMOFOX_URL=http://camofox-browser:9377"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Hermes config.yaml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "browser:",
+          "  # Enable camofox as browser, instead of local (headless chromium)",
+          "  cloud_provider: camofox",
+          "  # Camofox specific configs",
+          "  camofox:",
+          "    # Docker only",
+          "    # Enable loopback rewriting to open pages served from the local host",
+          "    rewrite_loopback_urls: true",
+          "    loopback_host_alias: host.docker.internal  # default; use a LAN IP if needed",
+          "",
+          "    # Optional - user persistent profile",
+          "    managed_persistence: true"
+        ],
+        "speaker_notes": ""
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Flexible, yes!",
+        "sentence": "Now my agents can",
+        "bullets": [
+          "Make more extensive online researces",
+          "Parse web pages quicker and using less tokens",
+          "Check prices on Amazon",
+          "Search for annonces on immobiliare.it",
+          "Shop on Esselunga and Migross sites"
         ],
         "speaker_notes": ""
       }
@@ -606,9 +864,9 @@
     {
       "template": "title_and_image",
       "data": {
-        "title": "Flexible, yes! But you pay in RAM consumption",
+        "title": "But you pay in RAM consumption",
         "image_uri": "docker_stats.png",
-        "speaker_notes": ""
+        "speaker_notes": "Even when they are idle, the consume a lot of RAM"
       }
     },
     {
