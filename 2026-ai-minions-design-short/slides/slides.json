@@ -28,6 +28,46 @@
       }
     },
     {
+      "template": "title_and_image",
+      "data": {
+        "title": "OpenAI Dots",
+        "image_uri": "openai_dots.webp",
+        "speaker_notes": "We see it with **OpenAI Dots**, exploring new ways to coordinate autonomous tasks and personas."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Meta Muse",
+        "image_uri": "meta_muse.jpg",
+        "speaker_notes": "We see it with **Meta Muse** and their push into specialized AI companions."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "xAI Grok Bot",
+        "image_uri": "xai_grok_bot.webp",
+        "speaker_notes": "We see it with **xAI's Grok Bot** integrations."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Google Gemini Spark",
+        "image_uri": "google_gemini_spark.png",
+        "speaker_notes": "We see it with **Google Gemini Spark**."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Claude Duet",
+        "image_uri": "claude_duet.jpg",
+        "speaker_notes": "And we see it with **Claude Duet**. Everyone is building richer agent ecosystems."
+      }
+    },
+    {
       "template": "content_simple",
       "data": {
         "title": "Why this talk",
@@ -439,9 +479,9 @@
         "title": "The problems",
         "bullets": [
           "Sites look great to human eyes, but are a total mess for an agent (_CSS animation, dynamic sites, complex DOM, forms, etc_)",
-          "Anti-bot protection implemented in many sites",
           "Understanding complex pages requires more tokens and time",
           "Lighter models may not be able to parse complex pages appropriately",
+          "Anti-bot protection implemented in many sites",
           "Are you sure that what you see is also what your agent sees (_prompt injection_)?"
         ],
         "speaker_notes": "**Why is the web so hard for agents?** Because websites are **built for human eyes, not LLMs**. JavaScript, CSS animations, and nested divs are just a **massive wall of noisy tokens**. Plus, **Cloudflare and anti-bot walls** block requests everywhere. Worse still, raw HTML can hide **invisible prompt injections**."
@@ -498,8 +538,8 @@
         "sentence": "It gives Hermes a real browser to interact with the web",
         "bullets": [
           "`browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_scroll`, etc",
-          "Cloud: Browserbase, Browser Use, Firecrawl with built-in scraping",
           "Local: Local Chromium via CDP via /browser connect, Camoufox, Lightpanda, Any browser installed on the machine running Hermes via computer use",
+          "Cloud: Browserbase, Browser Use, Firecrawl with built-in scraping",
           "Headless or headed mode for local browser",
           "Can use persistent user profiles"
         ],
@@ -1074,53 +1114,6 @@
           "**D.R.Y. with Agent Skills**: turn repeatable processes into skills, offload deterministic work to scripts and linters, and manage skills like code in a dedicated Git repo (`AGENTS.md` + custom skill tap)"
         ],
         "speaker_notes": "First, **Infrastructure**: **contain the blast radius** with dedicated VMs and Docker containers. Second, **Agent Garden**: **segmentation over simplicity**—separate personas and privacy boundaries, orchestrated via **Discord**. Third, **Internet Access**: split web tasks into **Search (SearXNG), Extract (Firecrawl), and Interact (Camofox)**, watching your **RAM**. Fourth, **D.R.Y. with Agent Skills**: codify repeatable workflows into a **Git repo with AGENTS.md**, use **deterministic scripts and linters**, and distribute via a **skill tap**."
-      }
-    },
-    {
-      "template": "section_title",
-      "data": {
-        "title": "The Future",
-        "speaker_notes": "Before we wrap up, a quick peek at **the future**—because **all the big tech players** are racing toward this exact **multi-agent workspace vision**."
-      }
-    },
-    {
-      "template": "title_and_image",
-      "data": {
-        "title": "OpenAI Dots",
-        "image_uri": "openai_dots.webp",
-        "speaker_notes": "We see it with **OpenAI Dots**, exploring new ways to coordinate autonomous tasks and personas."
-      }
-    },
-    {
-      "template": "title_and_image",
-      "data": {
-        "title": "Meta Muse",
-        "image_uri": "meta_muse.jpg",
-        "speaker_notes": "We see it with **Meta Muse** and their push into specialized AI companions."
-      }
-    },
-    {
-      "template": "title_and_image",
-      "data": {
-        "title": "xAI Grok Bot",
-        "image_uri": "xai_grok_bot.webp",
-        "speaker_notes": "We see it with **xAI's Grok Bot** integrations."
-      }
-    },
-    {
-      "template": "title_and_image",
-      "data": {
-        "title": "Google Gemini Spark",
-        "image_uri": "google_gemini_spark.png",
-        "speaker_notes": "And we see it with **Google Gemini Spark**. Everyone is building richer agent ecosystems."
-      }
-    },
-    {
-      "template": "quote_slide",
-      "data": {
-        "quote": "Finally, 2027 is the year of the Linux Desktop",
-        "attribution": "",
-        "speaker_notes": "Which brings me to my final prediction: **Finally, 2027 is the year of the Linux Desktop!** Not because humans switched away from macOS or Windows—but because **our AI minions live on Linux desktops, terminals, and isolated VMs**!"
       }
     },
     {
