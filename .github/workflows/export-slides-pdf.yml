@@ -1,0 +1,182 @@
+name: Export Presentation Slides to PDF
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/slides/**'
+  workflow_dispatch:
+    inputs:
+      presentation:
+        description: 'Presentation folder to export (e.g. "2026-ai-minions-design", or "all" for every presentation)'
+        required: false
+        default: 'all'
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: export-slides-pdf-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  export-pdf:
+    name: Render PDF & Update GitHub Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout talks-and-demoes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect presentations to export
+        id: detect
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_PRESENTATION: ${{ inputs.presentation }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          PRESENTATIONS=()
+
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            TARGET="${INPUT_PRESENTATION:-all}"
+            if [ "$TARGET" = "all" ]; then
+              while IFS= read -r slides_file; do
+                pres_dir=$(dirname "$(dirname "$slides_file")")
+                pres_dir="${pres_dir#./}"
+                if [ -f "$pres_dir/slides/theme.json" ]; then
+                  PRESENTATIONS+=("$pres_dir")
+                fi
+              done < <(find . -mindepth 3 -maxdepth 3 -path './*/slides/slides.json' | sort)
+            else
+              TARGET="${TARGET%/}"
+              TARGET="${TARGET#./}"
+              if [ ! -f "$TARGET/slides/slides.json" ] || [ ! -f "$TARGET/slides/theme.json" ]; then
+                echo "::error::Presentation '$TARGET' does not contain both slides/slides.json and slides/theme.json."
+                exit 1
+              fi
+              PRESENTATIONS+=("$TARGET")
+            fi
+          else
+            if [ -z "$BEFORE_SHA" ] || [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+              CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || true)
+            else
+              CHANGED_FILES=$(git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" || true)
+            fi
+
+             CANDIDATES=$(echo "$CHANGED_FILES" | awk -F'/' '/\/slides\// {print $1}' | sort -u)
+            for candidate in $CANDIDATES; do
+              if [ -f "$candidate/slides/slides.json" ] && [ -f "$candidate/slides/theme.json" ]; then
+                PRESENTATIONS+=("$candidate")
+              fi
+            done
+          fi
+
+          if [ ${#PRESENTATIONS[@]} -eq 0 ]; then
+            echo "No Slide Presenter decks (with slides/slides.json and slides/theme.json) matched this run."
+            echo "has_targets=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Detected presentations to export: ${PRESENTATIONS[*]}"
+            echo "has_targets=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "presentations<<EOF"
+              printf '%s\n' "${PRESENTATIONS[@]}"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install system fonts (Inter, Emoji, Liberation)
+        if: steps.detect.outputs.has_targets == 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-inter fonts-noto-color-emoji fonts-liberation fontconfig
+          fc-cache -fv
+
+      - name: Set up Python
+        if: steps.detect.outputs.has_targets == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Clone and set up slide-presenter in virtual environment
+        if: steps.detect.outputs.has_targets == 'true'
+        run: |
+          git clone https://github.com/rainbowbreeze/slide-presenter.git /tmp/slide-presenter
+          python3 -m venv /tmp/slide-presenter/venv
+          source /tmp/slide-presenter/venv/bin/activate
+          pip install -r /tmp/slide-presenter/requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Export PDFs and publish to GitHub Releases
+        if: steps.detect.outputs.has_targets == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PRESENTATIONS: ${{ steps.detect.outputs.presentations }}
+        run: |
+          set -euo pipefail
+          source /tmp/slide-presenter/venv/bin/activate
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          {
+            echo "## Exported Presentation PDFs"
+            echo ""
+            echo "| Presentation | Title | Version | Release & PDF Download |"
+            echo "| :--- | :--- | :--- | :--- |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          while IFS= read -r pres; do
+            [ -z "$pres" ] && continue
+            echo "=================================================="
+            echo "Processing presentation: $pres"
+            echo "=================================================="
+
+            PDF_PATH="$GITHUB_WORKSPACE/$pres/$pres.pdf"
+
+            python /tmp/slide-presenter/src/app.py \
+              --slides-dir "$GITHUB_WORKSPACE/$pres/slides" \
+              --export-pdf "$PDF_PATH"
+
+            TITLE=$(python3 -c "import json, sys; d=json.load(open(sys.argv[1], encoding='utf-8')); print(d.get('presentation_metadata', {}).get('title', sys.argv[2]))" "$GITHUB_WORKSPACE/$pres/slides/slides.json" "$pres")
+            VERSION=$(python3 -c "import json, sys; d=json.load(open(sys.argv[1], encoding='utf-8')); print(d.get('presentation_metadata', {}).get('version', '1.0'))" "$GITHUB_WORKSPACE/$pres/slides/slides.json")
+
+            # Point the rolling presentation tag to the current commit
+            git tag -f "$pres" "$GITHUB_SHA"
+            git push -f origin "refs/tags/$pres"
+
+            RELEASE_TITLE="${TITLE} (${pres})"
+            TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+            DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${pres}/${pres}.pdf"
+            RELEASE_URL="https://github.com/${GITHUB_REPOSITORY}/releases/tag/${pres}"
+
+            RELEASE_NOTES=$(cat <<EOF
+          Automated 16:9 widescreen PDF export for **${TITLE}** (\`${pres}\`).
+
+          - **Presentation Version:** \`${VERSION}\`
+          - **Source Commit:** \`${GITHUB_SHA}\`
+          - **Generated At:** \`${TIMESTAMP}\`
+          - **Direct PDF Download:** [${pres}.pdf](${DOWNLOAD_URL})
+          EOF
+            )
+
+            if gh release view "$pres" >/dev/null 2>&1; then
+              echo "Updating existing rolling GitHub Release '$pres'..."
+              gh release upload "$pres" "$PDF_PATH" --clobber
+              gh release edit "$pres" \
+                --title "$RELEASE_TITLE" \
+                --notes "$RELEASE_NOTES"
+            else
+              echo "Creating new rolling GitHub Release '$pres'..."
+              gh release create "$pres" "$PDF_PATH" \
+                --title "$RELEASE_TITLE" \
+                --notes "$RELEASE_NOTES" \
+                --verify-tag
+            fi
+
+            echo "| \`$pres\` | $TITLE | \`$VERSION\` | [Release]($RELEASE_URL) / [${pres}.pdf]($DOWNLOAD_URL) |" >> "$GITHUB_STEP_SUMMARY"
+          done <<< "$PRESENTATIONS"
