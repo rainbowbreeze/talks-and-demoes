@@ -115,8 +115,8 @@
       "data": {
         "title": "Guiding principle: contain the Blast Radius",
         "bullets": [
-          "Never grant agents unrestricted access to your primary machine",
-          "Assume things can go wrong: rogue commands, bugs, unexpected behaviors, exposure of personal files or credentials, etc"
+          "Assume things can go wrong: rogue commands, bugs, unexpected behaviors, exposure of personal files or credentials, etc",
+          "Never grant agents unrestricted access to your primary machine"
         ],
         "speaker_notes": "The second principle is even more critical: **contain the blast radius**. **Never give an autonomous agent full access** to your main laptop. **Assume things will go wrong**. A bug, a **hallucinated shell command**, or a **prompt injection** hidden in a webpage can happen at any time. If it does, you want to make sure it **can't touch your personal files or SSH keys**."
       }
@@ -144,7 +144,7 @@
     {
       "template": "content_double",
       "data": {
-        "title": "Solutionr: Hermes Agent in a Linux VM",
+        "title": "Solution: Hermes Agent in a Linux VM",
         "column_left": {
           "sub_heading": "My Setup: Self-hosted and Docker",
           "bullets": [
@@ -174,21 +174,6 @@
         "title": "Structure your agent garden",
         "sentence": "How to assign workflows across one or more agents, and tools to interact with them",
         "speaker_notes": "Now that we have a **safe place** for our agents to live, let's look at **how to organize them**. Welcome to **structuring your agent garden**."
-      }
-    },
-    {
-      "template": "content_simple",
-      "data": {
-        "title": "Guiding principle: Context and Privacy",
-        "sentence": "Decide how to organize agents based on context and privacy boundaries",
-        "bullets": [
-          "Agents as personas: no one-size-fits-all approach, but tailored to the work the agent manages",
-          "Separate agents based on access to conversations and memories",
-          "Prevent context leakage between personal, family, and other agents",
-          "Each agent should only access data it is safe to expose in its channels",
-          "Within the same agent, keep a session per concept, to facilitate context management"
-        ],
-        "speaker_notes": "Here the guiding principle is **context and privacy boundaries**. Stop thinking about **one giant super-agent**. Instead, think of **agents as specialized personas**. Ask yourself: **who will talk to this agent**, and **what memories can it access?** You don't want **private journal notes leaking** into a family group chat. And even inside a single agent, keep **one session per topic** so the context stays clean."
       }
     },
     {
@@ -313,8 +298,7 @@
         "sentence": "Single installation with a single default agent and multiple profiles",
         "bullets": [
           "Pretty much the same as the single agent scenario",
-          "Each profile gets its own directory and config",
-          "Each profile has its own context, conversations, data",
+          "Each profile gets its own directory and config, context, conversations, data",
           "On demand: launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
           "Gateway: manages messages routing to the right agent or profile",
           "Valid scenario for agents orchestration (_one coordinator agent that delegates work to specialized agents_)"
@@ -402,6 +386,21 @@
       "data": {
         "image_uri": "buzz_with_hermes_agents.png",
         "speaker_notes": "And this is **Buzz** by Block, a platform designed from the ground up where **humans and AI agents collaborate as equals** in shared channels."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: Context and Privacy",
+        "sentence": "Decide how to organize agents based on context and privacy boundaries",
+        "bullets": [
+          "Agents as personas: no one-size-fits-all approach, but tailored to the work the agent manages",
+          "Separate agents based on access to conversations and memories",
+          "Prevent context leakage between personal, family, and other agents",
+          "Each agent should only access data it is safe to expose in its channels",
+          "Within the same agent, keep a session per concept, to facilitate context management"
+        ],
+        "speaker_notes": "Here the guiding principle is **context and privacy boundaries**. Stop thinking about **one giant super-agent**. Instead, think of **agents as specialized personas**. Ask yourself: **who will talk to this agent**, and **what memories can it access?** You don't want **private journal notes leaking** into a family group chat. And even inside a single agent, keep **one session per topic** so the context stays clean."
       }
     },
     {
@@ -563,7 +562,7 @@
           "One agent tool call, multiple queries to various search engines",
           "Removing private data from requests going to search services",
           "Not forwarding anything from third party services through search services (e.g. advertisement)",
-          "SearXNG returns snippets, not full page content. Use `web_extract`, browser tools, or `curl` for full articles",
+          "SearXNG returns snippets, not full page content",
           "Self-hosted on my Hermes VM via a Docker container",
           "Acceptable memory footprint (~140MB)"
         ],
@@ -652,7 +651,7 @@
           "Makes JS-heavy and dynamic pages agent-readable",
           "Parses web-hosted media such as PDFs and DOCX files",
           "The cloud version has residential proxies, anti-CAPTCHA and other goodies",
-          "Self-hosted on my Hermes VM via a Docker container (medium complexity)",
+          "Self-hosted on my Hermes VM via a Docker container",
           "Very large memory footprint (4 to 6GB at least)"
         ],
         "speaker_notes": "Next is phase two: **Extract with Firecrawl**. It renders **heavy JavaScript via Playwright** and converts pages—even **PDFs and Word docs**—into **clean Markdown or JSON**. There's a cloud tier with **500 free credits/month**, or you can self-host. Just note: **self-hosting Firecrawl eats 4 to 6 GB of RAM**."
@@ -882,8 +881,9 @@
           "Keep all your skills in a dedicated Git repository",
           "Define shared conventions and standards for every skill in a root `AGENTS.md` file",
           "Ask the agent to grill and update skills following the rules in `AGENTS.md` to maintain consistency over time",
+          "`/learn` is your friend, offering a good starting point",
           "Version, review, and evolve your skills just like any software project",
-          "Use evaluation loops: don't just generate outputs—inspect them (e.g. screenshot each slide, verify visual consistency, and iterate)"
+          "Use evaluation loops: don't just generate outputs—inspect them (e.g. screenshot each slide, verify visual consistency) and iterate"
         ],
         "speaker_notes": "Which leads to a key mindset shift: **treat skill writing like code writing**. Keep all skills in a **dedicated Git repository**. Define shared conventions in a **root AGENTS.md file**, and ask your agent to **grill and update skills** against those rules. Version them, review them, and use **evaluation loops** to inspect their output."
       }
@@ -1116,7 +1116,7 @@
       "data": {
         "title": "Recap: Designing your AI Minions",
         "bullets": [
-          "**Infrastructure**: contain the blast radius by isolating agents in dedicated VMs and Docker containers away from your main machine",
+          "**Infrastructure**: contain the blast radius by isolating agents in dedicated VMs and Docker containers",
           "**Agent Garden**: choose segmentation over simplicity—separate agents by persona and privacy boundaries, and interact with them via messaging platforms like Discord",
           "**Internet Access**: split web tasks into three phases—**Search** (`SearXNG`), **Extract** (`Firecrawl`), and **Interact** (`Camofox`)—balancing capability with RAM cost",
           "**D.R.Y. with Agent Skills**: turn repeatable processes into skills, offload deterministic work to scripts and linters, and manage skills like code in a dedicated Git repo (`AGENTS.md` + custom skill tap)"
