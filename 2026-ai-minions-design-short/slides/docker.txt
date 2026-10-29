@@ -1,0 +1,26 @@
+  camofox-browser:
+    container_name: camofox-browser
+    image: ghcr.io/jo-inc/camofox-browser:latest
+    restart: unless-stopped
+    networks:
+      - ${HERMES_NETWORK:-hermes-net}
+    ports:
+      - "9377:9377"
+      - "6080:6080"
+      - "5901:5900"
+    environment:
+      - CAMOFOX_PORT=9377
+      - ENABLE_VNC=1
+      - VNC_BIND=0.0.0.0
+      - VNC_RESOLUTION=1920x1080
+      - MAX_OLD_SPACE_SIZE=2048
+      - TZ=Europe/Rome
+    volumes:
+      - ${HERMES_BASE_DATA_PATH}/camofox:/root/.camofox
+    shm_size: "2g"
+    mem_limit: 4G
+    memswap_limit: 4G
+    labels:
+      # Watchtower will check for updates
+      - "com.centurylinklabs.watchtower.enable=true"
+

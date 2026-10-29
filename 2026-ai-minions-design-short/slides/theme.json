@@ -1,0 +1,13 @@
+{
+    "font-main": "'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif",
+    "bg-color": "#0a0f1a",
+    "background-image": "hermes-background.png",
+    "text-color": "#f0f4ff",
+    "link-color": "#66b2ff",
+    "text-font-size": "16px",
+    "title-color": "#ffd700",
+    "title-font-size": "4.5em",
+    "footer-text": "Alfredo Morresi - https://rainbowbreeze.it  -  Hermes referral: https://portal.nousresearch.com/r/rainbowbreeze",
+    "footer-font-size": "14px",
+    "footer-text-color": "#8892b0"
+}

@@ -1,0 +1,1144 @@
+{
+  "presentation_metadata": {
+    "title": "AI Minions at your orders",
+    "version": "1.0"
+  },
+  "slides": [
+    {
+      "template": "section_title",
+      "data": {
+        "title": "AI Minions at your orders",
+        "speaker_notes": "Hello everyone, and welcome! Today we are talking about **AI minions**—how to **design, host, and organize** a team of **personal AI agents** that actually work for you."
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Alfredo Morresi",
+        "bullets": [
+          "Community builder and developer by passion, Developer Relations @ Google by profession",
+          "Leading the Google Developer Experts (GDE) program",
+          "🇮🇹, I love being a dad, free-software, running on the beach, snowboarding",
+          "I relentlessly train myself in preparing (and eating) Tiramisù",
+          "I'm definitely yellow 💛"
+        ],
+        "image_uri": "rainbowbreeze_full.png",
+        "image_position": "left",
+        "speaker_notes": "A quick intro about me. I'm **Alfredo Morresi**. I work in **Developer Relations at Google**, leading the **GDE program**. Outside of work, I'm a **dad**, a **free-software enthusiast**, a beach runner, and a relentless **Tiramisù maker**. And as you can see from the picture, my favorite color is **definitely yellow**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Why this talk",
+        "sentence": "What I learned using AI agents for personal productivity (and how to save you from some insomnia)",
+        "bullets": [
+          "Not 100% satisfied with my agents yet, but miles ahead of a few months ago",
+          "Focus on the areas where there are still no definitive answers, just design choices that benefit from sharing real-world experiences",
+          "Context is **personal productivity**, not coding with agents—though many best practices apply to coding as well"
+        ],
+        "speaker_notes": "**Why this talk?** I want to share what I learned using AI agents for **personal productivity**. I'll be honest right away: I'm **not 100% happy** with my setup yet. Anyone who tells you their agents are flawless is probably lying. But I am **miles ahead** of where I was a few months ago—mostly thanks to many **sleepless nights** banging my head against the wall. So I thought: why not share what I found, and **save some of you from insomnia**? This won't be an all-encompassing guide. Instead, I'll focus on the **pain points with no standard answers**—just **trade-offs** where sharing real experiences really helps. Remember, our focus today is **personal productivity, not coding**—even though many of these practices apply to coding too. Let's dive in!"
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Infrastructure",
+        "sentence": "The cloud is just someone else's computer!",
+        "speaker_notes": "Let's start from the ground up: **infrastructure**. **Where do your agents actually live?** Because at the end of the day, **the cloud is just someone else's computer**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: Privacy and Fun",
+        "bullets": [
+          "I prefer to host my services, because of privacy reasons",
+          "I prefer open source software, also because of transparent data management",
+          "Self-hosting is a fun learning occasion for me",
+          "I can experiment with the configuration I prefer",
+          "In the mid-long term, and with hardware recycling, it's generally cheaper"
+        ],
+        "speaker_notes": "My first guiding principle here is simple: **privacy and fun**. Personal agents handle **deeply personal data**—diaries, family schedules, notes. I want to **self-host** those services and use **open-source software** so I know exactly where my data goes. Plus, **self-hosting is fun**! It's a great way to learn, **tweak configurations freely**, and if you **recycle old hardware**, it's also **much cheaper** in the long run."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: contain the Blast Radius",
+        "bullets": [
+          "Never grant agents unrestricted access to your primary machine",
+          "Assume things can go wrong: rogue commands, bugs, unexpected behaviors, exposure of personal files or credentials, etc"
+        ],
+        "speaker_notes": "The second principle is even more critical: **contain the blast radius**. **Never give an autonomous agent full access** to your main laptop. **Assume things will go wrong**. A bug, a **hallucinated shell command**, or a **prompt injection** hidden in a webpage can happen at any time. If it does, you want to make sure it **can't touch your personal files or SSH keys**."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Solution: Hermes in a Linux VM",
+        "column_left": {
+          "sub_heading": "My Setup: Self-hosted and Docker",
+          "bullets": [
+            "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
+            "Docker inside the VM for an extra layer of isolation and reproducibility",
+            "Strict separation between host OS and agent workspace",
+            "Minimum power consumption (16W with an Intel box, 7W with RasPi)",
+            "Bonus point: VMs are on a separated physical net"
+          ]
+        },
+        "column_right": {
+          "bullets": []
+        },
+        "speaker_notes": "So **how do I isolate everything?** I run **Hermes**—an open-source agent framework by Nous Research—inside a **dedicated Linux VM on Proxmox**. Inside that VM, I run **Docker** for an extra layer of **isolation and reproducibility**. The whole box draws just **16 watts**, and the VM sits on a **separate network VLAN**. My **main computer stays untouched**."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Solution: Hermes in a Linux VM",
+        "column_left": {
+          "sub_heading": "My Setup: Self-hosted and Docker",
+          "bullets": [
+            "A self-hosted and dedicated Linux VM on Proxmox (_previously on RasPi 4_)",
+            "Docker inside the VM for an extra layer of isolation and reproducibility",
+            "Strict separation between host OS and agent workspace",
+            "Minimum power consumption (16W with an Intel box, 7W with RasPi)",
+            "Bonus point: VMs are on a separated physical net"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Other Valid Options",
+          "bullets": [
+            "CLI-only Linux VM in your machine",
+            "GUI Linux / Windows VM in your machine: full desktop environment when visual tools or browsers are needed",
+            "Hermes in Docker in your machine (carefully mount resources)",
+            "Virtual host somewhere",
+            "In general, try to keep the host machine as much untouched as possible"
+          ]
+        },
+        "speaker_notes": "Of course, you **don't need a Proxmox server** at home. You can spin up a **lightweight Linux VM on your laptop**, or a **GUI VM** if your agent needs a desktop browser. You can also run **Docker directly on your machine**—just be **careful with mounted folders**—or rent a **cheap cloud VPS**. The tool doesn't matter; **keeping your host machine safe** does."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Structure your agent garden",
+        "sentence": "How to assign workflows across one or more agents, and tools to interact with them",
+        "speaker_notes": "Now that we have a **safe place** for our agents to live, let's look at **how to organize them**. Welcome to **structuring your agent garden**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: Context and Privacy",
+        "sentence": "Decide how to organize agents based on context and privacy boundaries",
+        "bullets": [
+          "Agents as personas: no one-size-fits-all approach, but tailored to the work the agent manages",
+          "Separate agents based on access to conversations and memories",
+          "Prevent context leakage between personal, family, and other agents",
+          "Each agent should only access data it is safe to expose in its channels",
+          "Within the same agent, keep a session per concept, to facilitate context management"
+        ],
+        "speaker_notes": "Here the guiding principle is **context and privacy boundaries**. Stop thinking about **one giant super-agent**. Instead, think of **agents as specialized personas**. Ask yourself: **who will talk to this agent**, and **what memories can it access?** You don't want **private journal notes leaking** into a family group chat. And even inside a single agent, keep **one session per topic** so the context stays clean."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Hermes agent",
+        "column_left": {
+          "sub_heading": "The (default) Agent",
+          "bullets": [
+            "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
+            "Default `$HERMES_HOME` directory",
+            "Has its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Launches the gateway process"
+          ]
+        },
+        "column_right": {
+          "bullets": []
+        },
+        "speaker_notes": "Before we look at architectures, let's **clarify three terms in Hermes**. First, **the default agent**. When you install Hermes, it creates a **home folder** with everything that defines an **agent's identity**: config, secrets, **SOUL.md**, memories, skills, cron jobs, and database."
+      }
+    },
+    {
+      "template": "content_double",
+      "data": {
+        "title": "Hermes agent and profiles",
+        "column_left": {
+          "sub_heading": "The (default) Agent",
+          "bullets": [
+            "Created during the first Hermes agent setup (libraries, runtimes, gateway, etc.)",
+            "Default `$HERMES_HOME` directory",
+            "Has its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database",
+            "Launches the gateway process"
+          ]
+        },
+        "column_right": {
+          "sub_heading": "Profiles",
+          "bullets": [
+            "Conceptually equal to a default agent",
+            "A separate Hermes home directory, within the default agent directory",
+            "Each profile gets its own `config.yaml`, `.env`, `SOUL.md`, memories, sessions, skills, cron jobs, and state database"
+          ]
+        },
+        "speaker_notes": "Second, we have **profiles**. Conceptually, a profile is a **full agent**: it gets its own config, SOUL.md, memories, and database. The catch is that its folder **lives inside the default agent's directory**. Honestly, I think profiles started as a **quick and scrappy way** to support multiple agents in one installation, and the design just stuck."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes agent and profiles and subagents",
+        "sentence": "A subagent is different from an agent or profile",
+        "bullets": [
+          "Subagent is a child assistant spawned by `delegate_task` for a task, with a fresh conversation",
+          "A separate conversation is different from a separate profile",
+          "For example, a cronjob has the identity of an agent, and could spawn the work across multiple subagents"
+        ],
+        "speaker_notes": "Third, **don't confuse profiles with subagents**. A subagent is **not a persistent persona**. It's just a **temporary worker** spawned on the fly with **delegate_task** to handle a subtask in a **fresh conversation**, and then it disappears."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent, on-demand",
+        "sentence": "Single installation with a single default agent, on-demand requests",
+        "bullets": [
+          "The simplest use case, one agent ingests and processes everything",
+          "Launched on demand by the user",
+          "`hermes chat` or `hermes dashboard`",
+          "Create different sessions for each concept (_one session for a project work, one session for random information search, one session to check the weather, etc_)",
+          "`/btw` is your friend to keep the context and memory clean",
+          "You need direct access to the Hermes machine (_ssh, reverse proxy, tunnel, etc_)"
+        ],
+        "speaker_notes": "Now let's walk through the setups, **from simplest to most advanced**. **Level one: a single agent, on demand**. You **SSH into your machine**, run **hermes chat** or open the **web dashboard**, and talk to it. Pro tip: create **separate sessions per topic**, and use the **/btw command** for quick side questions **without polluting memory**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_tui_agent.png",
+        "speaker_notes": "This is what the **terminal UI** looks like when you launch **hermes chat**. Fast, clean, and right in your shell."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_dashboard_agent.png",
+        "speaker_notes": "And this is the built-in **web dashboard** for that same single agent, where you can **browse sessions, memories, and settings** from a browser."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent, with messaging",
+        "sentence": "Single installation with a single default agent, and messaging gateway enabled",
+        "bullets": [
+          "The gateway routes conversation between the external world and the agent",
+          "`hermes gateway` installed as a system service",
+          "Requires always on machine",
+          "The agent is a 'bot' in the messaging platform",
+          "The messaging platform must offer a way to separate agent sessions"
+        ],
+        "speaker_notes": "And that's why we add a **messaging gateway**! Instead of SSHing into a server, you run **hermes gateway** as a background service. Now your agent is **always awake**, acting as a **bot on Telegram, Discord, or Slack**, reachable from your phone anywhere. Just make sure your messaging app can **separate different sessions**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "telegram_chat_single.png",
+        "speaker_notes": "On **Telegram**, you can start with **direct messages** to your bot. It works, but everything lands in **one endless stream**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "telegram_chat_with_topics.png",
+        "speaker_notes": "A much better trick on Telegram is creating a **group with Topics enabled**. **Each Topic maps to a separate session** in Hermes, keeping contexts neatly divided."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent with multiple profiles",
+        "sentence": "Single installation with a single default agent and multiple profiles",
+        "bullets": [
+          "Pretty much the same as the single agent scenario",
+          "Each profile gets its own directory and config",
+          "Each profile has its own context, conversations, data",
+          "On demand: launch commands using the profile name (`chronicler chat` instead of `hermes chat`)",
+          "Gateway: manages messages routing to the right agent or profile",
+          "Valid scenario for agents orchestration (_one coordinator agent that delegates work to specialized agents_)"
+        ],
+        "speaker_notes": "**Level two**: still on-demand, but with **multiple profiles** inside that single installation. Each profile has its **own persona and memory**, and you launch it **by name**—like **chronicler chat** instead of hermes chat. Great when you want **one coordinator agent** delegating work to **specialized companion profiles**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_tui_profile.png",
+        "speaker_notes": "Here is the **terminal UI running a profile**—notice how it loads its **own dedicated persona and session history**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_dashboard_profile.png",
+        "speaker_notes": "And just like the default agent, **each profile** can spin up its **own web dashboard**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "telegram_many_agents.webp",
+        "speaker_notes": "Here is what that looks like on **Telegram** with **several bots**—one per agent or profile—all lined up in your chat list."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_kanban.png",
+        "speaker_notes": "Even cooler, Hermes includes a **web Kanban board** to visually **track tasks across your agent and profiles**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "A single agent with multiple profiles",
+        "sentence": "Single installation with a single default agent and multiple profiles",
+        "bullets": [
+          "🚨 Default agents and profiles share the same root directory: danger of information spillover"
+        ],
+        "speaker_notes": "**Wait—there is a big catch with profiles!** Look at that last bullet. Because profiles live **inside the default agent's directory** and share the **same system user**, there is **no filesystem wall** between them. That means a serious risk of **information spillover**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "agent_context_splillover.png",
+        "speaker_notes": "Look at this screenshot. I asked the **default agent** to inspect the filesystem, and it **happily read the memories and config of its profiles**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "profile_context_splillover.png",
+        "speaker_notes": "And **it goes both ways**! Here a **profile walked up the directory tree** and read the **default agent's files**. So if you need **hard privacy boundaries**, profiles alone are **not enough**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Multiple agents and profiles",
+        "sentence": "Multiple installations of Hermes, each one with a default agent and multiple profiles, and messaging gateways enabled",
+        "bullets": [
+          "The most complex scenario, but easily managed with Docker or VMs",
+          "It requires more resources (_~300MB each Docker container_)",
+          "Scenario where Discord / Slack / etc are great platforms, with some config",
+          "Emerging platforms that consider both bots and humans first party citizens",
+          "Hermes Desktop as native solution with rapid development"
+        ],
+        "speaker_notes": "Finally, **the full setup**: **multiple isolated Docker containers**, each with its own agent and profiles, all connected via **messaging gateways**. Here **Discord or Slack** really shine, alongside new **agent-first workspaces** like **Hermes Desktop** and **Buzz**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "hermes_desktop.jpg",
+        "speaker_notes": "Here is a glimpse of **Hermes Desktop**, a native app built to **manage multiple Hermes agents side by side**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "buzz_with_hermes_agents.png",
+        "speaker_notes": "And this is **Buzz** by Block, a platform designed from the ground up where **humans and AI agents collaborate as equals** in shared channels."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "My setup: Segmentation over simplicity",
+        "bullets": [
+          "Segment context and responsibility instead of keeping everything unified",
+          "Multiple agents, one per role. Profiles only if privacy is not a problem",
+          "If an agent goes off the rails, the blast radius is contained within its own gateway",
+          "The conversation with my personal agents will never spill to the family agent",
+          "Putting a system offline doesn't stop the others",
+          "Testing cutting-edge features vs stability of workflows"
+        ],
+        "speaker_notes": "So, what did I choose? **Segmentation over simplicity**. I run **separate Docker containers** for different areas of my life. First, for **privacy and blast radius**: personal chats **never leak into the family bot**. Second, **reliability**: if I break one agent testing a **bleeding-edge feature**, the family bot and others **keep running smoothly**."
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Meet my minions",
+        "bullets": [
+          "**Samantha**: Personal daily assistant",
+          "**Chronicler** & **Librarian**: Helping Samantha to manage daily diary, knowledge base (profiles of Samantha)",
+          "**YellowFamily Butler**: Family assistant",
+          "**GAStronauti**: Ethical purchasing group management",
+          "**Edulogia**: Tech4Kids side project",
+          "**Prof Socrate**: To teach me philosophy",
+          "**News Reporter**: News aggregation"
+        ],
+        "image_uri": "rainbowbreeze_agents.png",
+        "image_position": "right",
+        "speaker_notes": "And here they are **by name**! **Samantha** is my daily personal assistant, sharing her container with two profiles—**Chronicler and Librarian**—for my personal knowledge base. Then, in **separate containers**: **YellowFamily Butler** for family logistics, **GAStronauti** for our ethical purchasing group, **Edulogia** for my kids-and-tech project, **Prof Socrate** for philosophy, and **News Reporter** for daily briefings."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Discord to interact with my minions",
+        "image_uri": "discord_devportal_bots.png",
+        "speaker_notes": "To talk to all of them in one place, I use **Discord**. Here is the **Discord Developer Portal**, where each minion is registered as its **own bot application**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_01.png",
+        "speaker_notes": "**Why Discord? Three reasons.** First, **rock-solid mobile and desktop apps**. Second, I can **mix and match bots** in any server or channel. Third, **categories, channels, and threads** make organizing sessions super intuitive."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_02.png",
+        "speaker_notes": "Look at the **left sidebar**: each **category or channel** maps to a specific domain and bot, so I always know **which minion I'm talking to**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_04.png",
+        "speaker_notes": "And when **two profiles collaborate**—like **Chronicler logging my daily notes**—I can watch the whole workflow unfold **right inside the channel**."
+      }
+    },
+    {
+      "template": "image_full_screen",
+      "data": {
+        "image_uri": "rainbowbreeze_agent_garden_on_discord_03.png",
+        "speaker_notes": "Inside a channel, I spin up **threads for specific tasks**, and **each thread becomes an isolated session** in Hermes."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Agent and internet access",
+        "sentence": "Many sites are designed for humans, others want a human-only audience",
+        "speaker_notes": "Now let's tackle the **next major headache** that cost me several nights of sleep: giving agents **reliable internet access**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "The problems",
+        "bullets": [
+          "Sites look great to human eyes, but are a total mess for an agent (_CSS animation, dynamic sites, complex DOM, forms, etc_)",
+          "Anti-bot protection implemented in many sites",
+          "Understanding complex pages requires more tokens and time",
+          "Lighter models may not be able to parse complex pages appropriately",
+          "Are you sure that what you see is also what your agent sees (_prompt injection_)?"
+        ],
+        "speaker_notes": "**Why is the web so hard for agents?** Because websites are **built for human eyes, not LLMs**. JavaScript, CSS animations, and nested divs are just a **massive wall of noisy tokens**. Plus, **Cloudflare and anti-bot walls** block requests everywhere. Worse still, raw HTML can hide **invisible prompt injections**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes tools stack for internet access",
+        "bullets": [
+          "**web_search**: Search the web to discover relevant pages and information",
+          "**web_extract**: Extract clean, structured content from web pages",
+          "**browser_use**: Interactive browser automation (also used when `web_search` and `web_extract` are unavailable)",
+          "**`curl`**: If none of these tools are available, the agent falls back to a simple `curl`"
+        ],
+        "speaker_notes": "Hermes gives us a **three-tier tool stack** for the web: **web_search** to find pages, **web_extract** to pull clean text, and **browser_use** to drive a real interactive browser. If none are configured, it falls back to **good old curl**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "`web_search` options",
+        "sentence": "Search the web and return ranked results",
+        "bullets": [
+          "Firecrawl (500 credits/month, self-hosted but less powerful)",
+          "Brave Search (2000 queries / month)",
+          "DuckDuckGo",
+          "Perplexity",
+          "**SearXNG** (cloud or self-hosted)",
+          "etc"
+        ],
+        "speaker_notes": "For phase one, **web_search**, Hermes supports commercial APIs like **Firecrawl, Brave, and Perplexity**, free options like **DuckDuckGo**, or **SearXNG**, which you can self-host."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "`web_extract` options",
+        "sentence": "Fetch and extract readable content from one or more URLs",
+        "bullets": [
+          "Firecrawl (500 credits/month, self-hosted but less powerful)",
+          "Exa",
+          "Parallel",
+          "Tavily",
+          "etc"
+        ],
+        "speaker_notes": "For phase two, **web_extract**, you have specialized extractors like **Firecrawl, Exa, Parallel, and Tavily** that turn any URL into **clean, LLM-friendly text**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "`browser_use` options",
+        "sentence": "It gives Hermes a real browser to interact with the web",
+        "bullets": [
+          "`browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_scroll`, etc",
+          "Cloud: Browserbase, Browser Use, Firecrawl with built-in scraping",
+          "Local: Local Chromium via CDP via /browser connect, Camoufox, Lightpanda, Any browser installed on the machine running Hermes via computer use",
+          "Headless or headed mode for local browser",
+          "Can use persistent user profiles"
+        ],
+        "speaker_notes": "For phase three, **browser_use** gives Hermes a **real browser**—navigate, snapshot, click, type, scroll. It runs **locally or in the cloud**, headless or headed, and supports **persistent user profiles** to stay logged in. For the browser backend, you choose **cloud vs. local**. **Cloud browsers** (Browserbase, Browser Use) handle **stealth, CAPTCHAs, and proxies** for you—effortless, but **paid**. **Local browsers** (Chromium CDP, **Camoufox**, Lightpanda) are **free and keep profiles local**, though you **pay in RAM**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "My choice: `web_search` with SearXNG",
+        "sentence": "SearXNG is a metasearch engine, aggregating the results of other search engines while not storing information about its users.",
+        "bullets": [
+          "One agent tool call, multiple queries to various search engines",
+          "Removing private data from requests going to search services",
+          "Not forwarding anything from third party services through search services (e.g. advertisement)",
+          "SearXNG returns snippets, not full page content. Use `web_extract`, browser tools, or `curl` for full articles",
+          "Self-hosted on my Hermes VM via a Docker container",
+          "Acceptable memory footprint (~140MB)"
+        ],
+        "speaker_notes": "Following my self-hosting principle, here is **my personal combo**. Let's look at **SearXNG** first. It's an open-source **metasearch engine**: **one tool call queries multiple search engines**, strips tracking data, and returns ranked snippets. Best of all, it's **super lightweight—around 140 MB of RAM**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Docker Compose",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/docker-compose-searxng.yml",
+          "services:",
+          "  searxng:",
+          "    image: searxng/searxng:latest",
+          "    container_name: searxng",
+          "    ports:",
+          "      - \"8888:8080\"",
+          "    volumes:",
+          "      - ./searxng:/etc/searxng:rw",
+          "    environment:",
+          "      - SEARXNG_BASE_URL=http://localhost:8888/",
+          "    restart: unless-stopped"
+        ],
+        "speaker_notes": "Setup is trivial: just a **single container in Docker Compose** exposing **port 8888**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: settings.yml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/searxng/settings.yml",
+          "search:",
+          "  formats:",
+          "    - html",
+          "    - json"
+        ],
+        "speaker_notes": "In **settings.yml**, remember **one crucial tweak**: enable the **json output format** alongside html, so Hermes can parse results."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Hermes .env",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted SearXNG",
+          "# Because Hermes and SearXNG are on the same docker network",
+          "#  the container name can be used",
+          "SEARXNG_URL=http://searxng:8888"
+        ],
+        "speaker_notes": "In your Hermes **.env file**, point **SEARXNG_URL** to the container name on the shared Docker network."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "SearXNG: Hermes config.yaml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search#searxng-free-self-hosted",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "web:",
+          "  search_backend: \"searxng\""
+        ],
+        "speaker_notes": "And set **search_backend: searxng** in **config.yaml**. Done—**unlimited, private search** for all your agents."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "My choice: `web_extract` with Firecrawl",
+        "sentence": "Turn websites into LLM-ready markdown and structured data",
+        "bullets": [
+          "Clean, LLM-ready output (Markdown, structured JSON, screenshots) that saves tokens",
+          "Uses Playwright/browser infrastructure to render JavaScript pages",
+          "Makes JS-heavy and dynamic pages agent-readable",
+          "Parses web-hosted media such as PDFs and DOCX files",
+          "The cloud version has residential proxies, anti-CAPTCHA and other goodies",
+          "Self-hosted on my Hermes VM via a Docker container (medium complexity)",
+          "Very large memory footprint (4 to 6GB at least)"
+        ],
+        "speaker_notes": "Next is phase two: **Extract with Firecrawl**. It renders **heavy JavaScript via Playwright** and converts pages—even **PDFs and Word docs**—into **clean Markdown or JSON**. There's a cloud tier with **500 free credits/month**, or you can self-host. Just note: **self-hosting Firecrawl eats 4 to 6 GB of RAM**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Docker Compose",
+        "sentence": "https://github.com/firecrawl/firecrawl/blob/main/SELF_HOST.md",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/docker-compose-firecrawl.yml",
+          "services:",
+          "  playwright-service:",
+          "    [..]",
+          "  firecrawl:",
+          "    [..]",
+          "  redis:",
+          "    [..]",
+          "  rabbitmq:",
+          "    [..]",
+          "  nuq-postgres:",
+          "    [..]",
+          "  foundationdb:",
+          "    [..]"
+        ],
+        "speaker_notes": "**Why so much RAM?** Because Firecrawl's Docker Compose spins up **six services**—Playwright, Redis, RabbitMQ, Postgres, and FoundationDB."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Hermes .env",
+        "sentence": "https://docs.firecrawl.dev/integrations/hermes",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted Firecrawl",
+          "# Because Hermes and Firecrawl are on the same docker network",
+          "#  the container name can be used",
+          "FIRECRAWL_API_URL=http://firecrawl:3002",
+          "# Session TTL in seconds (default: 300)",
+          "FIRECRAWL_BROWSER_TTL=600"
+        ],
+        "speaker_notes": "Once running, wiring it to Hermes is easy: set **FIRECRAWL_API_URL** in **.env** pointing to the container."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Firecrawl: Hermes config.yaml",
+        "sentence": "https://docs.firecrawl.dev/integrations/hermes",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "web:",
+          "  extract_backend: \"firecrawl\""
+        ],
+        "speaker_notes": "And set **extract_backend: firecrawl** in **config.yaml**. Now every extraction returns **crisp, token-saving Markdown**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "My choice: `browser_use` with Camofox",
+        "bullets": [
+          "Powered by Camoufox: an open source anti-detect browser, based on Firefox",
+          "Thanks to fingerprint injection & rotation, it can bypass strict anti-bot systems like Cloudflare, Akamai, or DataDome",
+          "Camofox wraps Camoufox in a REST API built for agents: accessibility snapshots instead of bloated HTML, stable element refs for clicking, and search macros for common sites",
+          "Built-in noVNC viewer to interact with the browser when necessary",
+          "Acceptable memory footprint (between 1 and 2GB)"
+        ],
+        "speaker_notes": "Phase three: **Interact with Camofox**. It wraps **Camoufox**—an open-source **anti-detect Firefox browser**—in an **agent-friendly REST API**. By **rotating fingerprints at the C++ level**, it bypasses **Cloudflare, Akamai, and DataDome**. It sends **compact accessibility snapshots** instead of bloated HTML, includes a **noVNC viewer**, and uses **1 to 2 GB of RAM**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Docker Compose",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "yaml",
+        "code": [
+          "# ~/docker/hermes/docker-compose-camofox.yml",
+          "services:",
+          "  camofox-browser:",
+          "    container_name: camofox-browser",
+          "    image: ghcr.io/jo-inc/camofox-browser:latest",
+          "    restart: unless-stopped",
+          "    ports:",
+          "      - \"9377:9377\"",
+          "      - \"6080:6080\"  # noVNC",
+          "      - \"5901:5900\" # native VNC",
+          "    environment:",
+          "      - CAMOFOX_PORT=9377",
+          "      - ENABLE_VNC=1",
+          "      - VNC_BIND=0.0.0.0",
+          "      - VNC_RESOLUTION=1920x1080",
+          "      - MAX_OLD_SPACE_SIZE=2048",
+          "    volumes:",
+          "      - ./camofox:/root/.camofox",
+          "    shm_size: \"2g\""
+        ],
+        "speaker_notes": "In the **Camofox Docker Compose**, notice **port 9377 for the API** and **port 6080 for noVNC**—so if a site needs a **manual login or 2FA**, you just open your browser, click it yourself, and let the agent continue."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Hermes .env",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "bash",
+        "code": [
+          "# $HERMES_HOME/.env",
+          "#",
+          "# Self-hosted Camofox",
+          "# Because Hermes and Camofox are on the same docker network",
+          "#  the container name can be used",
+          "CAMOFOX_URL=http://camofox-browser:9377"
+        ],
+        "speaker_notes": "In **.env**, point **CAMOFOX_URL** to port 9377 on the Camofox container."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Camofox: Hermes config.yaml",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/browser#camofox-local-mode",
+        "language": "yaml",
+        "code": [
+          "# $HERMES_HOME/config.yaml",
+          "",
+          "browser:",
+          "  # Enable camofox as browser, instead of local (headless chromium)",
+          "  cloud_provider: camofox",
+          "  # Camofox specific configs",
+          "  camofox:",
+          "    # Docker only",
+          "    # Enable loopback rewriting to open pages served from the local host",
+          "    rewrite_loopback_urls: true",
+          "    loopback_host_alias: host.docker.internal  # default; use a LAN IP if needed",
+          "",
+          "    # Optional - user persistent profile",
+          "    managed_persistence: true"
+        ],
+        "speaker_notes": "And in **config.yaml**, set **cloud_provider: camofox** and enable **managed_persistence** so cookies and logins survive across runs."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Flexible, yes!",
+        "sentence": "Now my agents can",
+        "bullets": [
+          "Do more extensive online research",
+          "Be more protected from prompt injections",
+          "Parse web pages quicker and using fewer tokens",
+          "Check prices on Amazon",
+          "Search for listings on immobiliare.it",
+          "Shop on Esselunga and Migross sites"
+        ],
+        "speaker_notes": "With this **three-stage stack**, the difference is **night and day**! My agents do **deeper research with fewer tokens**, stay **safer from prompt injections**, and navigate sites that used to block them—checking **Amazon prices**, browsing **Immobiliare.it**, or shopping on **Esselunga**."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "But you pay in RAM consumption",
+        "image_uri": "docker_stats.png",
+        "speaker_notes": "There is **no free lunch**, though: **you pay in RAM**. Look at **docker stats**—even when **completely idle**, Firecrawl and Camofox sit on **several gigabytes of memory**. Size your VM accordingly!"
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "D.R.Y.",
+        "sentence": "How to make the non-deterministic more predictable",
+        "speaker_notes": "Let's move to our fourth topic: **D.R.Y.—Don't Repeat Yourself**. How do we make **non-deterministic agents** behave in a **predictable, repeatable way**?"
+      }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "Agentic systems don't fail from weak models; they fail from uncurated entropy!",
+        "attribution": "",
+        "speaker_notes": "I love this quote because it captures the whole problem: **Agentic systems don't fail from weak models; they fail from uncurated entropy!** Slightly different prompts every day produce **wildly different results**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Guiding principle: turn every repeatable process into an Agent Skill",
+        "sentence": "Agent Skills are portable, reusable folders of instructions, scripts, and context that give AI coding agents and assistants structured workflows instead of relying on generic prompts.",
+        "bullets": [
+          "Whenever a process needs to be repeated, codify it into a skill instead of re-explaining it in chat",
+          "Move from ad-hoc, non-deterministic prompting to structured, repeatable workflows",
+          "Package step-by-step instructions, helper scripts, and reference context in a single place",
+          "Continuously refine the skill as you discover edge cases and better practices",
+          "https://agentskills.io/"
+        ],
+        "speaker_notes": "So the guiding principle is: **turn every repeatable process into an Agent Skill**. If you explain a workflow **a second time**, stop and **codify it into a skill**. Agent Skills are an **open standard**—a portable folder with **SKILL.md**, helper scripts, and reference context. That's how you replace ad-hoc prompting with **structured workflows**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Design principles for good skills",
+        "bullets": [
+          "Write a complete YAML frontmatter so the agent can easily discover the skill",
+          "Clearly state what the skill does and its expected outcome",
+          "Describe when to invoke it, providing concrete trigger examples",
+          "Leverage lazy loading via the `references/` and `assets/` folders to save context tokens",
+          "Offload deterministic steps to code: have the agent write it in `scripts` folder and instruct the skill to run it",
+          "Use a linter to validate everything the agent produces (even if it's just for the format)",
+          "Turn every manual correction into a durable instruction for future runs"
+        ],
+        "speaker_notes": "**What makes a good skill?** First, a clear **YAML frontmatter with concrete trigger examples**. Second, **lazy loading** via **references/ and assets/** folders to save tokens. Third—most importantly—**offload deterministic steps to code**! Put Python or bash scripts in **scripts/**, validate output with a **linter**, and turn every manual correction into a **permanent rule**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Treat skill writing like code writing",
+        "bullets": [
+          "Keep all your skills in a dedicated Git repository",
+          "Define shared conventions and standards for every skill in a root `AGENTS.md` file",
+          "Ask the agent to grill and update skills following the rules in `AGENTS.md` to maintain consistency over time",
+          "Version, review, and evolve your skills just like any software project",
+          "Use evaluation loops: don't just generate outputs—inspect them (e.g. screenshot each slide, verify visual consistency, and iterate)"
+        ],
+        "speaker_notes": "Which leads to a key mindset shift: **treat skill writing like code writing**. Keep all skills in a **dedicated Git repository**. Define shared conventions in a **root AGENTS.md file**, and ask your agent to **grill and update skills** against those rules. Version them, review them, and use **evaluation loops** to inspect their output."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Define an AGENTS.md to rule them all",
+        "image_uri": "rainbow_harness_repo_04.png",
+        "speaker_notes": "Here is a real example from my repo, **rainbow-harness**. This **root AGENTS.md** defines the **architectural rules** every skill must follow."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Prefer deterministic code over LLM actions",
+        "image_uri": "rainbow_harness_repo_05.png",
+        "speaker_notes": "Here is the rule enforcing **deterministic scripts over LLM guesswork**—using code to parse files or validate schemas instead of hoping the model formats JSON properly."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Provide examples of reports you want",
+        "image_uri": "rainbow_harness_repo_06.png",
+        "speaker_notes": "And inside each skill, I include **exact examples of the report format** I want, leaving **zero room for hallucinations**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#publishing-a-custom-skill-tap",
+        "bullets": [
+          "Share a curated set of skills as a **tap**",
+          "Create a GitHub repo, add a `skills` folder, create skills under it",
+          "Check for the new skills with `hermes skills search --source github <keyword>`",
+          "Install the skill with `hermes skills install owner/repo/skill-name`",
+          "Be aware of potential risks coming from community skills (_direct edit system files, dangerous prompts, etc_). Use `--force` to bypass some of them",
+          "Remove the tap with `hermes skills tap uninstall <owner/repo>`"
+        ],
+        "speaker_notes": "Once your skills live on GitHub, **how do you distribute them** across isolated agents? With a **custom skill tap**! Just like **Homebrew taps**, Hermes lets you register any GitHub repo with a **skills/ folder**, search it, and **install skills in one command**."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_01.png",
+        "speaker_notes": "Let's walk through my **rainbow-harness** repo on GitHub. Notice the **skills/ directory** right at the root."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_02.png",
+        "speaker_notes": "Inside **skills/**, each subfolder is a **self-contained skill** with its own **SKILL.md** and scripts."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add the repo using `hermes skills tap add rainbowbreeze/rainbow-harness`"
+        ],
+        "speaker_notes": "On any Hermes instance, I run **hermes skills tap add rainbowbreeze/rainbow-harness**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "$HERMES_HOME/skills/.hub/taps.json",
+        "language": "json",
+        "code": [
+          "{",
+          "  \"taps\": [",
+          "    {",
+          "      \"repo\": \"rainbowbreeze/rainbow-harness\",",
+          "      \"path\": \"skills/\"",
+          "    }",
+          "  ]",
+          "}"
+        ],
+        "speaker_notes": "Under the hood, Hermes registers the repo in **taps.json**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add the repo using `hermes skills tap add rainbowbreeze/rainbow-harness`",
+          "Install a skill with `hermes skills install --category rainbowskills rainbowbreeze/rainbow-harness/aphorism-tracker`",
+          "Check with `hermes skills list --enabled-only`"
+        ],
+        "speaker_notes": "Then I install what I need—like **aphorism-tracker**—with **hermes skills install**. Note that Hermes **scans skills for risky instructions**, so you may need **--force** if your skill runs local scripts."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "image_uri": "rainbow_harness_repo_03.png",
+        "speaker_notes": "Here is the **terminal output**: Hermes fetches the skill, runs the **security scanner**, installs it, and lists it as enabled."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#skillmd-format",
+        "bullets": [
+          "Version your skills with `version: x.y.z`",
+          "Update skills automatically via `hermes skills update`",
+          "💡: Add this command to a cronjob in your Hermes, and once the new code is published on GitHub, the instance automatically picks it up at its own pace"
+        ],
+        "speaker_notes": "Three super useful **Hermes frontmatter features**. First: **versioning**. Add **version: x.y.z** to SKILL.md and run **hermes skills update**. **Pro tip**: put `hermes skills update` in a **cronjob**! Whenever you push to GitHub, all your minions **auto-update themselves**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills#skillmd-format",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "description: Use to save or retrieve text/image quotes or aphorisms to the BRAIN.",
+          "version: 1.2.0",
+          "author: Rainbowbreeze",
+          "# [...]",
+          "---"
+        ],
+        "speaker_notes": "Here is the YAML header: just name, description, and **version: 1.2.0**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "bullets": [
+          "Use `required_environment_variables` when a skill needs an API key or token",
+          "Missing values do not hide the skill from discovery",
+          "Instead, Hermes prompts for them securely when the skill is loaded in the local CLI"
+        ],
+        "speaker_notes": "Second: **required_environment_variables**. When a skill needs an **API key or secret**, declare it here. If it's missing, Hermes **prompts you securely in the CLI** when the skill loads."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#environment-variable-requirements",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "# [...]",
+          "required_environment_variables:",
+          "  - name: BRAIN_APHORISMS_PATH",
+          "    prompt: Folder to store aphorisms in the BRAIN knowledge repository",
+          "    help: Define where the projects folder must be, generally /opt/data/BRAIN/aphorisms",
+          "    required_for: full functionality",
+          "---"
+        ],
+        "speaker_notes": "You just specify the **variable name**, the **interactive prompt**, and a **help hint**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#config-settings-configyaml",
+        "bullets": [
+          "Skills can declare non-secret settings that are stored in `config.yaml` under the `skills.config` namespace",
+          "Unlike environment variables (which are secrets stored in `.env`), config settings are for paths, preferences, and other non-sensitive values"
+        ],
+        "speaker_notes": "Third: **non-secret config settings**. For paths or preferences that aren't secrets, declare them so Hermes stores them in **config.yaml under skills.config**, keeping your **.env clean**."
+      }
+    },
+    {
+      "template": "title_and_code",
+      "data": {
+        "title": "Hermes frontmatter fields",
+        "sentence": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills#config-settings-configyaml",
+        "language": "markdown",
+        "code": [
+          "---",
+          "name: aphorism-tracker",
+          "# [...]",
+          "metadata:",
+          "  hermes:",
+          "    config:",
+          "      - key: aphorism-tracker.path",
+          "        description: Path to the data directory to store aphorisms",
+          "        default: \"~/BRAIN/aphorisms\"",
+          "        prompt: Directory path to store aphorisms",
+          "---"
+        ],
+        "speaker_notes": "Here is the syntax under **metadata.hermes.config**, with a **default value** and prompt."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Hermes custom skill tap example",
+        "sentence": "https://github.com/rainbowbreeze/rainbow-harness",
+        "bullets": [
+          "Add `GITHUB_TOKEN` to `.env` to avoid GitHub rate errors"
+        ],
+        "speaker_notes": "One last tip on skill taps: add a **GITHUB_TOKEN** to your **.env**! Otherwise, unauthenticated calls will quickly hit **GitHub API rate limits** during updates."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "Recap",
+        "speaker_notes": "Alright, we covered a lot of ground! Let's do a **quick recap of our four pillars**."
+      }
+    },
+    {
+      "template": "content_simple",
+      "data": {
+        "title": "Recap: Designing your AI Minions",
+        "bullets": [
+          "**Infrastructure**: contain the blast radius by isolating agents in dedicated VMs and Docker containers away from your main machine",
+          "**Agent Garden**: choose segmentation over simplicity—separate agents by persona and privacy boundaries, and interact with them via messaging platforms like Discord",
+          "**Internet Access**: split web tasks into three phases—**Search** (`SearXNG`), **Extract** (`Firecrawl`), and **Interact** (`Camofox`)—balancing capability with RAM cost",
+          "**D.R.Y. with Agent Skills**: turn repeatable processes into skills, offload deterministic work to scripts and linters, and manage skills like code in a dedicated Git repo (`AGENTS.md` + custom skill tap)"
+        ],
+        "speaker_notes": "First, **Infrastructure**: **contain the blast radius** with dedicated VMs and Docker containers. Second, **Agent Garden**: **segmentation over simplicity**—separate personas and privacy boundaries, orchestrated via **Discord**. Third, **Internet Access**: split web tasks into **Search (SearXNG), Extract (Firecrawl), and Interact (Camofox)**, watching your **RAM**. Fourth, **D.R.Y. with Agent Skills**: codify repeatable workflows into a **Git repo with AGENTS.md**, use **deterministic scripts and linters**, and distribute via a **skill tap**."
+      }
+    },
+    {
+      "template": "section_title",
+      "data": {
+        "title": "The Future",
+        "speaker_notes": "Before we wrap up, a quick peek at **the future**—because **all the big tech players** are racing toward this exact **multi-agent workspace vision**."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "OpenAI Dots",
+        "image_uri": "openai_dots.webp",
+        "speaker_notes": "We see it with **OpenAI Dots**, exploring new ways to coordinate autonomous tasks and personas."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Meta Muse",
+        "image_uri": "meta_muse.jpg",
+        "speaker_notes": "We see it with **Meta Muse** and their push into specialized AI companions."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "xAI Grok Bot",
+        "image_uri": "xai_grok_bot.webp",
+        "speaker_notes": "We see it with **xAI's Grok Bot** integrations."
+      }
+    },
+    {
+      "template": "title_and_image",
+      "data": {
+        "title": "Google Gemini Spark",
+        "image_uri": "google_gemini_spark.png",
+        "speaker_notes": "And we see it with **Google Gemini Spark**. Everyone is building richer agent ecosystems."
+      }
+    },
+    {
+      "template": "quote_slide",
+      "data": {
+        "quote": "Finally, 2027 is the year of the Linux Desktop",
+        "attribution": "",
+        "speaker_notes": "Which brings me to my final prediction: **Finally, 2027 is the year of the Linux Desktop!** Not because humans switched away from macOS or Windows—but because **our AI minions live on Linux desktops, terminals, and isolated VMs**!"
+      }
+    },
+    {
+      "template": "content_and_image",
+      "data": {
+        "title": "Hermes referral code",
+        "bullets": [
+          "Different services offered by Nous Portal (_Models access, BrowserUse, Firecrawl, Perplexity search, etc_)",
+          "No configuration required",
+          "https://portal.nousresearch.com/r/rainbowbreeze",
+          "$15 off for your first paid month",
+          "",
+          "🙏, 🫶, 💛, and QUESTIONS?"
+        ],
+        "image_uri": "thank_you_and_questions_02.jpg",
+        "image_position": "right",
+        "speaker_notes": "If you want to try **Hermes** without self-hosting the heavy pieces on day one, **Nous Portal** offers hosted models, BrowserUse, Firecrawl, and Perplexity with **zero config**. Grab my **referral link for $15 off** your first month. **Thank you so much**, yellow love to everyone, and **let's open it up for questions**!"
+      }
+    }
+  ]
+}
