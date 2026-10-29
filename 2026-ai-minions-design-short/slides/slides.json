@@ -28,6 +28,14 @@
       }
     },
     {
+      "template": "section_title",
+      "data": {
+        "title": "Agents for personal productivity are here",
+        "sentence": "🦀 OpenClaw started it all! 🦀",
+        "speaker_notes": ""
+      }
+    },
+    {
       "template": "title_and_image",
       "data": {
         "title": "OpenAI Dots",
@@ -71,11 +79,11 @@
       "template": "content_simple",
       "data": {
         "title": "Why this talk",
-        "sentence": "What I learned using AI agents for personal productivity (and how to save you from some insomnia)",
+        "sentence": "What I learned bulding and using AI agents for personal productivity, to save you from some insomnia",
         "bullets": [
-          "Not 100% satisfied with my agents yet, but miles ahead of a few months ago",
+          "Context is **personal productivity**, not coding with agents—though many best practices apply to coding as well",
           "Focus on the areas where there are still no definitive answers, just design choices that benefit from sharing real-world experiences",
-          "Context is **personal productivity**, not coding with agents—though many best practices apply to coding as well"
+          "Not 100% satisfied with my agents yet, but miles ahead of a few months ago"
         ],
         "speaker_notes": "**Why this talk?** I want to share what I learned using AI agents for **personal productivity**. I'll be honest right away: I'm **not 100% happy** with my setup yet. Anyone who tells you their agents are flawless is probably lying. But I am **miles ahead** of where I was a few months ago—mostly thanks to many **sleepless nights** banging my head against the wall. So I thought: why not share what I found, and **save some of you from insomnia**? This won't be an all-encompassing guide. Instead, I'll focus on the **pain points with no standard answers**—just **trade-offs** where sharing real experiences really helps. Remember, our focus today is **personal productivity, not coding**—even though many of these practices apply to coding too. Let's dive in!"
       }
@@ -116,7 +124,7 @@
     {
       "template": "content_double",
       "data": {
-        "title": "Solution: Hermes in a Linux VM",
+        "title": "Solution: Hermes Agent in a Linux VM",
         "column_left": {
           "sub_heading": "My Setup: Self-hosted and Docker",
           "bullets": [
@@ -136,7 +144,7 @@
     {
       "template": "content_double",
       "data": {
-        "title": "Solution: Hermes in a Linux VM",
+        "title": "Solutionr: Hermes Agent in a Linux VM",
         "column_left": {
           "sub_heading": "My Setup: Self-hosted and Docker",
           "bullets": [
